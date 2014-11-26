@@ -1,3 +1,4 @@
 <?php
 
+define('EXAMPLE_KOMPAKT_BASE_URL', '');
 define('EXAMPLE_KOMPAKT_API_KEY', '');

@@ -16,7 +16,7 @@ require_once (file_exists(__DIR__ . '/config.php')) ? 'config.php' : 'config.php
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $client = new Client(
-    'http://api.berlin3.com/api/kompaktlabel/',
+    EXAMPLE_KOMPAKT_BASE_URL,
     array(
         'request.options' => array(
             'query' => array(
