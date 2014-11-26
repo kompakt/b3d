@@ -15,4 +15,11 @@ use Kompakt\B3d\Fetcher\TrackFetcher;
 $fetcher = new TrackFetcher($client, new Track());
 $tracks = $fetcher->fetchAll();
 echo sprintf("%s\n", count($tracks));
-die(print_r($tracks[0]));
+
+foreach ($tracks as $track)
+{
+    if (preg_match('/ay ay ay/i', $track->getTitle()))
+    {
+        die(print_r($track));
+    }
+}

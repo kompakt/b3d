@@ -15,4 +15,11 @@ use Kompakt\B3d\Fetcher\ReleaseFetcher;
 $fetcher = new ReleaseFetcher($client, new Release());
 $releases = $fetcher->fetchAll();
 echo sprintf("%s\n", count($releases));
-die(print_r($releases[0]));
+
+foreach ($releases as $release)
+{
+    if (preg_match('/ay ay ay/i', $release->getTitle()))
+    {
+        die(print_r($release));
+    }
+}

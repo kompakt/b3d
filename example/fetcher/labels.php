@@ -9,10 +9,17 @@
 
 require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
-use Kompakt\B3d\Entity\Release;
-use Kompakt\B3d\Fetcher\ReleaseFetcher;
+use Kompakt\B3d\Entity\Label;
+use Kompakt\B3d\Fetcher\LabelFetcher;
 
-$fetcher = new ReleaseFetcher($client, new Release());
+$fetcher = new LabelFetcher($client, new Label());
 $labels = $fetcher->fetchAll();
 echo sprintf("%s\n", count($labels));
-die(print_r($labels[0]));
+
+foreach ($labels as $label)
+{
+    if (preg_match('/kompakt/i', $label->getName()))
+    {
+        die(print_r($label));
+    }
+}

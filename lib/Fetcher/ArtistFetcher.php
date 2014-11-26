@@ -43,6 +43,17 @@ class ArtistFetcher
         {
             $artist = clone $this->artistPrototype;
             $artist->setName($item['artist_name']);
+            $artist->setMechanicalId($item['mechanical_id']);
+            $artist->setBioEngl($item['bio_engl']);
+            $artist->setBioOwn($item['bio_own']);
+            $artist->setNotes($item['notes']);
+            $artist->setArtwork1($item['artwork1']);
+            $artist->setArtwork2($item['artwork2']);
+            $artist->setUrl1($item['url1']);
+            $artist->setUrl2($item['url2']);
+            $artist->setLabelArtistId($item['label_artist_id']);
+            $artist->setSortName($item['sort_name']);
+            $artist->setAmgId($item['amg_id']);
             $artists[] = $artist;
         }
 

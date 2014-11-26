@@ -15,4 +15,4 @@ use Kompakt\B3d\Fetcher\ArtistFetcher;
 $fetcher = new ArtistFetcher($client, new Artist());
 $artists = $fetcher->fetchAll();
 echo sprintf("%s\n", count($artists));
-die(print_r($artists[0]));
+die(print_r($artists));

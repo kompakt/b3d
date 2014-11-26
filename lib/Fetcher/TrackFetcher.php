@@ -42,7 +42,21 @@ class TrackFetcher
         foreach ($data['tracks'] as $item)
         {
             $track = clone $this->trackPrototype;
+            $track->setId($item['track_id']);
             $track->setTitle($item['title']);
+            $track->setProductIdMain($item['product_id_main']);
+            $track->setSongId($item['song_id']);
+            $track->setCountry($item['country']);
+            $track->setArtworkTrack1($item['artwork_track1']);
+            $track->setVersion($item['version']);
+            $track->setIsrc($item['isrc']);
+            $track->setPYear($item['p_year']);
+            $track->setPLine($item['p_line']);
+            $track->setDigitalRightType($item['digital_right_type']);
+            $track->setArtist($item['artist']);
+            $track->setPlaytime($item['playtime']);
+            $track->setType($item['type']);
+            $track->setExplicitFlag($item['explicit_flag']);
             $tracks[] = $track;
         }
 

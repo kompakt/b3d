@@ -15,4 +15,11 @@ use Kompakt\B3d\Fetcher\ProductFetcher;
 $fetcher = new ProductFetcher($client, new Product());
 $products = $fetcher->fetchAll();
 echo sprintf("%s\n", count($products));
-die(print_r($products[0]));
+
+foreach ($products as $product)
+{
+    if ($product->getReleaseId() == '4065')
+    {
+        die(print_r($product));
+    }
+}
