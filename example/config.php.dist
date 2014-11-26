@@ -1,0 +1,3 @@
+<?php
+
+define('EXAMPLE_KOMPAKT_API_KEY', '');
