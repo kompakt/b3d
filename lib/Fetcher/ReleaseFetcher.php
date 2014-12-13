@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Fetcher;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Kompakt\B3d\Entity\Release;
 
 class ReleaseFetcher
@@ -28,8 +28,7 @@ class ReleaseFetcher
 
     public function fetchAll()
     {
-        $request = $this->client->get('action=releases');
-        $response = $request->send();
+        $response = $this->client->get('action=releases');
         $data = $response->json();
 
         if (!array_key_exists('releases', $data))

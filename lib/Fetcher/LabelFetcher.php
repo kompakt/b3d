@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Fetcher;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Kompakt\B3d\Entity\Label;
 
 class LabelFetcher
@@ -28,8 +28,7 @@ class LabelFetcher
 
     public function fetchAll()
     {
-        $request = $this->client->get('action=labels');
-        $response = $request->send();
+        $response = $this->client->get('action=labels');
         $data = $response->json();
 
         if (!array_key_exists('labels', $data))

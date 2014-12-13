@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Fetcher;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Kompakt\B3d\Entity\Artist;
 
 class ArtistFetcher
@@ -28,8 +28,7 @@ class ArtistFetcher
 
     public function fetchAll()
     {
-        $request = $this->client->get('action=artists');
-        $response = $request->send();
+        $response = $this->client->get('action=artists');
         $data = $response->json();
 
         if (!array_key_exists('artists', $data))

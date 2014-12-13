@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Fetcher;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Kompakt\B3d\Entity\Track;
 
 class TrackFetcher
@@ -28,8 +28,7 @@ class TrackFetcher
 
     public function fetchAll()
     {
-        $request = $this->client->get('action=tracks');
-        $response = $request->send();
+        $response = $this->client->get('action=tracks');
         $data = $response->json();
 
         if (!array_key_exists('tracks', $data))

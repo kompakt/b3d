@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Fetcher;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Kompakt\B3d\Entity\Product;
 
 class ProductFetcher
@@ -28,8 +28,7 @@ class ProductFetcher
 
     public function fetchAll()
     {
-        $request = $this->client->get('action=products');
-        $response = $request->send();
+        $response = $this->client->get('action=products');
         $data = $response->json();
 
         if (!array_key_exists('products', $data))
