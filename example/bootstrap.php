@@ -8,6 +8,7 @@
  */
 
 use GuzzleHttp\Client;
+use Kompakt\TestHelper\Filesystem\TmpDir;
 
 // load testing configuration
 require_once (file_exists(__DIR__ . '/config.php')) ? 'config.php' : 'config.php.dist';
@@ -28,3 +29,8 @@ $client = new Client(
         )
     )
 );
+
+function getTmpDir()
+{
+    return new TmpDir(EXAMPLE_KOMPAKT_TEMP_DIR);
+}

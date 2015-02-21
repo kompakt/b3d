@@ -43,19 +43,19 @@ class ReleaseFetcher
             $release = clone $this->releasePrototype;
             $release->setStatus($item['status']);
             $release->setTitle($item['release_title']);
+            $release->setTitleAlt($item['release_title_alt']);
+            $release->setInfoEnglish($item['release_info_english']);
             $release->setInfoSecond($item['release_info_second']);
             $release->setIdentifier($item['identifier']);
-            $release->setTitleAlt($item['release_title_alt']);
             $release->setArtist($item['release_artist']);
             $release->setArtwork1($item['artwork1']);
+            $release->setArtwork2($item['artwork2']);
             $release->setProjectId($item['project_id']);
             $release->setId($item['release_id']);
             $release->setReleaseDate(new \DateTime($item['release_date']));
             $release->settype($item['release_type']);
             $release->setNotes($item['notes']);
             $release->setLabelId($item['label_id']);
-            $release->setInfoEnglish($item['release_info_english']);
-            $release->setArtwork2($item['artwork2']);
             $releases[] = $release;
         }
 
