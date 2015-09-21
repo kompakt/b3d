@@ -1,5 +1,5 @@
 <?php
 
-define('EXAMPLE_KOMPAKT_TEMP_DIR', dirname(__DIR__) . '/temp');
-define('EXAMPLE_KOMPAKT_BASE_URL', '');
-define('EXAMPLE_KOMPAKT_API_KEY', '');
+define('EXAMPLE_KOMPAKT_B3D_TEMP_DIR', dirname(__DIR__) . '/temp');
+define('EXAMPLE_KOMPAKT_B3D_BASE_URL', '');
+define('EXAMPLE_KOMPAKT_B3D_API_KEY', '');

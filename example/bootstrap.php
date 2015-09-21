@@ -21,10 +21,10 @@ date_default_timezone_set('UTC');
 
 $client = new Client(
     array(
-        'base_url' => EXAMPLE_KOMPAKT_BASE_URL,
+        'base_url' => EXAMPLE_KOMPAKT_B3D_BASE_URL,
         'defaults' => array(
             'query' => array(
-                'api_key' => EXAMPLE_KOMPAKT_API_KEY
+                'api_key' => EXAMPLE_KOMPAKT_B3D_API_KEY
             )
         )
     )
@@ -32,5 +32,5 @@ $client = new Client(
 
 function getTmpDir()
 {
-    return new TmpDir(EXAMPLE_KOMPAKT_TEMP_DIR);
+    return new TmpDir(EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
 }

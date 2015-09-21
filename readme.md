@@ -1,8 +1,10 @@
 # Kompakt B3d
 
-Berlin3 Details API Connector
+Berlin3 "Details" API Connector, Schema Loader & Canonical Product Builder
 
 ## Description
+
+Get data from "Details" endpoints, optionally cache results, load full graph per "Details" schema, build canonical product representation and serialize result to xml files.
 
 ## Install
 
@@ -24,7 +26,7 @@ Berlin3 Details API Connector
 
 ## Entities
 
-    Kompakt\B3d\Entity\Artist Object
+    Kompakt\B3d\Details\Entity\Artist Object
     (
         [name] => Bedroom Community
         [mechanicalId] =>
@@ -40,7 +42,7 @@ Berlin3 Details API Connector
         [amgId] =>
     )
 
-    Kompakt\B3d\Entity\Label Object
+    Kompakt\B3d\Details\Entity\Label Object
     (
         [id] => 1001
         [name] => Kompakt
@@ -58,7 +60,7 @@ Berlin3 Details API Connector
         [notes] => Kompakt
     )
 
-    Kompakt\B3d\Entity\Product Object
+    Kompakt\B3d\Details\Entity\Product Object
     (
         [id] => 2422
         [catalogNumber] => FAT 002
@@ -93,7 +95,7 @@ Berlin3 Details API Connector
         [typeId] =>
     )
 
-    Kompakt\B3d\Entity\Release Object
+    Kompakt\B3d\Details\Entity\Release Object
     (
         [status] => imported
         [title] => AY AY AY
@@ -117,7 +119,7 @@ Berlin3 Details API Connector
         [labelId] => 1001
     )
 
-    Kompakt\B3d\Entity\Track Object
+    Kompakt\B3d\Details\Entity\Track Object
     (
         [id] => 10485
         [productIdMain] => 4065
@@ -134,6 +136,19 @@ Berlin3 Details API Connector
         [title] => AY AY AY
         [type] => audio
         [explicitFlag] => 0
+    )
+
+    Kompakt\B3d\Details\Entity\ProductTrack Object
+    (
+        [seqNo:protected] => 1
+        [setNo:protected] => 1
+        [productTrackId:protected] => 25566
+        [bonusTrackFlag:protected] =>
+        [trackId:protected] => 21975
+        [productId:protected] => 6289
+        [side:protected] =>
+        [productIsrc:protected] =>
+        [playtime:protected] => 00:06:49
     )
 
 ## License

@@ -13,7 +13,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*",
-        "kompakt/test-helper": "~0.1@dev"
+        "kompakt/test-helper": "~0.1@dev",
+        "symfony/event-dispatcher": "~2.4"
     },
     "autoload": {
         "psr-4": { "Kompakt\\B3d\\": "lib/" }
