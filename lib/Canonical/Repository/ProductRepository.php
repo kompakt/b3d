@@ -15,9 +15,6 @@ class ProductRepository
 {
     protected $products = array();
 
-    /**
-     * @see RepositoryInterface::add()
-     */
     public function add($product)
     {
         $this->addProduct($product);

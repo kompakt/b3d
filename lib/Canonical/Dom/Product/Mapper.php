@@ -140,33 +140,4 @@ class Mapper extends AbstractMapper
 
         return $product;
     }
-
-    public function toDate($date)
-    {
-        return \DateTime::createFromFormat('Y-m-d', $date);
-    }
-
-    protected function getDomElement($dom, $name)
-    {
-        $element = $dom->getElementsByTagName($name)->item(0);
-
-        if (!$element)
-        {
-            throw new DomainException(sprintf('Xml element missing: "%s" in %s', $name, $this->file));
-        }
-
-        return $element;
-    }
-
-    protected function getDomVal($dom, $name)
-    {
-        $element = $dom->getElementsByTagName($name)->item(0);
-
-        if (!$element)
-        {
-            throw new DomainException(sprintf('Xml element missing: "%s"', $name));
-        }
-
-        return $element->nodeValue;
-    }
 }
