@@ -31,7 +31,20 @@ foreach ($endpoints as $endpoint)
 
     foreach ($endpoint->fetchAll() as $item)
     {
-        print_r($item);
+        $fields = [];
+
+        foreach ($item as $k => $v)
+        {
+            $fields[] = $k;
+        }
+
+        sort($fields, SORT_NATURAL);
+
+        foreach ($fields as $field)
+        {
+            echo sprintf("+ %s\n", $field);
+        }
+
         break;
     }
 }
