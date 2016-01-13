@@ -21,11 +21,10 @@ date_default_timezone_set('UTC');
 
 $client = new Client(
     array(
-        'base_url' => EXAMPLE_KOMPAKT_B3D_BASE_URL,
-        'defaults' => array(
-            'query' => array(
-                'api_key' => EXAMPLE_KOMPAKT_B3D_API_KEY
-            )
+        #'debug' => true,
+        'base_uri' => EXAMPLE_KOMPAKT_B3D_BASE_URL,
+        'query' => array(
+            'api_key' => EXAMPLE_KOMPAKT_B3D_API_KEY
         )
     )
 );

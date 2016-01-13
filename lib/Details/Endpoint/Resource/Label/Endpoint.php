@@ -29,7 +29,7 @@ class Endpoint implements EndpointInterface
     {
         try {
             $response = $this->client->get('action=labels');
-            $data = $response->json();
+            $data = json_decode($response->getBody(), true);
 
             $success
                 = (array_key_exists('success', $data))
