@@ -128,7 +128,7 @@ class Loader
         $release->addProduct($product);
         $product->setRelease($release);
 
-        $productTracks = $this->productTrackRepository->getAllByProductId($product->getId());
+        $productTracks = $this->productTrackRepository->getAllByProductId($product->getProductId());
 
         foreach ($productTracks as $productTrack)
         {

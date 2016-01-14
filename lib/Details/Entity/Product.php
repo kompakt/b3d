@@ -19,37 +19,52 @@ class Product
     protected $productTracks = array();
 
     // properties
-    protected $id = null;
-    protected $catalogNumber = null;
-    protected $streamYesNo = null;
-    protected $identifier = null;
-    protected $digitalPhysical = null;
-    protected $supplierId = null;
-    protected $weight = null;
-    protected $releaseShift = null;
-    protected $infoEnglish = null;
-    protected $infoSecond = null;
-    protected $releaseId = null;
-    protected $downloadYesNo = null;
-    protected $deliveryNow = null;
-    protected $deliveryConfirmedDate = null;
-    protected $barcode = null;
-    protected $deliveredFlag = null;
-    protected $deliveredDate = null;
-    protected $deliveryConfirmedFlag = null;
+    protected $uuid = null;
+    protected $albumSingleMerch = null;
+    protected $artworkProduct1 = null;
+    protected $artworkProduct2 = null;
     protected $attribute1 = null;
     protected $attribute2 = null;
     protected $attribute3 = null;
-    protected $formatId = null;
-    protected $artworkProduct1 = null;
-    protected $artworkProduct2 = null;
-    protected $priceCodeId = null;
-    protected $language = null;
-    protected $ppd = null;
-    protected $version = null;
+    protected $barcode = null;
+    protected $catalogNumber = null;
+    protected $channel = null;
     protected $costPrice = null;
+    protected $defaultWeight = null;
+    protected $deliveredDate = null;
+    protected $deliveredFlag = null;
+    protected $deliveryConfirmedDate = null;
+    protected $deliveryConfirmedFlag = null;
+    protected $deliveryNow = null;
+    protected $digitalPhysical = null;
+    protected $downloadYesNo = null;
+    protected $formatId = null;
+    protected $formatName = null;
+    protected $groups = null;
+    protected $identifier = null;
+    protected $internalFlag = null;
+    protected $language = null;
+    protected $minMargin = null;
     protected $notes = null;
-    protected $typeId = null;
+    protected $ppd = null;
+    protected $priceCodeDescription = null;
+    protected $priceCodeId = null;
+    protected $priceCodeName = null;
+    protected $productId = null;
+    protected $productInfoEnglish = null;
+    protected $productInfoSecond = null;
+    protected $productTypeId = null;
+    protected $productTypeName = null;
+    protected $productTypeName2 = null;
+    protected $proformaPrice = null;
+    protected $releaseId = null;
+    protected $releaseShift = null;
+    protected $streamYesNo = null;
+    protected $supplierId = null;
+    protected $twoSidesFlag = null;
+    protected $vatType = null;
+    protected $version = null;
+    protected $weight = null;
 
     public function setRelease(Release $release)
     {
@@ -71,184 +86,44 @@ class Product
         return $this->productTracks;
     }
 
-    public function setId($id)
+    public function setUuid($uuid)
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
     }
 
-    public function getId()
+    public function getUuid()
     {
-        return $this->id;
+        return $this->uuid;
     }
 
-    public function setCatalogNumber($catalogNumber)
+    public function setAlbumSingleMerch($albumSingleMerch)
     {
-        $this->catalogNumber = $catalogNumber;
+        $this->albumSingleMerch = $albumSingleMerch;
     }
 
-    public function getCatalogNumber()
+    public function getAlbumSingleMerch()
     {
-        return $this->catalogNumber;
+        return $this->albumSingleMerch;
     }
 
-    public function setStreamYesNo($streamYesNo)
+    public function setArtworkProduct1($artworkProduct1)
     {
-        $this->streamYesNo = $streamYesNo;
+        $this->artworkProduct1 = $artworkProduct1;
     }
 
-    public function getStreamYesNo()
+    public function getArtworkProduct1()
     {
-        return $this->streamYesNo;
+        return $this->artworkProduct1;
     }
 
-    public function setIdentifier($identifier)
+    public function setArtworkProduct2($artworkProduct2)
     {
-        $this->identifier = $identifier;
+        $this->artworkProduct2 = $artworkProduct2;
     }
 
-    public function getIdentifier()
+    public function getArtworkProduct2()
     {
-        return $this->identifier;
-    }
-
-    public function setDigitalPhysical($digitalPhysical)
-    {
-        $this->digitalPhysical = $digitalPhysical;
-    }
-
-    public function getDigitalPhysical()
-    {
-        return $this->digitalPhysical;
-    }
-
-    public function setSupplierId($supplierId)
-    {
-        $this->supplierId = $supplierId;
-    }
-
-    public function getSupplierId()
-    {
-        return $this->supplierId;
-    }
-
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-    }
-
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    public function setReleaseShift($releaseShift)
-    {
-        $this->releaseShift = $releaseShift;
-    }
-
-    public function getReleaseShift()
-    {
-        return $this->releaseShift;
-    }
-
-    public function setInfoEnglish($infoEnglish)
-    {
-        $this->infoEnglish = $infoEnglish;
-    }
-
-    public function getInfoEnglish()
-    {
-        return $this->infoEnglish;
-    }
-
-    public function setInfoSecond($infoSecond)
-    {
-        $this->infoSecond = $infoSecond;
-    }
-
-    public function getInfoSecond()
-    {
-        return $this->infoSecond;
-    }
-
-    public function setReleaseId($releaseId)
-    {
-        $this->releaseId = $releaseId;
-    }
-
-    public function getReleaseId()
-    {
-        return $this->releaseId;
-    }
-
-    public function setDownloadYesNo($downloadYesNo)
-    {
-        $this->downloadYesNo = $downloadYesNo;
-    }
-
-    public function getDownloadYesNo()
-    {
-        return $this->downloadYesNo;
-    }
-
-    public function setDeliveryNow($deliveryNow)
-    {
-        $this->deliveryNow = $deliveryNow;
-    }
-
-    public function getDeliveryNow()
-    {
-        return $this->deliveryNow;
-    }
-
-    public function setDeliveryConfirmedDate($deliveryConfirmedDate)
-    {
-        $this->deliveryConfirmedDate = $deliveryConfirmedDate;
-    }
-
-    public function getDeliveryConfirmedDate()
-    {
-        return $this->deliveryConfirmedDate;
-    }
-
-    public function setBarcode($barcode)
-    {
-        $this->barcode = $barcode;
-    }
-
-    public function getBarcode()
-    {
-        return $this->barcode;
-    }
-
-    public function setDeliveredFlag($deliveredFlag)
-    {
-        $this->deliveredFlag = $deliveredFlag;
-    }
-
-    public function getDeliveredFlag()
-    {
-        return $this->deliveredFlag;
-    }
-
-    public function setDeliveredDate($deliveredDate)
-    {
-        $this->deliveredDate = $deliveredDate;
-    }
-
-    public function getDeliveredDate()
-    {
-        return $this->deliveredDate;
-    }
-
-    public function setDeliveryConfirmedFlag($deliveryConfirmedFlag)
-    {
-        $this->deliveryConfirmedFlag = $deliveryConfirmedFlag;
-    }
-
-    public function getDeliveryConfirmedFlag()
-    {
-        return $this->deliveryConfirmedFlag;
+        return $this->artworkProduct2;
     }
 
     public function setAttribute1($attribute1)
@@ -281,74 +156,34 @@ class Product
         return $this->attribute3;
     }
 
-    public function setFormatId($formatId)
+    public function setBarcode($barcode)
     {
-        $this->formatId = $formatId;
+        $this->barcode = $barcode;
     }
 
-    public function getFormatId()
+    public function getBarcode()
     {
-        return $this->formatId;
+        return $this->barcode;
     }
 
-    public function setArtworkProduct1($artworkProduct1)
+    public function setCatalogNumber($catalogNumber)
     {
-        $this->artworkProduct1 = $artworkProduct1;
+        $this->catalogNumber = $catalogNumber;
     }
 
-    public function getArtworkProduct1()
+    public function getCatalogNumber()
     {
-        return $this->artworkProduct1;
+        return $this->catalogNumber;
     }
 
-    public function setArtworkProduct2($artworkProduct2)
+    public function setChannel($channel)
     {
-        $this->artworkProduct2 = $artworkProduct2;
+        $this->channel = $channel;
     }
 
-    public function getArtworkProduct2()
+    public function getChannel()
     {
-        return $this->artworkProduct2;
-    }
-
-    public function setPriceCodeId($priceCodeId)
-    {
-        $this->priceCodeId = $priceCodeId;
-    }
-
-    public function getPriceCodeId()
-    {
-        return $this->priceCodeId;
-    }
-
-    public function setLanguage($language)
-    {
-        $this->language = $language;
-    }
-
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    public function setPpd($ppd)
-    {
-        $this->ppd = $ppd;
-    }
-
-    public function getPpd()
-    {
-        return $this->ppd;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
+        return $this->channel;
     }
 
     public function setCostPrice($costPrice)
@@ -361,6 +196,156 @@ class Product
         return $this->costPrice;
     }
 
+    public function setDefaultWeight($defaultWeight)
+    {
+        $this->defaultWeight = $defaultWeight;
+    }
+
+    public function getDefaultWeight()
+    {
+        return $this->defaultWeight;
+    }
+
+    public function setDeliveredDate($deliveredDate)
+    {
+        $this->deliveredDate = $deliveredDate;
+    }
+
+    public function getDeliveredDate()
+    {
+        return $this->deliveredDate;
+    }
+
+    public function setDeliveredFlag($deliveredFlag)
+    {
+        $this->deliveredFlag = $deliveredFlag;
+    }
+
+    public function getDeliveredFlag()
+    {
+        return $this->deliveredFlag;
+    }
+
+    public function setDeliveryConfirmedDate($deliveryConfirmedDate)
+    {
+        $this->deliveryConfirmedDate = $deliveryConfirmedDate;
+    }
+
+    public function getDeliveryConfirmedDate()
+    {
+        return $this->deliveryConfirmedDate;
+    }
+
+    public function setDeliveryConfirmedFlag($deliveryConfirmedFlag)
+    {
+        $this->deliveryConfirmedFlag = $deliveryConfirmedFlag;
+    }
+
+    public function getDeliveryConfirmedFlag()
+    {
+        return $this->deliveryConfirmedFlag;
+    }
+
+    public function setDeliveryNow($deliveryNow)
+    {
+        $this->deliveryNow = $deliveryNow;
+    }
+
+    public function getDeliveryNow()
+    {
+        return $this->deliveryNow;
+    }
+
+    public function setDigitalPhysical($digitalPhysical)
+    {
+        $this->digitalPhysical = $digitalPhysical;
+    }
+
+    public function getDigitalPhysical()
+    {
+        return $this->digitalPhysical;
+    }
+
+    public function setDownloadYesNo($downloadYesNo)
+    {
+        $this->downloadYesNo = $downloadYesNo;
+    }
+
+    public function getDownloadYesNo()
+    {
+        return $this->downloadYesNo;
+    }
+
+    public function setFormatId($formatId)
+    {
+        $this->formatId = $formatId;
+    }
+
+    public function getFormatId()
+    {
+        return $this->formatId;
+    }
+
+    public function setFormatName($formatName)
+    {
+        $this->formatName = $formatName;
+    }
+
+    public function getFormatName()
+    {
+        return $this->formatName;
+    }
+
+    public function setGroups($groups)
+    {
+        $this->groups = $groups;
+    }
+
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    }
+
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    public function setInternalFlag($internalFlag)
+    {
+        $this->internalFlag = $internalFlag;
+    }
+
+    public function getInternalFlag()
+    {
+        return $this->internalFlag;
+    }
+
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
+
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    public function setMinMargin($minMargin)
+    {
+        $this->minMargin = $minMargin;
+    }
+
+    public function getMinMargin()
+    {
+        return $this->minMargin;
+    }
+
     public function setNotes($notes)
     {
         $this->notes = $notes;
@@ -371,13 +356,193 @@ class Product
         return $this->notes;
     }
 
-    public function setTypeId($typeId)
+    public function setPpd($ppd)
     {
-        $this->typeId = $typeId;
+        $this->ppd = $ppd;
     }
 
-    public function getTypeId()
+    public function getPpd()
     {
-        return $this->typeId;
+        return $this->ppd;
+    }
+
+    public function setPriceCodeDescription($priceCodeDescription)
+    {
+        $this->priceCodeDescription = $priceCodeDescription;
+    }
+
+    public function getPriceCodeDescription()
+    {
+        return $this->priceCodeDescription;
+    }
+
+    public function setPriceCodeId($priceCodeId)
+    {
+        $this->priceCodeId = $priceCodeId;
+    }
+
+    public function getPriceCodeId()
+    {
+        return $this->priceCodeId;
+    }
+
+    public function setPriceCodeName($priceCodeName)
+    {
+        $this->priceCodeName = $priceCodeName;
+    }
+
+    public function getPriceCodeName()
+    {
+        return $this->priceCodeName;
+    }
+
+    public function setProductId($productId)
+    {
+        $this->productId = $productId;
+    }
+
+    public function getProductId()
+    {
+        return $this->productId;
+    }
+
+    public function setProductInfoEnglish($productInfoEnglish)
+    {
+        $this->productInfoEnglish = $productInfoEnglish;
+    }
+
+    public function getProductInfoEnglish()
+    {
+        return $this->productInfoEnglish;
+    }
+
+    public function setProductInfoSecond($productInfoSecond)
+    {
+        $this->productInfoSecond = $productInfoSecond;
+    }
+
+    public function getProductInfoSecond()
+    {
+        return $this->productInfoSecond;
+    }
+
+    public function setProductTypeId($productTypeId)
+    {
+        $this->productTypeId = $productTypeId;
+    }
+
+    public function getProductTypeId()
+    {
+        return $this->productTypeId;
+    }
+
+    public function setProductTypeName($productTypeName)
+    {
+        $this->productTypeName = $productTypeName;
+    }
+
+    public function getProductTypeName()
+    {
+        return $this->productTypeName;
+    }
+
+    public function setProductTypeName2($productTypeName2)
+    {
+        $this->productTypeName2 = $productTypeName2;
+    }
+
+    public function getProductTypeName2()
+    {
+        return $this->productTypeName2;
+    }
+
+    public function setProformaPrice($proformaPrice)
+    {
+        $this->proformaPrice = $proformaPrice;
+    }
+
+    public function getProformaPrice()
+    {
+        return $this->proformaPrice;
+    }
+
+    public function setReleaseId($releaseId)
+    {
+        $this->releaseId = $releaseId;
+    }
+
+    public function getReleaseId()
+    {
+        return $this->releaseId;
+    }
+
+    public function setReleaseShift($releaseShift)
+    {
+        $this->releaseShift = $releaseShift;
+    }
+
+    public function getReleaseShift()
+    {
+        return $this->releaseShift;
+    }
+
+    public function setStreamYesNo($streamYesNo)
+    {
+        $this->streamYesNo = $streamYesNo;
+    }
+
+    public function getStreamYesNo()
+    {
+        return $this->streamYesNo;
+    }
+
+    public function setSupplierId($supplierId)
+    {
+        $this->supplierId = $supplierId;
+    }
+
+    public function getSupplierId()
+    {
+        return $this->supplierId;
+    }
+
+    public function setTwoSidesFlag($twoSidesFlag)
+    {
+        $this->twoSidesFlag = $twoSidesFlag;
+    }
+
+    public function getTwoSidesFlag()
+    {
+        return $this->twoSidesFlag;
+    }
+
+    public function setVatType($vatType)
+    {
+        $this->vatType = $vatType;
+    }
+
+    public function getVatType()
+    {
+        return $this->vatType;
+    }
+
+    public function setVersion($version)
+    {
+        $this->version = $version;
+    }
+
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+    }
+
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }

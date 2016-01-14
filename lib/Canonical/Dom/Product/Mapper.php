@@ -56,51 +56,66 @@ class Mapper extends AbstractMapper
         #$product->setLabelId($this->getDomVal($dom, 'id'));
 
         // product-fields
-        #$product->setId($this->getDomVal($dom, 'id'));
-        $product->setCatalogNumber($this->getDomVal($dom, 'catalogNumber'));
-        $product->setStreamYesNo($this->getDomVal($dom, 'streamYesNo'));
-        #$product->setIdentifier($this->getDomVal($dom, 'identifier'));
-        $product->setDigitalPhysical($this->getDomVal($dom, 'digitalPhysical'));
-        #$product->setSupplierId($this->getDomVal($dom, 'supplierId'));
-        $product->setWeight($this->getDomVal($dom, 'weight'));
-        $product->setReleaseShift($this->getDomVal($dom, 'releaseShift'));
-        #$product->setInfoEnglish($this->getDomVal($dom, 'infoEnglish'));
-        #$product->setInfoSecond($this->getDomVal($dom, 'infoSecond'));
-        #$product->setReleaseId($this->getDomVal($dom, 'releaseId'));
-        $product->setDownloadYesNo($this->getDomVal($dom, 'downloadYesNo'));
-        #$product->setDeliveryNow($this->getDomVal($dom, 'deliveryNow'));
-
-        /*$deliveryConfirmedDate = $this->getDomVal($dom, 'deliveryConfirmedDate');
-
-        if ($deliveryConfirmedDate)
-        {
-            $product->setDeliveryConfirmedDate($this->toDate($deliveryConfirmedDate));
-        }*/
-
+        $product->setUuid($this->getDomVal($dom, 'uuid'));
+        $product->setAlbumSingleMerch($this->getDomVal($dom, 'albumSingleMerch'));
+        $product->setArtworkProduct1($this->getDomVal($dom, 'artworkProduct1'));
+        $product->setArtworkProduct2($this->getDomVal($dom, 'artworkProduct2'));
+        $product->setAttribute1($this->getDomVal($dom, 'attribute1'));
+        $product->setAttribute2($this->getDomVal($dom, 'attribute2'));
+        $product->setAttribute3($this->getDomVal($dom, 'attribute3'));
         $product->setBarcode($this->getDomVal($dom, 'barcode'));
-        #$product->setDeliveredFlag($this->getDomVal($dom, 'deliveredFlag'));
+        $product->setCatalogNumber($this->getDomVal($dom, 'catalogNumber'));
+        $product->setChannel($this->getDomVal($dom, 'channel'));
+        $product->setCostPrice($this->getDomVal($dom, 'costPrice'));
+        $product->setDefaultWeight($this->getDomVal($dom, 'defaultWeight'));
 
-        /*$deliveredDate = $this->getDomVal($dom, 'deliveredDate');
+        $deliveredDate = $this->getDomVal($dom, 'deliveredDate');
 
         if ($deliveredDate)
         {
             $product->setDeliveredDate($this->toDate($deliveredDate));
-        }*/
+        }
 
-        #$product->setDeliveryConfirmedFlag($this->getDomVal($dom, 'deliveryConfirmedFlag'));
-        $product->setAttribute1($this->getDomVal($dom, 'attribute1'));
-        $product->setAttribute2($this->getDomVal($dom, 'attribute2'));
-        $product->setAttribute3($this->getDomVal($dom, 'attribute3'));
-        #$product->setFormatId($this->getDomVal($dom, 'formatId'));
-        $product->setArtworkProduct1($this->getDomVal($dom, 'artworkProduct1'));
-        $product->setArtworkProduct2($this->getDomVal($dom, 'artworkProduct2'));
-        #$product->setPriceCodeId($this->getDomVal($dom, 'priceCodeId'));
+        $product->setDeliveredFlag($this->getDomVal($dom, 'deliveredFlag'));
+
+        $deliveryConfirmedDate = $this->getDomVal($dom, 'deliveryConfirmedDate');
+
+        if ($deliveryConfirmedDate)
+        {
+            $product->setDeliveryConfirmedDate($this->toDate($deliveryConfirmedDate));
+        }
+
+        $product->setDeliveryConfirmedFlag($this->getDomVal($dom, 'deliveryConfirmedFlag'));
+        $product->setDeliveryNow($this->getDomVal($dom, 'deliveryNow'));
+        $product->setDigitalPhysical($this->getDomVal($dom, 'digitalPhysical'));
+        $product->setDownloadYesNo($this->getDomVal($dom, 'downloadYesNo'));
+        $product->setFormatId($this->getDomVal($dom, 'formatId'));
+        $product->setFormatName($this->getDomVal($dom, 'formatName'));
+        $product->setGroups($this->getDomVal($dom, 'groups'));
+        $product->setIdentifier($this->getDomVal($dom, 'identifier'));
+        $product->setInternalFlag($this->getDomVal($dom, 'internalFlag'));
         $product->setLanguage($this->getDomVal($dom, 'language'));
-        $product->setPpd($this->getDomVal($dom, 'ppd'));
-        $product->setVersion($this->getDomVal($dom, 'version'));
-        $product->setCostPrice($this->getDomVal($dom, 'costPrice'));
+        $product->setMinMargin($this->getDomVal($dom, 'minMargin'));
         $product->setNotes($this->getDomVal($dom, 'notes'));
-        #$product->setTypeId($this->getDomVal($dom, 'typeId'));
+        $product->setPpd($this->getDomVal($dom, 'ppd'));
+        $product->setPriceCodeDescription($this->getDomVal($dom, 'priceCodeDescription'));
+        $product->setPriceCodeId($this->getDomVal($dom, 'priceCodeId'));
+        $product->setPriceCodeName($this->getDomVal($dom, 'priceCodeName'));
+        $product->setProductId($this->getDomVal($dom, 'productId'));
+        $product->setProductInfoEnglish($this->getDomVal($dom, 'productInfoEnglish'));
+        $product->setProductInfoSecond($this->getDomVal($dom, 'productInfoSecond'));
+        $product->setProductTypeId($this->getDomVal($dom, 'productTypeId'));
+        $product->setProductTypeName($this->getDomVal($dom, 'productTypeName'));
+        $product->setProductTypeName2($this->getDomVal($dom, 'productTypeName2'));
+        $product->setProformaPrice($this->getDomVal($dom, 'proformaPrice'));
+        $product->setReleaseId($this->getDomVal($dom, 'releaseId'));
+        $product->setReleaseShift($this->getDomVal($dom, 'releaseShift'));
+        $product->setStreamYesNo($this->getDomVal($dom, 'streamYesNo'));
+        $product->setSupplierId($this->getDomVal($dom, 'supplierId'));
+        $product->setTwoSidesFlag($this->getDomVal($dom, 'twoSidesFlag'));
+        $product->setVatType($this->getDomVal($dom, 'vatType'));
+        $product->setVersion($this->getDomVal($dom, 'version'));
+        $product->setWeight($this->getDomVal($dom, 'weight'));
 
         $tracks = $this->getDomElement($dom, 'tracks');
 

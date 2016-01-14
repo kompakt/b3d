@@ -14,7 +14,7 @@ use Kompakt\B3d\Details\Populator\RepositoryInterface;
 
 class ProductRepository implements RepositoryInterface
 {
-    protected $ids = array();
+    protected $productIds = array();
     protected $releaseIds = array();
 
     /**
@@ -25,32 +25,32 @@ class ProductRepository implements RepositoryInterface
         $this->addProduct($product);
     }
 
-    public function getById($id)
+    public function getByProductId($productId)
     {
         return
-            (array_key_exists($id, $this->ids))
-            ? $this->ids[$id]
+            (array_key_exists($productId, $this->productIds))
+            ? $this->productIds[$productId]
             : null
         ;
     }
 
-    public function getAllByReleaseId($id)
+    public function getAllByReleaseId($releaseId)
     {
         return
-            (array_key_exists($id, $this->releaseIds))
-            ? $this->releaseIds[$id]
+            (array_key_exists($releaseId, $this->releaseIds))
+            ? $this->releaseIds[$releaseId]
             : array()
         ;
     }
 
     public function getAll()
     {
-        return $this->ids;
+        return $this->productIds;
     }
 
     protected function addProduct(Product $product)
     {
-        $this->ids[$product->getId()] = $product;
+        $this->productIds[$product->getProductId()] = $product;
 
         if (!array_key_exists($product->getReleaseId(), $this->releaseIds))
         {
