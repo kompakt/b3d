@@ -139,6 +139,24 @@ class Builder
             $tracks->appendChild($track);
         }
 
+        $prices = $dom->createElement('prices');
+        $root->appendChild($prices);
+
+        foreach ($product->getPrices() as $p)
+        {
+            $price = $dom->createElement('price');
+            $price->appendChild($dom->createElement('currencyId', htmlspecialchars($p->getCurrencyId())));
+            $price->appendChild($dom->createElement('currencyIso', htmlspecialchars($p->getCurrencyIso())));
+            $price->appendChild($dom->createElement('externalTable', htmlspecialchars($p->getExternalTable())));
+            $price->appendChild($dom->createElement('payback', htmlspecialchars($p->getPayback())));
+            $price->appendChild($dom->createElement('price', htmlspecialchars($p->getPrice())));
+            $price->appendChild($dom->createElement('pricelistId', htmlspecialchars($p->getPricelistId())));
+            $price->appendChild($dom->createElement('pricelistName', htmlspecialchars($p->getPricelistName())));
+            $price->appendChild($dom->createElement('productId', htmlspecialchars($p->getProductId())));
+            $price->appendChild($dom->createElement('productPriceId', htmlspecialchars($p->getProductPriceId())));
+            $prices->appendChild($price);
+        }
+
         $dom->appendChild($root);
         return $dom;
     }

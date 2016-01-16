@@ -10,6 +10,7 @@
 namespace Kompakt\B3d\Details\Entity;
 
 use Kompakt\B3d\Details\Entity\Release;
+use Kompakt\B3d\Details\Entity\Price;
 use Kompakt\B3d\Details\Entity\ProductTrack;
 
 class Product
@@ -17,6 +18,7 @@ class Product
     // associations
     protected $release = null;
     protected $productTracks = array();
+    protected $prices = array();
 
     // properties
     protected $uuid = null;
@@ -84,6 +86,16 @@ class Product
     public function getProductTracks()
     {
         return $this->productTracks;
+    }
+
+    public function addPrice(Price $price)
+    {
+        $this->prices[] = $price;
+    }
+
+    public function getPrices()
+    {
+        return $this->prices;
     }
 
     public function setUuid($uuid)

@@ -9,6 +9,7 @@
 
 namespace Kompakt\B3d\Canonical\Entity;
 
+use Kompakt\B3d\Canonical\Entity\Price;
 use Kompakt\B3d\Canonical\Entity\Track;
 
 class Product
@@ -54,6 +55,18 @@ class Product
     public function getTracks()
     {
         return $this->tracks;
+    }
+
+    protected $prices = array();
+
+    public function addPrice(Price $price)
+    {
+        $this->prices[] = $price;
+    }
+
+    public function getPrices()
+    {
+        return $this->prices;
     }
 
     public function setStatus($status)

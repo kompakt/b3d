@@ -9,6 +9,7 @@
 
 namespace Kompakt\B3d\Canonical\Dom\Product;
 
+use Kompakt\B3d\Canonical\Entity\Price;
 use Kompakt\B3d\Canonical\Entity\Product;
 use Kompakt\B3d\Canonical\Entity\Track;
 use Kompakt\B3d\Util\Dom\AbstractMapper;
@@ -17,11 +18,17 @@ class Mapper extends AbstractMapper
 {
     protected $productPrototype = null;
     protected $trackPrototype = null;
+    protected $pricePrototype = null;
 
-    public function __construct(Product $productPrototype, Track $trackPrototype)
+    public function __construct(
+        Product $productPrototype,
+        Track $trackPrototype,
+        Price $pricePrototype
+    )
     {
         $this->productPrototype = $productPrototype;
         $this->trackPrototype = $trackPrototype;
+        $this->pricePrototype = $pricePrototype;
     }
 
     public function map(\DOMDocument $dom)
@@ -151,6 +158,23 @@ class Mapper extends AbstractMapper
             $track->setType($this->getDomVal($t, 'type'));
             $track->setExplicitFlag($this->getDomVal($t, 'explicitFlag'));
             $product->addTrack($track);
+        }
+
+        $prices = $this->getDomElement($dom, 'prices');
+
+        foreach ($prices->getElementsByTagName('price') as $t)
+        {
+            $price = clone $this->pricePrototype;
+            $price->setCurrencyId($this->getDomVal($t, 'currencyId'));
+            $price->setCurrencyIso($this->getDomVal($t, 'currencyIso'));
+            $price->setExternalTable($this->getDomVal($t, 'externalTable'));
+            $price->setPayback($this->getDomVal($t, 'payback'));
+            $price->setPrice($this->getDomVal($t, 'price'));
+            $price->setPricelistId($this->getDomVal($t, 'pricelistId'));
+            $price->setPricelistName($this->getDomVal($t, 'pricelistName'));
+            $price->setProductId($this->getDomVal($t, 'productId'));
+            $price->setProductPriceId($this->getDomVal($t, 'productPriceId'));
+            $product->addPrice($price);
         }
 
         return $product;

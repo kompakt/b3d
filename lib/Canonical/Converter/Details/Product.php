@@ -10,6 +10,7 @@
 namespace Kompakt\B3d\Canonical\Converter\Details;
 
 use Kompakt\B3d\Details\Entity\Product as DetailsProduct;
+use Kompakt\B3d\Canonical\Entity\Price as CanonicalPrice;
 use Kompakt\B3d\Canonical\Entity\Product as CanonicalProduct;
 use Kompakt\B3d\Canonical\Entity\Track as CanonicalTrack;
 
@@ -17,11 +18,17 @@ class Product
 {
     protected $productPrototype = null;
     protected $trackPrototype = null;
+    protected $pricePrototype = null;
 
-    public function __construct(CanonicalProduct $productPrototype, CanonicalTrack $trackPrototype)
+    public function __construct(
+        CanonicalProduct $productPrototype,
+        CanonicalTrack $trackPrototype,
+        CanonicalPrice $pricePrototype
+    )
     {
         $this->productPrototype = $productPrototype;
         $this->trackPrototype = $trackPrototype;
+        $this->pricePrototype = $pricePrototype;
     }
 
     public function map(DetailsProduct $detailsProduct)
@@ -94,6 +101,21 @@ class Product
         $product->setVatType($detailsProduct->getVatType());
         $product->setVersion($detailsProduct->getVersion());
         $product->setWeight($detailsProduct->getWeight());
+
+        foreach ($detailsProduct->getPrices() as $detailsPrice)
+        {
+            $price = clone $this->pricePrototype;
+            $price->setCurrencyId($detailsPrice->getCurrencyId());
+            $price->setCurrencyIso($detailsPrice->getCurrencyIso());
+            $price->setExternalTable($detailsPrice->getExternalTable());
+            $price->setPayback($detailsPrice->getPayback());
+            $price->setPrice($detailsPrice->getPrice());
+            $price->setPricelistId($detailsPrice->getPricelistId());
+            $price->setPricelistName($detailsPrice->getPricelistName());
+            $price->setProductId($detailsPrice->getProductId());
+            $price->setProductPriceId($detailsPrice->getProductPriceId());
+            $product->addPrice($price);
+        }
 
         foreach ($detailsProduct->getProductTracks() as $detailsProductTrack)
         {

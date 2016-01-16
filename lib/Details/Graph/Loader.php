@@ -13,6 +13,13 @@ use Kompakt\B3d\Details\Entity\Product;
 use Kompakt\B3d\Details\Entity\ProductTrack;
 use Kompakt\B3d\Details\Entity\Release;
 use Kompakt\B3d\Details\Graph\PopulatorRunnerInterface;
+use Kompakt\B3d\Details\Repository\ArtistRepository;
+use Kompakt\B3d\Details\Repository\LabelRepository;
+use Kompakt\B3d\Details\Repository\PriceRepository;
+use Kompakt\B3d\Details\Repository\ProductRepository;
+use Kompakt\B3d\Details\Repository\ProductTrackRepository;
+use Kompakt\B3d\Details\Repository\ReleaseRepository;
+use Kompakt\B3d\Details\Repository\TrackRepository;
 
 class Loader
 {
@@ -20,6 +27,8 @@ class Loader
     protected $artistPopulatorRunner = null;
     protected $labelRepository = null;
     protected $labelPopulatorRunner = null;
+    protected $priceRepository = null;
+    protected $pricePopulatorRunner = null;
     protected $productRepository = null;
     protected $productPopulatorRunner = null;
     protected $productTrackRepository = null;
@@ -33,17 +42,19 @@ class Loader
     protected $missingTracks = 0;
 
     public function __construct(
-        $artistRepository,
+        ArtistRepository $artistRepository,
         PopulatorRunnerInterface $artistPopulatorRunner,
-        $labelRepository,
+        LabelRepository $labelRepository,
         PopulatorRunnerInterface $labelPopulatorRunner,
-        $productRepository,
+        PriceRepository $priceRepository,
+        PopulatorRunnerInterface $pricePopulatorRunner,
+        ProductRepository $productRepository,
         PopulatorRunnerInterface $productPopulatorRunner,
-        $productTrackRepository,
+        ProductTrackRepository $productTrackRepository,
         PopulatorRunnerInterface $productTrackPopulatorRunner,
-        $releaseRepository,
+        ReleaseRepository $releaseRepository,
         PopulatorRunnerInterface $releasePopulatorRunner,
-        $trackRepository,
+        TrackRepository $trackRepository,
         PopulatorRunnerInterface $trackPopulatorRunner
     )
     {
@@ -51,6 +62,8 @@ class Loader
         $this->artistPopulatorRunner = $artistPopulatorRunner;
         $this->labelRepository = $labelRepository;
         $this->labelPopulatorRunner = $labelPopulatorRunner;
+        $this->priceRepository = $priceRepository;
+        $this->pricePopulatorRunner = $pricePopulatorRunner;
         $this->productRepository = $productRepository;
         $this->productPopulatorRunner = $productPopulatorRunner;
         $this->productTrackRepository = $productTrackRepository;
@@ -65,6 +78,7 @@ class Loader
     {
         $this->artistPopulatorRunner->run();
         $this->labelPopulatorRunner->run();
+        $this->pricePopulatorRunner->run();
         $this->productPopulatorRunner->run();
         $this->releasePopulatorRunner->run();
         $this->productTrackPopulatorRunner->run();
@@ -133,6 +147,14 @@ class Loader
         foreach ($productTracks as $productTrack)
         {
             $this->handleProductTrack($release, $product, $productTrack);
+        }
+
+        $prices = $this->priceRepository->getAllByProductId($product->getProductId());
+
+        foreach ($prices as $price)
+        {
+            $product->addPrice($price);
+            $price->setProduct($product);
         }
     }
 

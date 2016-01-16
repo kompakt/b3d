@@ -11,6 +11,7 @@ require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
 use Kompakt\B3d\Details\Endpoint\Resource\Artist\Endpoint as ArtistEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Label\Endpoint as LabelEndpoint;
+use Kompakt\B3d\Details\Endpoint\Resource\Price\Endpoint as PriceEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Product\Endpoint as ProductEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\ProductTrack\Endpoint as ProductTrackEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Release\Endpoint as ReleaseEndpoint;
@@ -26,6 +27,7 @@ $phpSerializerTmpDirPathname = $tmpDir->replaceSubDir('php-cache');
 // data file
 $artistFilePathname = sprintf('%s/artists.data', $phpSerializerTmpDirPathname);
 $labelFilePathname = sprintf('%s/labels.data', $phpSerializerTmpDirPathname);
+$priceFilePathname = sprintf('%s/prices.data', $phpSerializerTmpDirPathname);
 $productFilePathname = sprintf('%s/products.data', $phpSerializerTmpDirPathname);
 $productTrackFilePathname = sprintf('%s/product-tracks.data', $phpSerializerTmpDirPathname);
 $releaseFilePathname = sprintf('%s/releases.data', $phpSerializerTmpDirPathname);
@@ -34,6 +36,7 @@ $trackFilePathname = sprintf('%s/tracks.data', $phpSerializerTmpDirPathname);
 // endpoints
 $artistEndpoint = new ArtistEndpoint($client);
 $labelEndpoint = new LabelEndpoint($client);
+$priceEndpoint = new PriceEndpoint($client);
 $productEndpoint = new ProductEndpoint($client);
 $productTrackEndpoint = new ProductTrackEndpoint($client);
 $releaseEndpoint = new ReleaseEndpoint($client);
@@ -48,6 +51,11 @@ $artistPhpFileSerializer = new PhpFileSerializer(
 $labelPhpFileSerializer = new PhpFileSerializer(
     new Writer(),
     $labelFilePathname
+);
+
+$pricePhpFileSerializer = new PhpFileSerializer(
+    new Writer(),
+    $priceFilePathname
 );
 
 // Memory consumption of ca 70M per 8'000 items
@@ -85,6 +93,11 @@ $cacheRunner->add(
 $cacheRunner->add(
     new LabelEndpoint($client),
     $labelPhpFileSerializer
+);
+
+$cacheRunner->add(
+    new PriceEndpoint($client),
+    $pricePhpFileSerializer
 );
 
 $cacheRunner->add(

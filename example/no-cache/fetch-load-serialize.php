@@ -10,6 +10,7 @@
 require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
 use Kompakt\B3d\Canonical\Dom\Product\Builder as CanonicalProductDomBuilder;
+use Kompakt\B3d\Canonical\Entity\Price as CanonicalPrice;
 use Kompakt\B3d\Canonical\Entity\Product as CanonicalProduct;
 use Kompakt\B3d\Canonical\Entity\Track as CanonicalTrack;
 use Kompakt\B3d\Canonical\Converter\Details\Product as CanonicalProductConverter;
@@ -19,6 +20,8 @@ use Kompakt\B3d\Details\Endpoint\Resource\Artist\Endpoint as ArtistEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Artist\Mapper as ArtistMapper;
 use Kompakt\B3d\Details\Endpoint\Resource\Label\Endpoint as LabelEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Label\Mapper as LabelMapper;
+use Kompakt\B3d\Details\Endpoint\Resource\Price\Endpoint as PriceEndpoint;
+use Kompakt\B3d\Details\Endpoint\Resource\Price\Mapper as PriceMapper;
 use Kompakt\B3d\Details\Endpoint\Resource\Product\Endpoint as ProductEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Product\Mapper as ProductMapper;
 use Kompakt\B3d\Details\Endpoint\Resource\ProductTrack\Endpoint as ProductTrackEndpoint;
@@ -29,6 +32,7 @@ use Kompakt\B3d\Details\Endpoint\Resource\Track\Endpoint as TrackEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Track\Mapper as TrackMapper;
 use Kompakt\B3d\Details\Entity\Artist;
 use Kompakt\B3d\Details\Entity\Label;
+use Kompakt\B3d\Details\Entity\Price;
 use Kompakt\B3d\Details\Entity\Product;
 use Kompakt\B3d\Details\Entity\ProductTrack;
 use Kompakt\B3d\Details\Entity\Release;
@@ -37,6 +41,7 @@ use Kompakt\B3d\Details\Graph\Loader as GraphLoader;
 use Kompakt\B3d\Details\Populator\Endpoint\PopulatorRunner;
 use Kompakt\B3d\Details\Repository\ArtistRepository;
 use Kompakt\B3d\Details\Repository\LabelRepository;
+use Kompakt\B3d\Details\Repository\PriceRepository;
 use Kompakt\B3d\Details\Repository\ProductRepository;
 use Kompakt\B3d\Details\Repository\ProductTrackRepository;
 use Kompakt\B3d\Details\Repository\ReleaseRepository;
@@ -55,6 +60,7 @@ $fileReader = new Reader();
 // entities
 $artist = new Artist();
 $label = new Label();
+$price = new Price();
 $product = new Product();
 $productTrack = new ProductTrack();
 $release = new Release();
@@ -63,6 +69,7 @@ $track = new Track();
 // data-mappers
 $artistMapper = new ArtistMapper($artist);
 $labelMapper = new LabelMapper($label);
+$priceMapper = new PriceMapper($price);
 $productMapper = new ProductMapper($product);
 $productTrackMapper = new ProductTrackMapper($productTrack);
 $releaseMapper = new ReleaseMapper($release);
@@ -71,6 +78,7 @@ $trackMapper = new TrackMapper($track);
 // repos
 $artistRepository = new ArtistRepository();
 $labelRepository = new LabelRepository();
+$priceRepository = new PriceRepository();
 $productRepository = new ProductRepository();
 $productTrackRepository = new ProductTrackRepository();
 $releaseRepository = new ReleaseRepository();
@@ -79,6 +87,7 @@ $trackRepository = new TrackRepository();
 // endpoints
 $artistEndpoint = new ArtistEndpoint($client);
 $labelEndpoint = new LabelEndpoint($client);
+$priceEndpoint = new PriceEndpoint($client);
 $productEndpoint = new ProductEndpoint($client);
 $productTrackEndpoint = new ProductTrackEndpoint($client);
 $releaseEndpoint = new ReleaseEndpoint($client);
@@ -95,6 +104,12 @@ $labelPopulatorRunner = new PopulatorRunner(
     $labelEndpoint,
     $labelMapper,
     $labelRepository
+);
+
+$pricePopulatorRunner = new PopulatorRunner(
+    $priceEndpoint,
+    $priceMapper,
+    $priceRepository
 );
 
 $productPopulatorRunner = new PopulatorRunner(
@@ -127,6 +142,8 @@ $graphLoader = new GraphLoader(
     $artistPopulatorRunner,
     $labelRepository,
     $labelPopulatorRunner,
+    $priceRepository,
+    $pricePopulatorRunner,
     $productRepository,
     $productPopulatorRunner,
     $productTrackRepository,
@@ -140,7 +157,8 @@ $graphLoader = new GraphLoader(
 // converter stuff
 $canonicalProductConverter = new CanonicalProductConverter(
     new CanonicalProduct(),
-    new CanonicalTrack()
+    new CanonicalTrack(),
+    new CanonicalPrice()
 );
 
 $canonicalProductXmlSerializer = new CanonicalProductXmlSerializer(
@@ -162,6 +180,7 @@ $canonicalProductConverterXmlSerializer->run($releaseRepository);
 $timer->stop();
 
 echo sprintf("Products: %s\n", count($productRepository->getAll()));
+echo sprintf("Prices: %s\n", count($priceRepository->getAll()));
 echo sprintf("ProductTracks: %s\n", count($productTrackRepository->getAll()));
 echo sprintf("Releases: %s\n", count($releaseRepository->getAll()));
 echo sprintf("Tracks: %s\n", count($trackRepository->getAll()));
