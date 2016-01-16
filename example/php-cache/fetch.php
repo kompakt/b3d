@@ -15,6 +15,7 @@ use Kompakt\B3d\Details\Endpoint\Resource\Price\Endpoint as PriceEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Product\Endpoint as ProductEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\ProductTrack\Endpoint as ProductTrackEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Release\Endpoint as ReleaseEndpoint;
+use Kompakt\B3d\Details\Endpoint\Resource\Stock\Endpoint as StockEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Track\Endpoint as TrackEndpoint;
 use Kompakt\B3d\Details\Endpoint\Cache\PhpFile\Serializer as PhpFileSerializer;
 use Kompakt\B3d\Details\Endpoint\Cache\Runner as CacheRunner;
@@ -31,6 +32,7 @@ $priceFilePathname = sprintf('%s/prices.data', $phpSerializerTmpDirPathname);
 $productFilePathname = sprintf('%s/products.data', $phpSerializerTmpDirPathname);
 $productTrackFilePathname = sprintf('%s/product-tracks.data', $phpSerializerTmpDirPathname);
 $releaseFilePathname = sprintf('%s/releases.data', $phpSerializerTmpDirPathname);
+$stockFilePathname = sprintf('%s/stocks.data', $phpSerializerTmpDirPathname);
 $trackFilePathname = sprintf('%s/tracks.data', $phpSerializerTmpDirPathname);
 
 // endpoints
@@ -40,6 +42,7 @@ $priceEndpoint = new PriceEndpoint($client);
 $productEndpoint = new ProductEndpoint($client);
 $productTrackEndpoint = new ProductTrackEndpoint($client);
 $releaseEndpoint = new ReleaseEndpoint($client);
+$stockEndpoint = new StockEndpoint($client);
 $trackEndpoint = new TrackEndpoint($client);
 
 // serializers
@@ -74,6 +77,11 @@ $productTrackPhpFileSerializer = new PhpFileSerializer(
 $releasePhpFileSerializer = new PhpFileSerializer(
     new Writer(),
     $releaseFilePathname
+);
+
+$stockPhpFileSerializer = new PhpFileSerializer(
+    new Writer(),
+    $stockFilePathname
 );
 
 // Memory consumption of ca 80M per 19'000 items
@@ -113,6 +121,11 @@ $cacheRunner->add(
 $cacheRunner->add(
     new ReleaseEndpoint($client),
     $releasePhpFileSerializer
+);
+
+$cacheRunner->add(
+    new StockEndpoint($client),
+    $stockPhpFileSerializer
 );
 
 $cacheRunner->add(

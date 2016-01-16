@@ -15,6 +15,7 @@ use Kompakt\B3d\Details\Endpoint\Resource\Price\Endpoint as PriceEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Product\Endpoint as ProductEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\ProductTrack\Endpoint as ProductTrackEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Release\Endpoint as ReleaseEndpoint;
+use Kompakt\B3d\Details\Endpoint\Resource\Stock\Endpoint as StockEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Track\Endpoint as TrackEndpoint;
 
 $endpoints = [
@@ -24,14 +25,17 @@ $endpoints = [
     new ProductEndpoint($client),
     new ProductTrackEndpoint($client),
     new ReleaseEndpoint($client),
+    new StockEndpoint($client),
     new TrackEndpoint($client)
 ];
 
+$locations = [];
+
 foreach ($endpoints as $endpoint)
 {
-    echo sprintf("%s\n", get_class($endpoint));
+    $items = $endpoint->fetchAll();
 
-    foreach ($endpoint->fetchAll() as $item)
+    foreach ($items as $item)
     {
         $fields = [];
 
