@@ -34,6 +34,8 @@ $locations = [];
 foreach ($endpoints as $endpoint)
 {
     $items = $endpoint->fetchAll();
+    
+    echo sprintf("%s\n", get_class($endpoint));
 
     foreach ($items as $item)
     {
