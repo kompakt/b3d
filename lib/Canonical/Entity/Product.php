@@ -14,36 +14,6 @@ use Kompakt\B3d\Canonical\Entity\Track;
 
 class Product
 {
-    // label-fields
-    protected $label = null;
-
-    public function setLabel($label)
-    {
-        $this->label = $label;
-    }
-
-    public function getLabel()
-    {
-        return $this->label;
-    }
-
-    // release-fields
-    protected $status = null;
-    protected $title = null;
-    protected $titleAlt = null;
-    protected $infoEnglish = null;
-    protected $infoSecond = null;
-    #protected $identifier = null;
-    protected $artist = null;
-    protected $artwork1 = null;
-    protected $artwork2 = null;
-    protected $projectId = null;
-    #protected $releaseId = null;
-    protected $releaseDate = null;
-    protected $type = null;
-    #protected $notes = null;
-    protected $labelId = null;
-
     // associations
     protected $tracks = array();
 
@@ -69,115 +39,116 @@ class Product
         return $this->prices;
     }
 
-    public function setStatus($status)
+    // label-fields
+    protected $label = null;
+
+    public function setLabel($label)
     {
-        $this->status = $status;
+        $this->label = $label;
     }
 
-    public function getStatus()
+    public function getLabel()
     {
-        return $this->status;
+        return $this->label;
     }
 
-    public function setTitle($title)
+    // release-fields
+    protected $releaseUuid = null;
+    protected $releaseArtwork1 = null;
+    protected $releaseArtwork2 = null;
+    protected $releaseIdentifier = null;
+    protected $releaseLabelId = null;
+    protected $releaseNotes = null;
+    protected $releaseProjectId = null;
+    protected $releaseArtist = null;
+    protected $releaseDate = null;
+    protected $releaseId = null;
+    protected $releaseInfoEnglish = null;
+    protected $releaseInfoSecond = null;
+    protected $releaseTitle = null;
+    protected $releaseTitleAlt = null;
+    protected $releaseType = null;
+    protected $releaseStatus = null;
+
+    public function setReleaseUuid($releaseUuid)
     {
-        $this->title = $title;
+        $this->releaseUuid = $releaseUuid;
     }
 
-    public function getTitle()
+    public function getReleaseUuid()
     {
-        return $this->title;
+        return $this->releaseUuid;
     }
 
-    public function setTitleAlt($titleAlt)
+    public function setReleaseArtwork1($releaseArtwork1)
     {
-        $this->titleAlt = $titleAlt;
+        $this->releaseArtwork1 = $releaseArtwork1;
     }
 
-    public function getTitleAlt()
+    public function getReleaseArtwork1()
     {
-        return $this->titleAlt;
+        return $this->releaseArtwork1;
     }
 
-    public function setInfoEnglish($infoEnglish)
+    public function setReleaseArtwork2($releaseArtwork2)
     {
-        $this->infoEnglish = $infoEnglish;
+        $this->releaseArtwork2 = $releaseArtwork2;
     }
 
-    public function getInfoEnglish()
+    public function getReleaseArtwork2()
     {
-        return $this->infoEnglish;
+        return $this->releaseArtwork2;
     }
 
-    public function setInfoSecond($infoSecond)
+    public function setReleaseIdentifier($releaseIdentifier)
     {
-        $this->infoSecond = $infoSecond;
+        $this->releaseIdentifier = $releaseIdentifier;
     }
 
-    public function getInfoSecond()
+    public function getReleaseIdentifier()
     {
-        return $this->infoSecond;
+        return $this->releaseIdentifier;
     }
 
-    /*public function setIdentifier($identifier)
+    public function setReleaseLabelId($releaseLabelId)
     {
-        $this->identifier = $identifier;
+        $this->releaseLabelId = $releaseLabelId;
     }
 
-    public function getIdentifier()
+    public function getReleaseLabelId()
     {
-        return $this->identifier;
-    }*/
-
-    public function setArtist($artist)
-    {
-        $this->artist = $artist;
+        return $this->releaseLabelId;
     }
 
-    public function getArtist()
+    public function setReleaseNotes($releaseNotes)
     {
-        return $this->artist;
+        $this->releaseNotes = $releaseNotes;
     }
 
-    public function setArtwork1($artwork1)
+    public function getReleaseNotes()
     {
-        $this->artwork1 = $artwork1;
+        return $this->releaseNotes;
     }
 
-    public function getArtwork1()
+    public function setReleaseProjectId($releaseProjectId)
     {
-        return $this->artwork1;
+        $this->releaseProjectId = $releaseProjectId;
     }
 
-    public function setArtwork2($artwork2)
+    public function getReleaseProjectId()
     {
-        $this->artwork2 = $artwork2;
+        return $this->releaseProjectId;
     }
 
-    public function getArtwork2()
+    public function setReleaseArtist($releaseArtist)
     {
-        return $this->artwork2;
+        $this->releaseArtist = $releaseArtist;
     }
 
-    /*public function setProjectId($projectId)
+    public function getReleaseArtist()
     {
-        $this->projectId = $projectId;
+        return $this->releaseArtist;
     }
-
-    public function getProjectId()
-    {
-        return $this->projectId;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }*/
 
     public function setReleaseDate(\DateTime $releaseDate)
     {
@@ -189,35 +160,75 @@ class Product
         return $this->releaseDate;
     }
 
-    public function setType($type)
+    public function setReleaseId($releaseId)
     {
-        $this->type = $type;
+        $this->releaseId = $releaseId;
     }
 
-    public function getType()
+    public function getReleaseId()
     {
-        return $this->type;
+        return $this->releaseId;
     }
 
-    /*public function setNotes($notes)
+    public function setReleaseInfoEnglish($releaseInfoEnglish)
     {
-        $this->notes = $notes;
+        $this->releaseInfoEnglish = $releaseInfoEnglish;
     }
 
-    public function getNotes()
+    public function getReleaseInfoEnglish()
     {
-        return $this->notes;
+        return $this->releaseInfoEnglish;
     }
 
-    /*public function setLabelId($labelId)
+    public function setReleaseInfoSecond($releaseInfoSecond)
     {
-        $this->labelId = $labelId;
+        $this->releaseInfoSecond = $releaseInfoSecond;
     }
 
-    public function getLabelId()
+    public function getReleaseInfoSecond()
     {
-        return $this->labelId;
-    }*/
+        return $this->releaseInfoSecond;
+    }
+
+    public function setReleaseTitle($releaseTitle)
+    {
+        $this->releaseTitle = $releaseTitle;
+    }
+
+    public function getReleaseTitle()
+    {
+        return $this->releaseTitle;
+    }
+
+    public function setReleaseTitleAlt($releaseTitleAlt)
+    {
+        $this->releaseTitleAlt = $releaseTitleAlt;
+    }
+
+    public function getReleaseTitleAlt()
+    {
+        return $this->releaseTitleAlt;
+    }
+
+    public function setReleaseType($releaseType)
+    {
+        $this->releaseType = $releaseType;
+    }
+
+    public function getReleaseType()
+    {
+        return $this->releaseType;
+    }
+
+    public function setReleaseStatus($releaseStatus)
+    {
+        $this->releaseStatus = $releaseStatus;
+    }
+
+    public function getReleaseStatus()
+    {
+        return $this->releaseStatus;
+    }
 
     // product-fields
     protected $uuid = null;
@@ -258,7 +269,7 @@ class Product
     protected $productTypeName = null;
     protected $productTypeName2 = null;
     protected $proformaPrice = null;
-    protected $releaseId = null;
+    #protected $releaseId = null;
     protected $releaseShift = null;
     protected $streamYesNo = null;
     protected $supplierId = null;
@@ -647,7 +658,7 @@ class Product
         return $this->proformaPrice;
     }
 
-    public function setReleaseId($releaseId)
+    /*public function setReleaseId($releaseId)
     {
         $this->releaseId = $releaseId;
     }
@@ -655,7 +666,7 @@ class Product
     public function getReleaseId()
     {
         return $this->releaseId;
-    }
+    }*/
 
     public function setReleaseShift($releaseShift)
     {

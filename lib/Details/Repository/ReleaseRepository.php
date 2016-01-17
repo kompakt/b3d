@@ -14,7 +14,7 @@ use Kompakt\B3d\Details\Populator\RepositoryInterface;
 
 class ReleaseRepository implements RepositoryInterface
 {
-    protected $ids = array();
+    protected $releaseIds = array();
 
     /**
      * @see RepositoryInterface::add()
@@ -27,19 +27,19 @@ class ReleaseRepository implements RepositoryInterface
     public function getById($id)
     {
         return
-            (array_key_exists($id, $this->ids))
-            ? $this->ids[$id]
+            (array_key_exists($id, $this->releaseIds))
+            ? $this->releaseIds[$id]
             : null
         ;
     }
 
     public function getAll()
     {
-        return $this->ids;
+        return $this->releaseIds;
     }
 
     protected function addRelease(Release $release)
     {
-        $this->ids[$release->getId()] = $release;
+        $this->releaseIds[$release->getReleaseId()] = $release;
     }
 }

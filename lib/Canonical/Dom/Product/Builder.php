@@ -27,17 +27,14 @@ class Builder
         $root->appendChild($dom->createElement('label', htmlspecialchars($product->getLabel())));
 
         // release-fields
-        $root->appendChild($dom->createElement('status', htmlspecialchars($product->getStatus())));
-        $root->appendChild($dom->createElement('title', htmlspecialchars($product->getTitle())));
-        $root->appendChild($dom->createElement('titleAlt', htmlspecialchars($product->getTitleAlt())));
-        $root->appendChild($dom->createElement('infoEnglish', htmlspecialchars($product->getInfoEnglish())));
-        $root->appendChild($dom->createElement('infoSecond', htmlspecialchars($product->getInfoSecond())));
-        #$root->appendChild($dom->createElement('identifier', htmlspecialchars($product->getIdentifier())));
-        $root->appendChild($dom->createElement('artist', htmlspecialchars($product->getArtist())));
-        $root->appendChild($dom->createElement('artwork1', htmlspecialchars($product->getArtwork1())));
-        $root->appendChild($dom->createElement('artwork2', htmlspecialchars($product->getArtwork2())));
-        #$root->appendChild($dom->createElement('projectId', htmlspecialchars($product->getProjectId())));
-        #$root->appendChild($dom->createElement('id', htmlspecialchars($product->getId())));
+        $root->appendChild($dom->createElement('releaseUuid', htmlspecialchars($product->getReleaseUuid())));
+        $root->appendChild($dom->createElement('releaseArtwork1', htmlspecialchars($product->getReleaseArtwork1())));
+        $root->appendChild($dom->createElement('releaseArtwork2', htmlspecialchars($product->getReleaseArtwork2())));
+        $root->appendChild($dom->createElement('releaseIdentifier', htmlspecialchars($product->getReleaseIdentifier())));
+        $root->appendChild($dom->createElement('releaseLabelId', htmlspecialchars($product->getReleaseLabelId())));
+        $root->appendChild($dom->createElement('releaseNotes', htmlspecialchars($product->getReleaseNotes())));
+        $root->appendChild($dom->createElement('releaseProjectId', htmlspecialchars($product->getReleaseProjectId())));
+        $root->appendChild($dom->createElement('releaseArtist', htmlspecialchars($product->getReleaseArtist())));
 
         $releaseDate
             = ($product->getReleaseDate())
@@ -46,10 +43,13 @@ class Builder
         ;
 
         $root->appendChild($dom->createElement('releaseDate', $releaseDate));
-
-        $root->appendChild($dom->createElement('type', htmlspecialchars($product->getType())));
-        $root->appendChild($dom->createElement('notes', htmlspecialchars($product->getNotes())));
-        #$root->appendChild($dom->createElement('labelId', htmlspecialchars($product->getLabelId())));
+        $root->appendChild($dom->createElement('releaseId', htmlspecialchars($product->getReleaseId())));
+        $root->appendChild($dom->createElement('releaseInfoEnglish', htmlspecialchars($product->getReleaseInfoEnglish())));
+        $root->appendChild($dom->createElement('releaseInfoSecond', htmlspecialchars($product->getReleaseInfoSecond())));
+        $root->appendChild($dom->createElement('releaseTitle', htmlspecialchars($product->getReleaseTitle())));
+        $root->appendChild($dom->createElement('releaseTitleAlt', htmlspecialchars($product->getReleaseTitleAlt())));
+        $root->appendChild($dom->createElement('releaseType', htmlspecialchars($product->getReleaseType())));
+        $root->appendChild($dom->createElement('releaseStatus', htmlspecialchars($product->getReleaseStatus())));
 
         // product-fields
         $root->appendChild($dom->createElement('uuid', htmlspecialchars($product->getUuid())));
@@ -72,7 +72,6 @@ class Builder
         ;
 
         $root->appendChild($dom->createElement('deliveredDate', $deliveredDate));
-
         $root->appendChild($dom->createElement('deliveredFlag', htmlspecialchars($product->getDeliveredFlag())));
 
         $deliveryConfirmedDate
@@ -82,7 +81,6 @@ class Builder
         ;
 
         $root->appendChild($dom->createElement('deliveryConfirmedDate', $deliveryConfirmedDate));
-
         $root->appendChild($dom->createElement('deliveryConfirmedFlag', htmlspecialchars($product->getDeliveryConfirmedFlag())));
         $root->appendChild($dom->createElement('deliveryNow', htmlspecialchars($product->getDeliveryNow())));
         $root->appendChild($dom->createElement('digitalPhysical', htmlspecialchars($product->getDigitalPhysical())));

@@ -42,17 +42,22 @@ class Product
         }
 
         // release fields
-        $product->setStatus($detailsProduct->getRelease()->getStatus());
-        $product->setTitle($detailsProduct->getRelease()->getTitle());
-        $product->setTitleAlt($detailsProduct->getRelease()->getTitleAlt());
-        $product->setInfoEnglish($detailsProduct->getRelease()->getInfoEnglish());
-        $product->setInfoSecond($detailsProduct->getRelease()->getInfoSecond());
-        $product->setArtist($detailsProduct->getRelease()->getArtist());
-        $product->setArtwork1($detailsProduct->getRelease()->getArtwork1());
-        $product->setArtwork2($detailsProduct->getRelease()->getArtwork2());
+        $product->setReleaseUuid($detailsProduct->getRelease()->getUuid());
+        $product->setReleaseArtwork1($detailsProduct->getRelease()->getArtwork1());
+        $product->setReleaseArtwork2($detailsProduct->getRelease()->getArtwork2());
+        $product->setReleaseIdentifier($detailsProduct->getRelease()->getIdentifier());
+        $product->setReleaseLabelId($detailsProduct->getRelease()->getLabelId());
+        $product->setReleaseNotes($detailsProduct->getRelease()->getNotes());
+        $product->setReleaseProjectId($detailsProduct->getRelease()->getProjectId());
+        $product->setReleaseArtist($detailsProduct->getRelease()->getReleaseArtist());
         $product->setReleaseDate($detailsProduct->getRelease()->getReleaseDate());
-        $product->setType($detailsProduct->getRelease()->getType());
-        $product->setNotes($detailsProduct->getRelease()->getNotes());
+        $product->setReleaseId($detailsProduct->getRelease()->getReleaseId());
+        $product->setReleaseInfoEnglish($detailsProduct->getRelease()->getReleaseInfoEnglish());
+        $product->setReleaseInfoSecond($detailsProduct->getRelease()->getReleaseInfoSecond());
+        $product->setReleaseTitle($detailsProduct->getRelease()->getReleaseTitle());
+        $product->setReleaseTitleAlt($detailsProduct->getRelease()->getReleaseTitleAlt());
+        $product->setReleaseType($detailsProduct->getRelease()->getReleaseType());
+        $product->setReleaseStatus($detailsProduct->getRelease()->getStatus());
 
         // product fields
         $product->setUuid($detailsProduct->getUuid());

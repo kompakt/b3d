@@ -129,7 +129,7 @@ class Loader
             $this->missingLabels++;
         }
 
-        $products = $this->productRepository->getAllByReleaseId($release->getId());
+        $products = $this->productRepository->getAllByReleaseId($release->getReleaseId());
 
         foreach ($products as $product)
         {
@@ -146,7 +146,7 @@ class Loader
 
         foreach ($productTracks as $productTrack)
         {
-            $this->handleProductTrack($release, $product, $productTrack);
+            $this->handleProductTrack($product, $productTrack);
         }
 
         $prices = $this->priceRepository->getAllByProductId($product->getProductId());
@@ -158,7 +158,7 @@ class Loader
         }
     }
 
-    protected function handleProductTrack(Release $release, Product $product, ProductTrack $productTrack)
+    protected function handleProductTrack(Product $product, ProductTrack $productTrack)
     {
         $track = $this->trackRepository->getById($productTrack->getTrackId());
 

@@ -39,17 +39,14 @@ class Mapper extends AbstractMapper
         $product->setLabel($this->getDomVal($dom, 'label'));
 
         // release-fields
-        $product->setStatus($this->getDomVal($dom, 'status'));
-        $product->setTitle($this->getDomVal($dom, 'title'));
-        $product->setTitleAlt($this->getDomVal($dom, 'titleAlt'));
-        $product->setInfoEnglish($this->getDomVal($dom, 'infoEnglish'));
-        $product->setInfoSecond($this->getDomVal($dom, 'infoSecond'));
-        #$product->setIdentifier($this->getDomVal($dom, 'identifier'));
-        $product->setArtist($this->getDomVal($dom, 'artist'));
-        $product->setArtwork1($this->getDomVal($dom, 'artwork1'));
-        $product->setArtwork2($this->getDomVal($dom, 'artwork2'));
-        #$product->setProjectId($this->getDomVal($dom, 'projectId'));
-        #$product->setId($this->getDomVal($dom, 'id'));
+        $product->setReleaseUuid($this->getDomVal($dom, 'releaseUuid'));
+        $product->setReleaseArtwork1($this->getDomVal($dom, 'releaseArtwork1'));
+        $product->setReleaseArtwork2($this->getDomVal($dom, 'releaseArtwork2'));
+        $product->setReleaseIdentifier($this->getDomVal($dom, 'releaseIdentifier'));
+        $product->setReleaseLabelId($this->getDomVal($dom, 'releaseLabelId'));
+        $product->setReleaseNotes($this->getDomVal($dom, 'releaseNotes'));
+        $product->setReleaseProjectId($this->getDomVal($dom, 'releaseProjectId'));
+        $product->setReleaseArtist($this->getDomVal($dom, 'releaseArtist'));
 
         $releaseDate = $this->toDate($this->getDomVal($dom, 'releaseDate'));
 
@@ -58,9 +55,13 @@ class Mapper extends AbstractMapper
             $product->setReleaseDate($releaseDate);
         }
 
-        $product->setType($this->getDomVal($dom, 'type'));
-        $product->setNotes($this->getDomVal($dom, 'notes'));
-        #$product->setLabelId($this->getDomVal($dom, 'id'));
+        $product->setReleaseId($this->getDomVal($dom, 'releaseId'));
+        $product->setReleaseInfoEnglish($this->getDomVal($dom, 'releaseInfoEnglish'));
+        $product->setReleaseInfoSecond($this->getDomVal($dom, 'releaseInfoSecond'));
+        $product->setReleaseTitle($this->getDomVal($dom, 'releaseTitle'));
+        $product->setReleaseTitleAlt($this->getDomVal($dom, 'releaseTitleAlt'));
+        $product->setReleaseType($this->getDomVal($dom, 'releaseType'));
+        $product->setReleaseStatus($this->getDomVal($dom, 'releaseStatus'));
 
         // product-fields
         $product->setUuid($this->getDomVal($dom, 'uuid'));

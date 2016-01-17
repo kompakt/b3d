@@ -27,21 +27,22 @@ class Mapper implements DataMapperInterface
     public function map(array $data)
     {
         $release = clone $this->releasePrototype;
-        $release->setStatus(trim($data['status']));
-        $release->setTitle(trim($data['release_title']));
-        $release->setTitleAlt(trim($data['release_title_alt']));
-        $release->setInfoEnglish(trim($data['release_info_english']));
-        $release->setInfoSecond(trim($data['release_info_second']));
-        $release->setIdentifier(trim($data['identifier']));
-        $release->setArtist(trim($data['release_artist']));
+        $release->setUuid(trim($data['UUID']));
         $release->setArtwork1(trim($data['artwork1']));
         $release->setArtwork2(trim($data['artwork2']));
-        $release->setProjectId(trim($data['project_id']));
-        $release->setId(trim($data['release_id']));
-        $release->setReleaseDate(new \DateTime(trim($data['release_date'])));
-        $release->settype(trim($data['release_type']));
-        $release->setNotes(trim($data['notes']));
+        $release->setIdentifier(trim($data['identifier']));
         $release->setLabelId(trim($data['label_id']));
+        $release->setNotes(trim($data['notes']));
+        $release->setProjectId(trim($data['project_id']));
+        $release->setReleaseArtist(trim($data['release_artist']));
+        $release->setReleaseDate(new \DateTime(trim($data['release_date'])));
+        $release->setReleaseId(trim($data['release_id']));
+        $release->setReleaseInfoEnglish(trim($data['release_info_english']));
+        $release->setReleaseInfoSecond(trim($data['release_info_second']));
+        $release->setReleaseTitle(trim($data['release_title']));
+        $release->setReleaseTitleAlt(trim($data['release_title_alt']));
+        $release->setReleasetype(trim($data['release_type']));
+        $release->setStatus(trim($data['status']));
         return $release;
     }
 }
