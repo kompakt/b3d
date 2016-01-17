@@ -175,7 +175,7 @@ $canonicalProductConverterXmlSerializer = new CanonicalProductConverterXmlSerial
 // run
 $timer = new Timer();
 $timer->start();
-$canonicalProductConverterXmlSerializer->run($releaseRepository);
+$canonicalProductConverterXmlSerializer->run();
 $timer->stop();
 
 echo sprintf("Products: %s\n", count($productRepository->getAll()));
