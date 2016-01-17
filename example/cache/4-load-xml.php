@@ -14,7 +14,7 @@ use Kompakt\B3d\Canonical\Entity\Product;
 use Kompakt\B3d\Canonical\Entity\Track;
 use Kompakt\B3d\Canonical\Repository\ProductRepository;
 use Kompakt\B3d\Canonical\Unserializer\Xml\Product as ProductXmlUnserializer;
-use Kompakt\B3d\DropDir\DropDir;
+use Kompakt\B3d\DropDir\Runner;
 use Kompakt\B3d\DropDir\EventNames;
 use Kompakt\B3d\DropDir\Subscriber\Debugger;
 use Kompakt\B3d\Util\Dom\Loader as DomLoader;
@@ -35,7 +35,13 @@ $dispatcher = new EventDispatcher(new SymfonyEventDispatcher());
 $eventNames = new EventNames();
 $fileReader = new Reader();
 $domLoader = new DomLoader();
-$dropDir = new DropDir($dispatcher, $eventNames);
+
+$runner = new Runner(
+    $dispatcher,
+    $eventNames,
+    $canonicalProductDirPathname
+);
+
 $price = new Price();
 $product = new Product();
 $track = new Track();
@@ -56,7 +62,7 @@ $timer = new Timer();
 $timer->start();
 $dispatcher->addSubscriber($debugger);
 $dispatcher->addSubscriber($unserializer);
-$dropDir->open(new \DirectoryIterator($canonicalProductDirPathname));
+$runner->run();
 $timer->stop();
 
 foreach ($repository->getAll() as $product)

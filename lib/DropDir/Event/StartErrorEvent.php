@@ -11,7 +11,7 @@ namespace Kompakt\B3d\DropDir\Event;
 
 use Kompakt\B3d\Generic\EventDispatcher\Event;
 
-class RunErrorEvent extends Event
+class StartErrorEvent extends Event
 {
     protected $exception = null;
     protected $dir = null;

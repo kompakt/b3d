@@ -11,12 +11,12 @@ namespace Kompakt\B3d\DropDir\Subscriber;
 
 use Kompakt\B3d\Generic\EventDispatcher\EventSubscriberInterface;
 use Kompakt\B3d\DropDir\EventNamesInterface;
-use Kompakt\B3d\DropDir\Event\FileErrorEvent;
-use Kompakt\B3d\DropDir\Event\FileEvent;
 use Kompakt\B3d\DropDir\Event\EndErrorEvent;
 use Kompakt\B3d\DropDir\Event\EndEvent;
-use Kompakt\B3d\DropDir\Event\RunErrorEvent;
-use Kompakt\B3d\DropDir\Event\RunEvent;
+use Kompakt\B3d\DropDir\Event\FileErrorEvent;
+use Kompakt\B3d\DropDir\Event\FileEvent;
+use Kompakt\B3d\DropDir\Event\StartErrorEvent;
+use Kompakt\B3d\DropDir\Event\StartEvent;
 
 class Debugger implements EventSubscriberInterface
 {
@@ -32,11 +32,11 @@ class Debugger implements EventSubscriberInterface
     public function getSubscriptions()
     {
         return array(
-            $this->eventNames->run() => array(
-                array('onRun', 0)
+            $this->eventNames->start() => array(
+                array('onStart', 0)
             ),
-            $this->eventNames->runError() => array(
-                array('onRunError', 0)
+            $this->eventNames->startError() => array(
+                array('onStartError', 0)
             ),
             $this->eventNames->end() => array(
                 array('onEnd', 0)
@@ -53,20 +53,20 @@ class Debugger implements EventSubscriberInterface
         );
     }
 
-    public function onRun(RunEvent $event)
+    public function onStart(StartEvent $event)
     {
         $this->writeln(
             sprintf(
-                '+ DEBUG: Run'
+                '+ DEBUG: Start'
             )
         );
     }
 
-    public function onRunError(RunErrorEvent $event)
+    public function onStartError(StartErrorEvent $event)
     {
         $this->writeln(
             sprintf(
-                '+ DEBUG: Run error %s',
+                '+ DEBUG: Start error %s',
                 $event->getException()->getMessage()
             )
         );

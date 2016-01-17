@@ -10,39 +10,42 @@
 namespace Kompakt\B3d\DropDir;
 
 use Kompakt\B3d\DropDir\EventNamesInterface;
-use Kompakt\B3d\DropDir\Event\FileErrorEvent;
-use Kompakt\B3d\DropDir\Event\FileEvent;
 use Kompakt\B3d\DropDir\Event\EndErrorEvent;
 use Kompakt\B3d\DropDir\Event\EndEvent;
-use Kompakt\B3d\DropDir\Event\RunErrorEvent;
-use Kompakt\B3d\DropDir\Event\RunEvent;
+use Kompakt\B3d\DropDir\Event\FileErrorEvent;
+use Kompakt\B3d\DropDir\Event\FileEvent;
+use Kompakt\B3d\DropDir\Event\StartErrorEvent;
+use Kompakt\B3d\DropDir\Event\StartEvent;
 use Kompakt\B3d\DropDir\Exception\RuntimeException;
 use Kompakt\B3d\Generic\EventDispatcher\EventDispatcherInterface;
 
-class DropDir
+class Runner
 {
     protected $dispatcher = null;
     protected $eventNames = null;
+    protected $dir = null;
 
     public function __construct(
         EventDispatcherInterface $dispatcher,
-        EventNamesInterface $eventNames
+        EventNamesInterface $eventNames,
+        $dir
     )
     {
         $this->dispatcher = $dispatcher;
         $this->eventNames = $eventNames;
+        $this->dir = new \DirectoryIterator($dir);
     }
 
-    public function open(\DirectoryIterator $dir)
+    public function run()
     {
         try {
-            if (!$this->run($dir))
+            if (!$this->start())
             {
-                $this->end($dir);
+                $this->end();
                 return;
             }
 
-            foreach ($dir as $fileInfo)
+            foreach ($this->dir as $fileInfo)
             {
                 if ($fileInfo->isDot())
                 {
@@ -60,7 +63,7 @@ class DropDir
                 }
             }
 
-            $this->end($dir);
+            $this->end();
         }
         catch (\Exception $e)
         {
@@ -68,12 +71,12 @@ class DropDir
         }
     }
 
-    protected function run($dir)
+    protected function start()
     {
         try {
             $this->dispatcher->dispatch(
-                $this->eventNames->run(),
-                new RunEvent($dir)
+                $this->eventNames->start(),
+                new StartEvent($this->dir)
             );
 
             return true;
@@ -81,20 +84,20 @@ class DropDir
         catch (\Exception $e)
         {
             $this->dispatcher->dispatch(
-                $this->eventNames->runError(),
-                new RunErrorEvent($e, $dir)
+                $this->eventNames->startError(),
+                new StartErrorEvent($e, $this->dir)
             );
 
             return false;
         }
     }
 
-    protected function end($dir)
+    protected function end()
     {
         try {
             $this->dispatcher->dispatch(
                 $this->eventNames->end(),
-                new EndEvent($dir)
+                new EndEvent($this->dir)
             );
 
             return true;
@@ -103,7 +106,7 @@ class DropDir
         {
             $this->dispatcher->dispatch(
                 $this->eventNames->endError(),
-                new EndErrorEvent($e, $dir)
+                new EndErrorEvent($e, $this->dir)
             );
 
             return false;

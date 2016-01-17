@@ -13,10 +13,10 @@ use Kompakt\B3d\Generic\EventDispatcher\EventSubscriberInterface;
 use Kompakt\B3d\Generic\Logger\Handler\StreamHandlerFactoryInterface;
 use Kompakt\B3d\Generic\Logger\LoggerInterface;
 use Kompakt\B3d\DropDir\EventNamesInterface;
-use Kompakt\B3d\DropDir\Event\FileErrorEvent;
 use Kompakt\B3d\DropDir\Event\EndErrorEvent;
-use Kompakt\B3d\DropDir\Event\RunErrorEvent;
-use Kompakt\B3d\DropDir\Event\RunEvent;
+use Kompakt\B3d\DropDir\Event\FileErrorEvent;
+use Kompakt\B3d\DropDir\Event\StartErrorEvent;
+use Kompakt\B3d\DropDir\Event\StartEvent;
 
 class ErrorLogger implements EventSubscriberInterface
 {
@@ -40,11 +40,11 @@ class ErrorLogger implements EventSubscriberInterface
     public function getSubscriptions()
     {
         return array(
-            $this->eventNames->run() => array(
-                array('onRun', 0)
+            $this->eventNames->start() => array(
+                array('onStart', 0)
             ),
-            $this->eventNames->runError() => array(
-                array('onRunError', 0)
+            $this->eventNames->startError() => array(
+                array('onStartError', 0)
             ),
             $this->eventNames->endError() => array(
                 array('onEndError', 0)
@@ -55,13 +55,13 @@ class ErrorLogger implements EventSubscriberInterface
         );
     }
 
-    public function onRun(RunEvent $event)
+    public function onStart(StartEvent $event)
     {
         $logfile = sprintf('%s/%s', $event->getDir(), $this->filename);
         $this->logger->pushHandler($this->streamHandlerFactory->getInstance($logfile));
     }
 
-    public function onRunError(RunErrorEvent $event)
+    public function onStartError(StartErrorEvent $event)
     {
         $this->logger->error($event->getException()->getMessage());
     }

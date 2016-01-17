@@ -20,14 +20,14 @@ class EventNames implements EventNamesInterface
         $this->namespace = $namespace;
     }
 
-    public function run()
+    public function start()
     {
-        return sprintf('%s.run', $this->namespace);
+        return sprintf('%s.start', $this->namespace);
     }
 
-    public function runError()
+    public function startError()
     {
-        return sprintf('%s.run_error', $this->namespace);
+        return sprintf('%s.start_error', $this->namespace);
     }
 
     public function end()
