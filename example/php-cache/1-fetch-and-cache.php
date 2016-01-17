@@ -23,7 +23,7 @@ use Kompakt\B3d\Util\File\Writer;
 use Kompakt\B3d\Util\Timer\Timer;
 
 $tmpDir = getTmpDir();
-$phpSerializerTmpDirPathname = $tmpDir->replaceSubDir('php-cache');
+$phpSerializerTmpDirPathname = $tmpDir->replaceSubDir('php-cache-data');
 
 // data file
 $artistFilePathname = sprintf('%s/artists.data', $phpSerializerTmpDirPathname);

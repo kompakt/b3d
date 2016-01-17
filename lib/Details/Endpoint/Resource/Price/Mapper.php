@@ -10,7 +10,7 @@
 namespace Kompakt\B3d\Details\Endpoint\Resource\Price;
 
 use Kompakt\B3d\Details\Entity\Price;
-use Kompakt\B3d\Details\Endpoint\Cache\DataMapperInterface;
+use Kompakt\B3d\Details\Populator\DataMapperInterface;
 
 class Mapper implements DataMapperInterface
 {

@@ -15,7 +15,11 @@ abstract class AbstractMapper
 {
     public function toDate($date)
     {
-        return \DateTime::createFromFormat('Y-m-d', $date);
+        return
+            (preg_match('/\d{4,4}-\d{2,2}-\d{2,2}/', $date))
+            ? \DateTime::createFromFormat('Y-m-d', $date)
+            : null
+        ;
     }
 
     protected function getDomElement($dom, $name)

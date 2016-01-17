@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Details\Populator;
 
-interface MapperInterface
+interface DataMapperInterface
 {
-    public function map(\DOMDocument $dom);
+    public function map(array $data);
 }

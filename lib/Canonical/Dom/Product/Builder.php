@@ -39,10 +39,13 @@ class Builder
         #$root->appendChild($dom->createElement('projectId', htmlspecialchars($product->getProjectId())));
         #$root->appendChild($dom->createElement('id', htmlspecialchars($product->getId())));
 
-        if ($product->getReleaseDate())
-        {
-            $root->appendChild($dom->createElement('releaseDate', htmlspecialchars($product->getReleaseDate()->format('Y-m-d'))));
-        }
+        $releaseDate
+            = ($product->getReleaseDate())
+            ? htmlspecialchars($product->getReleaseDate()->format('Y-m-d'))
+            : null
+        ;
+
+        $root->appendChild($dom->createElement('releaseDate', $releaseDate));
 
         $root->appendChild($dom->createElement('type', htmlspecialchars($product->getType())));
         $root->appendChild($dom->createElement('notes', htmlspecialchars($product->getNotes())));
@@ -62,17 +65,23 @@ class Builder
         $root->appendChild($dom->createElement('costPrice', htmlspecialchars($product->getCostPrice())));
         $root->appendChild($dom->createElement('defaultWeight', htmlspecialchars($product->getDefaultWeight())));
         
-        if ($product->getDeliveredDate())
-        {
-            $root->appendChild($dom->createElement('deliveredDate', htmlspecialchars($product->getDeliveredDate()->format('Y-m-d'))));
-        }
+        $deliveredDate
+            = ($product->getDeliveredDate())
+            ? htmlspecialchars($product->getDeliveredDate()->format('Y-m-d'))
+            : null
+        ;
+
+        $root->appendChild($dom->createElement('deliveredDate', $deliveredDate));
 
         $root->appendChild($dom->createElement('deliveredFlag', htmlspecialchars($product->getDeliveredFlag())));
 
-        if ($product->getDeliveryConfirmedDate())
-        {
-            $root->appendChild($dom->createElement('deliveryConfirmedDate', htmlspecialchars($product->getDeliveryConfirmedDate()->format('Y-m-d'))));
-        }
+        $deliveryConfirmedDate
+            = ($product->getDeliveryConfirmedDate())
+            ? htmlspecialchars($product->getDeliveryConfirmedDate()->format('Y-m-d'))
+            : null
+        ;
+
+        $root->appendChild($dom->createElement('deliveryConfirmedDate', $deliveryConfirmedDate));
 
         $root->appendChild($dom->createElement('deliveryConfirmedFlag', htmlspecialchars($product->getDeliveryConfirmedFlag())));
         $root->appendChild($dom->createElement('deliveryNow', htmlspecialchars($product->getDeliveryNow())));
@@ -144,7 +153,7 @@ class Builder
 
         foreach ($product->getPrices() as $p)
         {
-            $price = $dom->createElement('price');
+            $price = $dom->createElement('priceItem');
             $price->appendChild($dom->createElement('currencyId', htmlspecialchars($p->getCurrencyId())));
             $price->appendChild($dom->createElement('currencyIso', htmlspecialchars($p->getCurrencyIso())));
             $price->appendChild($dom->createElement('externalTable', htmlspecialchars($p->getExternalTable())));

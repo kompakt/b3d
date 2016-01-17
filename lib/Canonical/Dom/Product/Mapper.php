@@ -51,11 +51,11 @@ class Mapper extends AbstractMapper
         #$product->setProjectId($this->getDomVal($dom, 'projectId'));
         #$product->setId($this->getDomVal($dom, 'id'));
 
-        $releaseDate = $this->getDomVal($dom, 'releaseDate');
+        $releaseDate = $this->toDate($this->getDomVal($dom, 'releaseDate'));
 
         if ($releaseDate)
         {
-            $product->setReleaseDate($this->toDate($releaseDate));
+            $product->setReleaseDate($releaseDate);
         }
 
         $product->setType($this->getDomVal($dom, 'type'));
@@ -76,20 +76,20 @@ class Mapper extends AbstractMapper
         $product->setCostPrice($this->getDomVal($dom, 'costPrice'));
         $product->setDefaultWeight($this->getDomVal($dom, 'defaultWeight'));
 
-        $deliveredDate = $this->getDomVal($dom, 'deliveredDate');
+        $deliveredDate = $this->toDate($this->getDomVal($dom, 'deliveredDate'));
 
         if ($deliveredDate)
         {
-            $product->setDeliveredDate($this->toDate($deliveredDate));
+            $product->setDeliveredDate($deliveredDate);
         }
 
         $product->setDeliveredFlag($this->getDomVal($dom, 'deliveredFlag'));
 
-        $deliveryConfirmedDate = $this->getDomVal($dom, 'deliveryConfirmedDate');
+        $deliveryConfirmedDate = $this->toDate($this->getDomVal($dom, 'deliveryConfirmedDate'));
 
         if ($deliveryConfirmedDate)
         {
-            $product->setDeliveryConfirmedDate($this->toDate($deliveryConfirmedDate));
+            $product->setDeliveryConfirmedDate($deliveryConfirmedDate);
         }
 
         $product->setDeliveryConfirmedFlag($this->getDomVal($dom, 'deliveryConfirmedFlag'));
@@ -162,18 +162,18 @@ class Mapper extends AbstractMapper
 
         $prices = $this->getDomElement($dom, 'prices');
 
-        foreach ($prices->getElementsByTagName('price') as $t)
+        foreach ($prices->getElementsByTagName('priceItem') as $p)
         {
             $price = clone $this->pricePrototype;
-            $price->setCurrencyId($this->getDomVal($t, 'currencyId'));
-            $price->setCurrencyIso($this->getDomVal($t, 'currencyIso'));
-            $price->setExternalTable($this->getDomVal($t, 'externalTable'));
-            $price->setPayback($this->getDomVal($t, 'payback'));
-            $price->setPrice($this->getDomVal($t, 'price'));
-            $price->setPricelistId($this->getDomVal($t, 'pricelistId'));
-            $price->setPricelistName($this->getDomVal($t, 'pricelistName'));
-            $price->setProductId($this->getDomVal($t, 'productId'));
-            $price->setProductPriceId($this->getDomVal($t, 'productPriceId'));
+            $price->setCurrencyId($this->getDomVal($p, 'currencyId'));
+            $price->setCurrencyIso($this->getDomVal($p, 'currencyIso'));
+            $price->setExternalTable($this->getDomVal($p, 'externalTable'));
+            $price->setPayback($this->getDomVal($p, 'payback'));
+            $price->setPrice($this->getDomVal($p, 'price'));
+            $price->setPricelistId($this->getDomVal($p, 'pricelistId'));
+            $price->setPricelistName($this->getDomVal($p, 'pricelistName'));
+            $price->setProductId($this->getDomVal($p, 'productId'));
+            $price->setProductPriceId($this->getDomVal($p, 'productPriceId'));
             $product->addPrice($price);
         }
 

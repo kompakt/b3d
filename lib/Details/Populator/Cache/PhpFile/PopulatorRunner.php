@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Details\Populator\Cache\PhpFile;
 
-use Kompakt\B3d\Details\Endpoint\Cache\DataMapperInterface;
+use Kompakt\B3d\Details\Populator\DataMapperInterface;
 use Kompakt\B3d\Details\Graph\PopulatorRunnerInterface;
 use Kompakt\B3d\Details\Populator\RepositoryInterface;
 use Kompakt\B3d\Util\File\Reader;

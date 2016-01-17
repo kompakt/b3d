@@ -52,7 +52,7 @@ use Kompakt\B3d\Util\Timer\Timer;
 
 // config
 $tmpDir = getTmpDir();
-$canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('canonical');
+$canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('no-cache-xml');
 
 // general
 $fileReader = new Reader();

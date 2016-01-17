@@ -10,7 +10,7 @@
 namespace Kompakt\B3d\Details\Endpoint\Resource\Track;
 
 use Kompakt\B3d\Details\Entity\Track;
-use Kompakt\B3d\Details\Endpoint\Cache\DataMapperInterface;
+use Kompakt\B3d\Details\Populator\DataMapperInterface;
 
 class Mapper implements DataMapperInterface
 {
