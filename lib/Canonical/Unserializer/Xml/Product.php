@@ -40,6 +40,11 @@ class Product implements EventSubscriberInterface
         $this->repository = $repository;
     }
 
+    public function getRepository()
+    {
+        return $this->repository;
+    }
+
     public function getSubscriptions()
     {
         return array(
