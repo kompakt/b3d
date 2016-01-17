@@ -18,7 +18,6 @@ use Kompakt\B3d\Details\Endpoint\Resource\Release\Endpoint as ReleaseEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Stock\Endpoint as StockEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Track\Endpoint as TrackEndpoint;
 use Kompakt\B3d\Details\Endpoint\Cache\PhpFile\Serializer as PhpFileSerializer;
-use Kompakt\B3d\Details\Endpoint\Cache\Runner as CacheRunner;
 use Kompakt\B3d\Util\File\Writer;
 use Kompakt\B3d\Util\Timer\Timer;
 
@@ -90,53 +89,17 @@ $trackPhpFileSerializer = new PhpFileSerializer(
     $trackFilePathname
 );
 
-// runner
-$cacheRunner = new CacheRunner();
-
-$cacheRunner->add(
-    new ArtistEndpoint($client),
-    $artistPhpFileSerializer
-);
-
-$cacheRunner->add(
-    new LabelEndpoint($client),
-    $labelPhpFileSerializer
-);
-
-$cacheRunner->add(
-    new PriceEndpoint($client),
-    $pricePhpFileSerializer
-);
-
-$cacheRunner->add(
-    new ProductEndpoint($client),
-    $productPhpFileSerializer
-);
-
-$cacheRunner->add(
-    new ProductTrackEndpoint($client),
-    $productTrackPhpFileSerializer
-);
-
-$cacheRunner->add(
-    new ReleaseEndpoint($client),
-    $releasePhpFileSerializer
-);
-
-$cacheRunner->add(
-    new StockEndpoint($client),
-    $stockPhpFileSerializer
-);
-
-$cacheRunner->add(
-    new TrackEndpoint($client),
-    $trackPhpFileSerializer
-);
-
 // run
 $timer = new Timer();
 $timer->start();
-$cacheRunner->run();
+$artistPhpFileSerializer->serialize($artistEndpoint->fetchAll());
+$labelPhpFileSerializer->serialize($labelEndpoint->fetchAll());
+$pricePhpFileSerializer->serialize($priceEndpoint->fetchAll());
+$productPhpFileSerializer->serialize($productEndpoint->fetchAll());
+$productTrackPhpFileSerializer->serialize($productTrackEndpoint->fetchAll());
+$releasePhpFileSerializer->serialize($releaseEndpoint->fetchAll());
+$stockPhpFileSerializer->serialize($stockEndpoint->fetchAll());
+$trackPhpFileSerializer->serialize($trackEndpoint->fetchAll());
 $timer->stop();
 
 echo sprintf("Time: %s Sec\n", $timer->getSeconds(0));

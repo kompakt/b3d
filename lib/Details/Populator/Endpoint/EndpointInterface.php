@@ -7,7 +7,7 @@
  *
  */
 
-namespace Kompakt\B3d\Details\Endpoint\Cache;
+namespace Kompakt\B3d\Details\Populator\Endpoint;
 
 interface EndpointInterface
 {

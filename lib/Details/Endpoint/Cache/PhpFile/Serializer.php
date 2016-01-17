@@ -9,10 +9,9 @@
 
 namespace Kompakt\B3d\Details\Endpoint\Cache\PhpFile;
 
-use Kompakt\B3d\Details\Endpoint\Cache\SerializerInterface;
 use Kompakt\B3d\Util\File\Writer;
 
-class Serializer implements SerializerInterface
+class Serializer
 {
     protected $fileWriter = null;
     protected $filePathname = null;

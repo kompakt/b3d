@@ -11,7 +11,7 @@ namespace Kompakt\B3d\Details\Endpoint\Resource\Product;
 
 use GuzzleHttp\Client;
 use Kompakt\B3d\Details\Endpoint\Resource\Exception\UnexpectedValueException;
-use Kompakt\B3d\Details\Endpoint\Cache\EndpointInterface;
+use Kompakt\B3d\Details\Populator\Endpoint\EndpointInterface;
 
 class Endpoint implements EndpointInterface
 {
