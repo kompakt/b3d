@@ -16,6 +16,7 @@ class ProductRepository
     protected $products = array();
     protected $barcodes = array();
     protected $catalogNumbers = array();
+    protected $releaseTitles = array();
 
     public function add($product)
     {
@@ -49,11 +50,23 @@ class ProductRepository
         ;
     }
 
+    public function getAllByReleaseTitle($releaseTitle)
+    {
+        $releaseTitle = $this->prepareField($releaseTitle);
+
+        return
+            (array_key_exists($releaseTitle, $this->releaseTitles))
+            ? $this->releaseTitles[$releaseTitle]
+            : array()
+        ;
+    }
+
     protected function addProduct(Product $product)
     {
         $this->products[] = $product;
         $this->addByBarcode($product);
         $this->addByCatalogNumber($product);
+        $this->addByReleaseTitle($product);
     }
 
     protected function addByBarcode(Product $product)
@@ -70,18 +83,30 @@ class ProductRepository
 
     protected function addByCatalogNumber(Product $product)
     {
-        $catalogNumbers = $this->prepareField($product->getBarcode());
+        $catalogNumber = $this->prepareField($product->getCatalogNumber());
 
-        if (!array_key_exists($catalogNumbers, $this->catalogNumbers))
+        if (!array_key_exists($catalogNumber, $this->catalogNumbers))
         {
-            $this->catalogNumbers[$catalogNumbers] = array();
+            $this->catalogNumbers[$catalogNumber] = array();
         }
 
-        $this->catalogNumbers[$catalogNumbers][] = $product;
+        $this->catalogNumbers[$catalogNumber][] = $product;
+    }
+
+    protected function addByReleaseTitle(Product $product)
+    {
+        $releaseTitle = $this->prepareField($product->getReleaseTitle());
+
+        if (!array_key_exists($releaseTitle, $this->releaseTitles))
+        {
+            $this->releaseTitles[$releaseTitle] = array();
+        }
+
+        $this->releaseTitles[$releaseTitle][] = $product;
     }
 
     protected function prepareField($s)
     {
-        return strtolower(trim($s));
+        return preg_replace('/\s+/', ' ', strtolower(trim($s)));
     }
 }
