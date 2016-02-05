@@ -7,15 +7,12 @@
  *
  */
 
-require sprintf('%s/bootstrap.php', dirname(__DIR__));
+require sprintf('%s/bootstrap.php', dirname(dirname(__DIR__)));
 
 use Kompakt\B3d\Util\File\Reader;
 
 // config
-$tmpDir = getTmpDir();
-$canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('canonical');
-
-$stockFilePathname = sprintf('%s/php-cache/stocks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$stockFilePathname = sprintf('%s/php-cache-data/stocks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
 
 // general
 $fileReader = new Reader();

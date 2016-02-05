@@ -7,14 +7,11 @@
  *
  */
 
-require sprintf('%s/bootstrap.php', dirname(__DIR__));
+require sprintf('%s/bootstrap.php', dirname(dirname(__DIR__)));
 
 use Kompakt\B3d\Util\File\Reader;
 
 // config
-$tmpDir = getTmpDir();
-$canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('php-cache-xml');
-
 $files = [
     sprintf('%s/php-cache-data/artists.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR),
     sprintf('%s/php-cache-data/labels.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR),
