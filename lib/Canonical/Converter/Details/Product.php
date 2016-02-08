@@ -42,83 +42,83 @@ class Product
         }
 
         // release fields
-        $product->setReleaseUuid($detailsProduct->getRelease()->getUuid());
-        $product->setReleaseArtwork1($detailsProduct->getRelease()->getArtwork1());
-        $product->setReleaseArtwork2($detailsProduct->getRelease()->getArtwork2());
-        $product->setReleaseIdentifier($detailsProduct->getRelease()->getIdentifier());
-        $product->setReleaseLabelId($detailsProduct->getRelease()->getLabelId());
-        $product->setReleaseNotes($detailsProduct->getRelease()->getNotes());
-        $product->setReleaseProjectId($detailsProduct->getRelease()->getProjectId());
-        $product->setReleaseArtist($detailsProduct->getRelease()->getReleaseArtist());
+        $product->setReleaseUuid($this->stripUtf($detailsProduct->getRelease()->getUuid()));
+        $product->setReleaseArtwork1($this->stripUtf($detailsProduct->getRelease()->getArtwork1()));
+        $product->setReleaseArtwork2($this->stripUtf($detailsProduct->getRelease()->getArtwork2()));
+        $product->setReleaseIdentifier($this->stripUtf($detailsProduct->getRelease()->getIdentifier()));
+        $product->setReleaseLabelId($this->stripUtf($detailsProduct->getRelease()->getLabelId()));
+        $product->setReleaseNotes($this->stripUtf($detailsProduct->getRelease()->getNotes()));
+        $product->setReleaseProjectId($this->stripUtf($detailsProduct->getRelease()->getProjectId()));
+        $product->setReleaseArtist($this->stripUtf($detailsProduct->getRelease()->getReleaseArtist()));
         $product->setReleaseDate($detailsProduct->getRelease()->getReleaseDate());
-        $product->setReleaseId($detailsProduct->getRelease()->getReleaseId());
-        $product->setReleaseInfoEnglish($detailsProduct->getRelease()->getReleaseInfoEnglish());
-        $product->setReleaseInfoSecond($detailsProduct->getRelease()->getReleaseInfoSecond());
-        $product->setReleaseTitle($detailsProduct->getRelease()->getReleaseTitle());
-        $product->setReleaseTitleAlt($detailsProduct->getRelease()->getReleaseTitleAlt());
-        $product->setReleaseType($detailsProduct->getRelease()->getReleaseType());
-        $product->setReleaseStatus($detailsProduct->getRelease()->getStatus());
+        $product->setReleaseId($this->stripUtf($detailsProduct->getRelease()->getReleaseId()));
+        $product->setReleaseInfoEnglish($this->stripUtf($detailsProduct->getRelease()->getReleaseInfoEnglish()));
+        $product->setReleaseInfoSecond($this->stripUtf($detailsProduct->getRelease()->getReleaseInfoSecond()));
+        $product->setReleaseTitle($this->stripUtf($detailsProduct->getRelease()->getReleaseTitle()));
+        $product->setReleaseTitleAlt($this->stripUtf($detailsProduct->getRelease()->getReleaseTitleAlt()));
+        $product->setReleaseType($this->stripUtf($detailsProduct->getRelease()->getReleaseType()));
+        $product->setReleaseStatus($this->stripUtf($detailsProduct->getRelease()->getStatus()));
 
         // product fields
-        $product->setUuid($detailsProduct->getUuid());
-        $product->setAlbumSingleMerch($detailsProduct->getAlbumSingleMerch());
-        $product->setArtworkProduct1($detailsProduct->getArtworkProduct1());
-        $product->setArtworkProduct2($detailsProduct->getArtworkProduct2());
-        $product->setAttribute1($detailsProduct->getAttribute1());
-        $product->setAttribute2($detailsProduct->getAttribute2());
-        $product->setAttribute3($detailsProduct->getAttribute3());
-        $product->setBarcode($detailsProduct->getBarcode());
-        $product->setCatalogNumber($detailsProduct->getCatalogNumber());
-        $product->setChannel($detailsProduct->getChannel());
-        $product->setCostPrice($detailsProduct->getCostPrice());
-        $product->setDefaultWeight($detailsProduct->getDefaultWeight());
+        $product->setUuid($this->stripUtf($detailsProduct->getUuid()));
+        $product->setAlbumSingleMerch($this->stripUtf($detailsProduct->getAlbumSingleMerch()));
+        $product->setArtworkProduct1($this->stripUtf($detailsProduct->getArtworkProduct1()));
+        $product->setArtworkProduct2($this->stripUtf($detailsProduct->getArtworkProduct2()));
+        $product->setAttribute1($this->stripUtf($detailsProduct->getAttribute1()));
+        $product->setAttribute2($this->stripUtf($detailsProduct->getAttribute2()));
+        $product->setAttribute3($this->stripUtf($detailsProduct->getAttribute3()));
+        $product->setBarcode($this->stripUtf($detailsProduct->getBarcode()));
+        $product->setCatalogNumber($this->stripUtf($detailsProduct->getCatalogNumber()));
+        $product->setChannel($this->stripUtf($detailsProduct->getChannel()));
+        $product->setCostPrice($this->stripUtf($detailsProduct->getCostPrice()));
+        $product->setDefaultWeight($this->stripUtf($detailsProduct->getDefaultWeight()));
         $product->setDeliveredDate($detailsProduct->getDeliveredDate());
-        $product->setDeliveredFlag($detailsProduct->getDeliveredFlag());
+        $product->setDeliveredFlag($this->stripUtf($detailsProduct->getDeliveredFlag()));
         $product->setDeliveryConfirmedDate($detailsProduct->getDeliveryConfirmedDate());
-        $product->setDeliveryConfirmedFlag($detailsProduct->getDeliveryConfirmedFlag());
-        $product->setDeliveryNow($detailsProduct->getDeliveryNow());
-        $product->setDigitalPhysical($detailsProduct->getDigitalPhysical());
-        $product->setDownloadYesNo($detailsProduct->getDownloadYesNo());
-        $product->setFormatId($detailsProduct->getFormatId());
-        $product->setFormatName($detailsProduct->getFormatName());
-        $product->setGroups($detailsProduct->getGroups());
-        $product->setIdentifier($detailsProduct->getIdentifier());
-        $product->setInternalFlag($detailsProduct->getInternalFlag());
-        $product->setLanguage($detailsProduct->getLanguage());
-        $product->setMinMargin($detailsProduct->getMinMargin());
-        $product->setNotes($detailsProduct->getNotes());
-        $product->setPpd($detailsProduct->getPpd());
-        $product->setPriceCodeDescription($detailsProduct->getPriceCodeDescription());
-        $product->setPriceCodeId($detailsProduct->getPriceCodeId());
-        $product->setPriceCodeName($detailsProduct->getPriceCodeName());
-        $product->setProductId($detailsProduct->getProductId());
-        $product->setProductInfoEnglish($detailsProduct->getProductInfoEnglish());
-        $product->setProductInfoSecond($detailsProduct->getProductInfoSecond());
-        $product->setProductTypeId($detailsProduct->getProductTypeId());
-        $product->setProductTypeName($detailsProduct->getProductTypeName());
-        $product->setProductTypeName2($detailsProduct->getProductTypeName2());
-        $product->setProformaPrice($detailsProduct->getProformaPrice());
-        $product->setReleaseId($detailsProduct->getReleaseId());
-        $product->setReleaseShift($detailsProduct->getReleaseShift());
-        $product->setStreamYesNo($detailsProduct->getStreamYesNo());
-        $product->setSupplierId($detailsProduct->getSupplierId());
-        $product->setTwoSidesFlag($detailsProduct->getTwoSidesFlag());
-        $product->setVatType($detailsProduct->getVatType());
-        $product->setVersion($detailsProduct->getVersion());
-        $product->setWeight($detailsProduct->getWeight());
+        $product->setDeliveryConfirmedFlag($this->stripUtf($detailsProduct->getDeliveryConfirmedFlag()));
+        $product->setDeliveryNow($this->stripUtf($detailsProduct->getDeliveryNow()));
+        $product->setDigitalPhysical($this->stripUtf($detailsProduct->getDigitalPhysical()));
+        $product->setDownloadYesNo($this->stripUtf($detailsProduct->getDownloadYesNo()));
+        $product->setFormatId($this->stripUtf($detailsProduct->getFormatId()));
+        $product->setFormatName($this->stripUtf($detailsProduct->getFormatName()));
+        $product->setGroups($this->stripUtf($detailsProduct->getGroups()));
+        $product->setIdentifier($this->stripUtf($detailsProduct->getIdentifier()));
+        $product->setInternalFlag($this->stripUtf($detailsProduct->getInternalFlag()));
+        $product->setLanguage($this->stripUtf($detailsProduct->getLanguage()));
+        $product->setMinMargin($this->stripUtf($detailsProduct->getMinMargin()));
+        $product->setNotes($this->stripUtf($detailsProduct->getNotes()));
+        $product->setPpd($this->stripUtf($detailsProduct->getPpd()));
+        $product->setPriceCodeDescription($this->stripUtf($detailsProduct->getPriceCodeDescription()));
+        $product->setPriceCodeId($this->stripUtf($detailsProduct->getPriceCodeId()));
+        $product->setPriceCodeName($this->stripUtf($detailsProduct->getPriceCodeName()));
+        $product->setProductId($this->stripUtf($detailsProduct->getProductId()));
+        $product->setProductInfoEnglish($this->stripUtf($detailsProduct->getProductInfoEnglish()));
+        $product->setProductInfoSecond($this->stripUtf($detailsProduct->getProductInfoSecond()));
+        $product->setProductTypeId($this->stripUtf($detailsProduct->getProductTypeId()));
+        $product->setProductTypeName($this->stripUtf($detailsProduct->getProductTypeName()));
+        $product->setProductTypeName2($this->stripUtf($detailsProduct->getProductTypeName2()));
+        $product->setProformaPrice($this->stripUtf($detailsProduct->getProformaPrice()));
+        $product->setReleaseId($this->stripUtf($detailsProduct->getReleaseId()));
+        $product->setReleaseShift($this->stripUtf($detailsProduct->getReleaseShift()));
+        $product->setStreamYesNo($this->stripUtf($detailsProduct->getStreamYesNo()));
+        $product->setSupplierId($this->stripUtf($detailsProduct->getSupplierId()));
+        $product->setTwoSidesFlag($this->stripUtf($detailsProduct->getTwoSidesFlag()));
+        $product->setVatType($this->stripUtf($detailsProduct->getVatType()));
+        $product->setVersion($this->stripUtf($detailsProduct->getVersion()));
+        $product->setWeight($this->stripUtf($detailsProduct->getWeight()));
 
         foreach ($detailsProduct->getPrices() as $detailsPrice)
         {
             $price = clone $this->pricePrototype;
-            $price->setCurrencyId($detailsPrice->getCurrencyId());
-            $price->setCurrencyIso($detailsPrice->getCurrencyIso());
-            $price->setExternalTable($detailsPrice->getExternalTable());
-            $price->setPayback($detailsPrice->getPayback());
-            $price->setPrice($detailsPrice->getPrice());
-            $price->setPricelistId($detailsPrice->getPricelistId());
-            $price->setPricelistName($detailsPrice->getPricelistName());
-            $price->setProductId($detailsPrice->getProductId());
-            $price->setProductPriceId($detailsPrice->getProductPriceId());
+            $price->setCurrencyId($this->stripUtf($detailsPrice->getCurrencyId()));
+            $price->setCurrencyIso($this->stripUtf($detailsPrice->getCurrencyIso()));
+            $price->setExternalTable($this->stripUtf($detailsPrice->getExternalTable()));
+            $price->setPayback($this->stripUtf($detailsPrice->getPayback()));
+            $price->setPrice($this->stripUtf($detailsPrice->getPrice()));
+            $price->setPricelistId($this->stripUtf($detailsPrice->getPricelistId()));
+            $price->setPricelistName($this->stripUtf($detailsPrice->getPricelistName()));
+            $price->setProductId($this->stripUtf($detailsPrice->getProductId()));
+            $price->setProductPriceId($this->stripUtf($detailsPrice->getProductPriceId()));
             $product->addPrice($price);
         }
 
@@ -127,30 +127,37 @@ class Product
             $track = clone $this->trackPrototype;
 
             // product-track fields
-            $track->setSeqNo($detailsProductTrack->getSeqNo());
-            $track->setSetNo($detailsProductTrack->getSetNo());
-            $track->setBonusTrackFlag($detailsProductTrack->getBonusTrackFlag());
-            $track->setSide($detailsProductTrack->getSide());
-            $track->setProductIsrc($detailsProductTrack->getProductIsrc());
-            #$track->setPlaytime($detailsProductTrack->getPlaytime());
+            $track->setSeqNo($this->stripUtf($detailsProductTrack->getSeqNo()));
+            $track->setSetNo($this->stripUtf($detailsProductTrack->getSetNo()));
+            $track->setBonusTrackFlag($this->stripUtf($detailsProductTrack->getBonusTrackFlag()));
+            $track->setSide($this->stripUtf($detailsProductTrack->getSide()));
+            $track->setProductIsrc($this->stripUtf($detailsProductTrack->getProductIsrc()));
+            #$track->setPlaytime($this->stripUtf($detailsProductTrack->getPlaytime()));
 
             // track fields
-            $track->setCountry($detailsProductTrack->getTrack()->getCountry());
-            $track->setArtworkTrack1($detailsProductTrack->getTrack()->getArtworkTrack1());
-            $track->setVersion($detailsProductTrack->getTrack()->getVersion());
-            $track->setIsrc($detailsProductTrack->getTrack()->getIsrc());
-            $track->setPYear($detailsProductTrack->getTrack()->getPYear());
-            $track->setPLine($detailsProductTrack->getTrack()->getPLine());
-            $track->setDigitalRightType($detailsProductTrack->getTrack()->getDigitalRightType());
-            $track->setArtist($detailsProductTrack->getTrack()->getArtist());
-            $track->setPlaytime($detailsProductTrack->getTrack()->getPlaytime());
-            $track->setTitle($detailsProductTrack->getTrack()->getTitle());
-            $track->setType($detailsProductTrack->getTrack()->getType());
-            $track->setExplicitFlag($detailsProductTrack->getTrack()->getExplicitFlag());
+            $track->setCountry($this->stripUtf($detailsProductTrack->getTrack()->getCountry()));
+            $track->setArtworkTrack1($this->stripUtf($detailsProductTrack->getTrack()->getArtworkTrack1()));
+            $track->setVersion($this->stripUtf($detailsProductTrack->getTrack()->getVersion()));
+            $track->setIsrc($this->stripUtf($detailsProductTrack->getTrack()->getIsrc()));
+            $track->setPYear($this->stripUtf($detailsProductTrack->getTrack()->getPYear()));
+            $track->setPLine($this->stripUtf($detailsProductTrack->getTrack()->getPLine()));
+            $track->setDigitalRightType($this->stripUtf($detailsProductTrack->getTrack()->getDigitalRightType()));
+            $track->setArtist($this->stripUtf($detailsProductTrack->getTrack()->getArtist()));
+            $track->setPlaytime($this->stripUtf($detailsProductTrack->getTrack()->getPlaytime()));
+            $track->setTitle($this->stripUtf($detailsProductTrack->getTrack()->getTitle()));
+            $track->setType($this->stripUtf($detailsProductTrack->getTrack()->getType()));
+            $track->setExplicitFlag($this->stripUtf($detailsProductTrack->getTrack()->getExplicitFlag()));
 
             $product->addTrack($track);
         }
 
         return $product;
+    }
+
+    protected function stripUtf($s)
+    {
+        // strip unwanted utf chars:
+        // http://www.phpwact.org/php/i18n/charsets#common_problem_areas_with_utf-8
+        return preg_replace('/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u', ' ', $s);
     }
 }
