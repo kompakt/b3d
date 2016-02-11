@@ -49,6 +49,7 @@ class Mapper implements DataMapperInterface
         $product->setFormatId(trim($data['format_id']));
         $product->setFormatName(trim($data['format_name']));
         $product->setGroups(trim($data['groups']));
+        $product->setHeadline(trim($data['headline']));
         $product->setIdentifier(trim($data['identifier']));
         $product->setInternalFlag(trim($data['internal_flag']));
         $product->setLanguage(trim($data['language']));
@@ -64,6 +65,9 @@ class Mapper implements DataMapperInterface
         $product->setProductTypeId(trim($data['product_type_id']));
         $product->setProductTypeName(trim($data['product_type_name']));
         $product->setProductTypeName2(trim($data['product_type_name2']));
+        $product->setProductType2Id(trim($data['product_type2_id']));
+        $product->setProductType2Name(trim($data['product_type2_name']));
+        $product->setProductType2Name2(trim($data['product_type_id2']));  # product_type_id2 >> product_type2_name2
         $product->setProformaPrice(trim($data['proforma_price']));
         $product->setReleaseId(trim($data['release_id']));
         $product->setReleaseShift(trim($data['release_shift']));

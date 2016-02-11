@@ -43,6 +43,7 @@ class Product
     protected $formatId = null;
     protected $formatName = null;
     protected $groups = null;
+    protected $headline = null;
     protected $identifier = null;
     protected $internalFlag = null;
     protected $language = null;
@@ -58,6 +59,9 @@ class Product
     protected $productTypeId = null;
     protected $productTypeName = null;
     protected $productTypeName2 = null;
+    protected $productType2Id = null;
+    protected $productType2Name = null;
+    protected $productType2Name2 = null;
     protected $proformaPrice = null;
     protected $releaseId = null;
     protected $releaseShift = null;
@@ -318,6 +322,16 @@ class Product
         return $this->groups;
     }
 
+    public function setHeadline($headline)
+    {
+        $this->headline = $headline;
+    }
+
+    public function getHeadline()
+    {
+        return $this->headline;
+    }
+
     public function setIdentifier($identifier)
     {
         $this->identifier = $identifier;
@@ -466,6 +480,36 @@ class Product
     public function getProductTypeName2()
     {
         return $this->productTypeName2;
+    }
+
+    public function setProductType2Id($productType2Id)
+    {
+        $this->productType2Id = $productType2Id;
+    }
+
+    public function getProductType2Id()
+    {
+        return $this->productType2Id;
+    }
+
+    public function setProductType2Name($productType2Name)
+    {
+        $this->productType2Name = $productType2Name;
+    }
+
+    public function getProductType2Name()
+    {
+        return $this->productType2Name;
+    }
+
+    public function setProductType2Name2($productType2Name2)
+    {
+        $this->productType2Name2 = $productType2Name2;
+    }
+
+    public function getProductType2Name2()
+    {
+        return $this->productType2Name2;
     }
 
     public function setProformaPrice($proformaPrice)

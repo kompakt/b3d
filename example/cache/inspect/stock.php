@@ -22,7 +22,7 @@ $data = $fileReader->read($stockFilePathname);
 $items = unserialize($data);
 $accountIds = [];
 
-foreach ($items as $productId => $productStock)
+foreach ($items as $uuid => $productStock)
 {
     if (!$productStock)
     {

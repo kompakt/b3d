@@ -100,6 +100,7 @@ class Mapper extends AbstractMapper
         $product->setFormatId($this->getDomVal($dom, 'formatId'));
         $product->setFormatName($this->getDomVal($dom, 'formatName'));
         $product->setGroups($this->getDomVal($dom, 'groups'));
+        $product->setHeadline($this->getDomVal($dom, 'headline'));
         $product->setIdentifier($this->getDomVal($dom, 'identifier'));
         $product->setInternalFlag($this->getDomVal($dom, 'internalFlag'));
         $product->setLanguage($this->getDomVal($dom, 'language'));
@@ -115,6 +116,9 @@ class Mapper extends AbstractMapper
         $product->setProductTypeId($this->getDomVal($dom, 'productTypeId'));
         $product->setProductTypeName($this->getDomVal($dom, 'productTypeName'));
         $product->setProductTypeName2($this->getDomVal($dom, 'productTypeName2'));
+        $product->setProductType2Id($this->getDomVal($dom, 'productType2Id'));
+        $product->setProductType2Name($this->getDomVal($dom, 'productType2Name'));
+        $product->setProductType2Name2($this->getDomVal($dom, 'productType2Name2'));
         $product->setProformaPrice($this->getDomVal($dom, 'proformaPrice'));
         $product->setReleaseId($this->getDomVal($dom, 'releaseId'));
         $product->setReleaseShift($this->getDomVal($dom, 'releaseShift'));

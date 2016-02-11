@@ -82,6 +82,7 @@ class Product
         $product->setFormatId($this->stripUtf($detailsProduct->getFormatId()));
         $product->setFormatName($this->stripUtf($detailsProduct->getFormatName()));
         $product->setGroups($this->stripUtf($detailsProduct->getGroups()));
+        $product->setHeadline($this->stripUtf($detailsProduct->getHeadline()));
         $product->setIdentifier($this->stripUtf($detailsProduct->getIdentifier()));
         $product->setInternalFlag($this->stripUtf($detailsProduct->getInternalFlag()));
         $product->setLanguage($this->stripUtf($detailsProduct->getLanguage()));
@@ -97,6 +98,9 @@ class Product
         $product->setProductTypeId($this->stripUtf($detailsProduct->getProductTypeId()));
         $product->setProductTypeName($this->stripUtf($detailsProduct->getProductTypeName()));
         $product->setProductTypeName2($this->stripUtf($detailsProduct->getProductTypeName2()));
+        $product->setProductType2Id($this->stripUtf($detailsProduct->getProductType2Id()));
+        $product->setProductType2Name($this->stripUtf($detailsProduct->getProductType2Name()));
+        $product->setProductType2Name2($this->stripUtf($detailsProduct->getProductType2Name2()));
         $product->setProformaPrice($this->stripUtf($detailsProduct->getProformaPrice()));
         $product->setReleaseId($this->stripUtf($detailsProduct->getReleaseId()));
         $product->setReleaseShift($this->stripUtf($detailsProduct->getReleaseShift()));
