@@ -28,6 +28,17 @@ class ProductRepository
         return $this->products;
     }
 
+    public function getByUuid($uuid)
+    {
+        $uuid = $this->prepareField($uuid);
+
+        return
+            (array_key_exists($uuid, $this->products))
+            ? $this->products[$uuid]
+            : null
+        ;
+    }
+
     public function getAllByBarcode($barcode)
     {
         $barcode = $this->prepareField($barcode);
@@ -63,7 +74,7 @@ class ProductRepository
 
     protected function addProduct(Product $product)
     {
-        $this->products[] = $product;
+        $this->products[$product->getUuid()] = $product;
         $this->addByBarcode($product);
         $this->addByCatalogNumber($product);
         $this->addByReleaseTitle($product);
