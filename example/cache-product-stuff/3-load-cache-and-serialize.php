@@ -45,15 +45,15 @@ use Kompakt\B3d\Util\Timer\Timer;
 
 // config
 $tmpDir = getTmpDir();
-$canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('php-cache-xml');
+$canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('php-cache-product-xml');
 
-$artistFilePathname = sprintf('%s/php-cache-data/artists.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
-$labelFilePathname = sprintf('%s/php-cache-data/labels.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
-$priceFilePathname = sprintf('%s/php-cache-data/prices.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
-$productFilePathname = sprintf('%s/php-cache-data/products.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
-$productTrackFilePathname = sprintf('%s/php-cache-data/product-tracks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
-$releaseFilePathname = sprintf('%s/php-cache-data/releases.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
-$trackFilePathname = sprintf('%s/php-cache-data/tracks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$artistFilePathname = sprintf('%s/php-cache-product-data/artists.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$labelFilePathname = sprintf('%s/php-cache-product-data/labels.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$priceFilePathname = sprintf('%s/php-cache-product-data/prices.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$productFilePathname = sprintf('%s/php-cache-product-data/products.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$productTrackFilePathname = sprintf('%s/php-cache-product-data/product-tracks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$releaseFilePathname = sprintf('%s/php-cache-product-data/releases.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$trackFilePathname = sprintf('%s/php-cache-product-data/tracks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
 
 // general
 $fileReader = new Reader();

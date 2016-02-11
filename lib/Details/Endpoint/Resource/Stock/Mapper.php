@@ -10,24 +10,35 @@
 namespace Kompakt\B3d\Details\Endpoint\Resource\Stock;
 
 use Kompakt\B3d\Details\Entity\Stock;
-use Kompakt\B3d\Details\Populator\DataMapperInterface;
+use Kompakt\B3d\Details\Entity\StockAccount;
 
-class Mapper implements DataMapperInterface
+class Mapper
 {
     protected $stockPrototype = null;
+    protected $stockAccountPrototype = null;
 
-    public function __construct(Stock $stockPrototype)
+    public function __construct(Stock $stockPrototype, StockAccount $stockAccountPrototype)
     {
         $this->stockPrototype = $stockPrototype;
+        $this->stockAccountPrototype = $stockAccountPrototype;
     }
 
-    /**
-     * @see DataMapperInterface::map()
-     */
-    public function map(array $data)
+    public function map($productUuid, array $accountsData)
     {
         $stock = clone $this->stockPrototype;
-        #$stock->setCurrencyId(trim($data['currency_id']));
+        $stock->setProductUuid($productUuid);
+
+        foreach ($accountsData as $accountId => $accountData)
+        {
+            $stockAccount = clone $this->stockAccountPrototype;
+            $stockAccount->setId($accountId);
+            $stockAccount->setName($accountData['account_name']);
+            $stockAccount->setQuantityUnreserved($accountData['stock_qty_unreserved']);
+            $stockAccount->setQuantityFree($accountData['stock_qty_free']);
+            $stockAccount->setQuantity($accountData['stock_qty']);
+            $stock->addAccount($stockAccount);
+        }
+
         return $stock;
     }
 }

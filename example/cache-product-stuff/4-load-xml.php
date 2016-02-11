@@ -24,7 +24,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher as SymfonyEventDispatcher;
 
 require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
-$canonicalProductDirPathname = sprintf('%s/php-cache-xml', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
+$canonicalProductDirPathname = sprintf('%s/php-cache-product-xml', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
 
 if (!is_dir($canonicalProductDirPathname))
 {
@@ -60,14 +60,14 @@ $unserializer = new ProductXmlUnserializer(
 // run
 $timer = new Timer();
 $timer->start();
-$dispatcher->addSubscriber($debugger);
+#$dispatcher->addSubscriber($debugger);
 $dispatcher->addSubscriber($unserializer);
 $runner->run();
 $timer->stop();
 
 foreach ($repository->getAll() as $product)
 {
-    #echo sprintf("%s\n", $product->getTitle());
+    echo sprintf("%s\n", $product->getReleaseTitle());
 
     foreach ($product->getTracks() as $track)
     {
