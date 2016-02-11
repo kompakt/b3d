@@ -502,6 +502,16 @@ class Product
         return $this->groups;
     }
 
+    public function setHeadline($headline)
+    {
+        $this->headline = $headline;
+    }
+
+    public function getHeadline()
+    {
+        return $this->headline;
+    }
+
     public function setIdentifier($identifier)
     {
         $this->identifier = $identifier;
