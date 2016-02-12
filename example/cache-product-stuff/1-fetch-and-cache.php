@@ -9,6 +9,7 @@
 
 require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
+use GuzzleHttp\Client;
 use Kompakt\B3d\Details\Endpoint\Resource\Artist\Endpoint as ArtistEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Label\Endpoint as LabelEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Price\Endpoint as PriceEndpoint;
@@ -32,14 +33,51 @@ $productTrackFilePathname = sprintf('%s/product-tracks.data', $phpSerializerTmpD
 $releaseFilePathname = sprintf('%s/releases.data', $phpSerializerTmpDirPathname);
 $trackFilePathname = sprintf('%s/tracks.data', $phpSerializerTmpDirPathname);
 
+// http client
+$client = new Client();
+
 // endpoints
-$artistEndpoint = new ArtistEndpoint($client);
-$labelEndpoint = new LabelEndpoint($client);
-$priceEndpoint = new PriceEndpoint($client);
-$productEndpoint = new ProductEndpoint($client);
-$productTrackEndpoint = new ProductTrackEndpoint($client);
-$releaseEndpoint = new ReleaseEndpoint($client);
-$trackEndpoint = new TrackEndpoint($client);
+$artistEndpoint = new ArtistEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$labelEndpoint = new LabelEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$priceEndpoint = new PriceEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$productEndpoint = new ProductEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$productTrackEndpoint = new ProductTrackEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$releaseEndpoint = new ReleaseEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$trackEndpoint = new TrackEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
 
 // serializers
 $artistPhpFileSerializer = new PhpFileSerializer(

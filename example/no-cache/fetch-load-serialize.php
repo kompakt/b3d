@@ -9,6 +9,7 @@
 
 require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
+use GuzzleHttp\Client;
 use Kompakt\B3d\Canonical\Dom\Product\Builder as CanonicalProductDomBuilder;
 use Kompakt\B3d\Canonical\Entity\Price as CanonicalPrice;
 use Kompakt\B3d\Canonical\Entity\Product as CanonicalProduct;
@@ -54,6 +55,9 @@ use Kompakt\B3d\Util\Timer\Timer;
 $tmpDir = getTmpDir();
 $canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('no-cache-xml');
 
+// http client
+$client = new Client();
+
 // general
 $fileReader = new Reader();
 
@@ -85,13 +89,47 @@ $releaseRepository = new ReleaseRepository();
 $trackRepository = new TrackRepository();
 
 // endpoints
-$artistEndpoint = new ArtistEndpoint($client);
-$labelEndpoint = new LabelEndpoint($client);
-$priceEndpoint = new PriceEndpoint($client);
-$productEndpoint = new ProductEndpoint($client);
-$productTrackEndpoint = new ProductTrackEndpoint($client);
-$releaseEndpoint = new ReleaseEndpoint($client);
-$trackEndpoint = new TrackEndpoint($client);
+$artistEndpoint = new ArtistEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$labelEndpoint = new LabelEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$priceEndpoint = new PriceEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$productEndpoint = new ProductEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$productTrackEndpoint = new ProductTrackEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$releaseEndpoint = new ReleaseEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
+
+$trackEndpoint = new TrackEndpoint(
+    $client,
+    EXAMPLE_KOMPAKT_B3D_BASE_URL,
+    EXAMPLE_KOMPAKT_B3D_API_KEY
+);
 
 // populator runners
 $artistPopulatorRunner = new PopulatorRunner(

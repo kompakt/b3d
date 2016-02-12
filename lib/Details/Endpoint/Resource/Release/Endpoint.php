@@ -16,10 +16,14 @@ use Kompakt\B3d\Details\Populator\Endpoint\EndpointInterface;
 class Endpoint implements EndpointInterface
 {
     protected $client = null;
+    protected $baseUrl = null;
+    protected $apiKey = null;
 
-    public function __construct(Client $client)
+    public function __construct(Client $client, $baseUrl, $apiKey)
     {
         $this->client = $client;
+        $this->baseUrl = $baseUrl;
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -28,7 +32,16 @@ class Endpoint implements EndpointInterface
     public function fetchAll()
     {
         try {
-            $response = $this->client->get('action=releases');
+            $queryParams = [
+                'api_key' => $this->apiKey,
+                'action' => 'releases'
+            ];
+
+            $params = [
+                'query' => $queryParams
+            ];
+
+            $response = $this->client->request('GET', $this->baseUrl, $params);
             $data = json_decode($response->getBody(), true);
 
             $success

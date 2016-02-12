@@ -7,7 +7,7 @@
  *
  */
 
-use GuzzleHttp\Client;
+#use GuzzleHttp\Client;
 use Kompakt\TestHelper\Filesystem\TmpDir;
 
 // load testing configuration
@@ -19,7 +19,7 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 // some defaults
 date_default_timezone_set('UTC');
 
-$client = new Client(
+/*$client = new Client(
     array(
         #'debug' => true,
         'base_uri' => EXAMPLE_KOMPAKT_B3D_BASE_URL,
@@ -27,7 +27,7 @@ $client = new Client(
             'api_key' => EXAMPLE_KOMPAKT_B3D_API_KEY
         )
     )
-);
+);*/
 
 function getTmpDir()
 {
