@@ -25,7 +25,7 @@ class Endpoint
         $this->apiKey = $apiKey;
     }
 
-    public function transmit(array $orderData, array $itemData)
+    public function create(array $orderData, array $itemData)
     {
         $baseMessage = 'Order could not be sent to Details.';
 
