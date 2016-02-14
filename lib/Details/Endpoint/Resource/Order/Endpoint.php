@@ -28,22 +28,9 @@ class Endpoint
     public function create(array $orderData, array $itemData)
     {
         $baseMessage = 'Order could not be sent to Details.';
+        $url = $this->makeCreateOrderUrl($orderData, $itemData);
 
         try {
-            $baseParams = [
-                'api_key' => $this->apiKey,
-                'action' => 'addOrder'
-            ];
-
-            $baseParams = array_merge($baseParams, $orderData);
-            $qs = http_build_query($baseParams);
-
-            foreach ($itemData as $row)
-            {
-                $qs .= sprintf('&orderLines=%s', implode('|', $row));
-            }
-
-            $url = sprintf("%s?%s", $this->baseUrl, $qs);
             $response = $this->client->request('GET', $url);
         }
         catch (\Exception $e)
@@ -82,5 +69,23 @@ class Endpoint
         }
 
         return true;
+    }
+
+    public function makeCreateOrderUrl(array $orderData, array $itemData)
+    {
+        $baseParams = [
+            'api_key' => $this->apiKey,
+            'action' => 'addOrder'
+        ];
+
+        $baseParams = array_merge($baseParams, $orderData);
+        $qs = http_build_query($baseParams);
+
+        foreach ($itemData as $row)
+        {
+            $qs .= sprintf('&orderLines=%s', implode('|', $row));
+        }
+
+        return sprintf("%s?%s", $this->baseUrl, $qs);
     }
 }
