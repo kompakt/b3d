@@ -47,5 +47,7 @@ class PopulatorRunner implements PopulatorRunnerInterface
             $entity = $this->dataMapper->map($item);
             $this->repository->add($entity);
         }
+
+        return $this->repository;
     }
 }

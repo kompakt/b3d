@@ -44,5 +44,7 @@ class StockPopulatorRunner
             $entity = $this->dataMapper->map($productUuid, $stockAccounts);
             $this->repository->add($entity);
         }
+
+        return $this->repository;
     }
 }
