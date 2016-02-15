@@ -50,7 +50,12 @@ class Product
         $product->setReleaseNotes($this->stripUtf($detailsProduct->getRelease()->getNotes()));
         $product->setReleaseProjectId($this->stripUtf($detailsProduct->getRelease()->getProjectId()));
         $product->setReleaseArtist($this->stripUtf($detailsProduct->getRelease()->getReleaseArtist()));
-        $product->setReleaseDate($detailsProduct->getRelease()->getReleaseDate());
+
+        if ($detailsProduct->getRelease()->getReleaseDate())
+        {
+            $product->setReleaseDate($detailsProduct->getRelease()->getReleaseDate());
+        }
+
         $product->setReleaseId($this->stripUtf($detailsProduct->getRelease()->getReleaseId()));
         $product->setReleaseInfoEnglish($this->stripUtf($detailsProduct->getRelease()->getReleaseInfoEnglish()));
         $product->setReleaseInfoSecond($this->stripUtf($detailsProduct->getRelease()->getReleaseInfoSecond()));

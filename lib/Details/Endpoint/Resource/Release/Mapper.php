@@ -35,7 +35,12 @@ class Mapper implements DataMapperInterface
         $release->setNotes(trim($data['notes']));
         $release->setProjectId(trim($data['project_id']));
         $release->setReleaseArtist(trim($data['release_artist']));
-        $release->setReleaseDate(new \DateTime(trim($data['release_date'])));
+
+        if ($data['release_date'])
+        {
+            $release->setReleaseDate(new \DateTime(trim($data['release_date'])));
+        }
+
         $release->setReleaseId(trim($data['release_id']));
         $release->setReleaseInfoEnglish(trim($data['release_info_english']));
         $release->setReleaseInfoSecond(trim($data['release_info_second']));
