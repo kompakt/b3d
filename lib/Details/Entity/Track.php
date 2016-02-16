@@ -15,21 +15,23 @@ class Track
     protected $productTracks = array();
 
     // properties
-    protected $id = null;
+    protected $uuid = null;
+    protected $artist = null;
+    protected $artworkTrack1 = null;
+    protected $country = null;
+    protected $digitalRightType = null;
+    protected $explicitFlag = null;
+    protected $isrc = null;
+    protected $language = null;
+    protected $pLine = null;
+    protected $pYear = null;
+    protected $playtime = null;
     protected $productIdMain = null;
     protected $songId = null;
-    protected $country = null;
-    protected $artworkTrack1 = null;
-    protected $version = null;
-    protected $isrc = null;
-    protected $pYear = null;
-    protected $pLine = null;
-    protected $digitalRightType = null;
-    protected $artist = null;
-    protected $playtime = null;
     protected $title = null;
+    protected $id = null;
     protected $type = null;
-    protected $explicitFlag = null;
+    protected $version = null;
 
     public function addProductTrack(ProductTrack $productTrack)
     {
@@ -41,14 +43,114 @@ class Track
         return $this->productTracks;
     }
 
-    public function setId($id)
+    public function setUuid($uuid)
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
     }
 
-    public function getId()
+    public function getUuid()
     {
-        return $this->id;
+        return $this->uuid;
+    }
+
+    public function setArtist($artist)
+    {
+        $this->artist = $artist;
+    }
+
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+
+    public function setArtworkTrack1($artworkTrack1)
+    {
+        $this->artworkTrack1 = $artworkTrack1;
+    }
+
+    public function getArtworkTrack1()
+    {
+        return $this->artworkTrack1;
+    }
+
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    public function setDigitalRightType($digitalRightType)
+    {
+        $this->digitalRightType = $digitalRightType;
+    }
+
+    public function getDigitalRightType()
+    {
+        return $this->digitalRightType;
+    }
+
+    public function setExplicitFlag($explicitFlag)
+    {
+        $this->explicitFlag = $explicitFlag;
+    }
+
+    public function getExplicitFlag()
+    {
+        return $this->explicitFlag;
+    }
+
+    public function setIsrc($isrc)
+    {
+        $this->isrc = $isrc;
+    }
+
+    public function getIsrc()
+    {
+        return $this->isrc;
+    }
+
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
+
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    public function setPLine($pLine)
+    {
+        $this->pLine = $pLine;
+    }
+
+    public function getPLine()
+    {
+        return $this->pLine;
+    }
+
+    public function setPYear($pYear)
+    {
+        $this->pYear = $pYear;
+    }
+
+    public function getPYear()
+    {
+        return $this->pYear;
+    }
+
+    public function setPlaytime($playtime)
+    {
+        $this->playtime = $playtime;
+    }
+
+    public function getPlaytime()
+    {
+        return $this->playtime;
     }
 
     public function setProductIdMain($productIdMain)
@@ -71,96 +173,6 @@ class Track
         return $this->songId;
     }
 
-    public function setCountry($country)
-    {
-        $this->country = $country;
-    }
-
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    public function setArtworkTrack1($artworkTrack1)
-    {
-        $this->artworkTrack1 = $artworkTrack1;
-    }
-
-    public function getArtworkTrack1()
-    {
-        return $this->artworkTrack1;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setIsrc($isrc)
-    {
-        $this->isrc = $isrc;
-    }
-
-    public function getIsrc()
-    {
-        return $this->isrc;
-    }
-
-    public function setPYear($pYear)
-    {
-        $this->pYear = $pYear;
-    }
-
-    public function getPYear()
-    {
-        return $this->pYear;
-    }
-
-    public function setPLine($pLine)
-    {
-        $this->pLine = $pLine;
-    }
-
-    public function getPLine()
-    {
-        return $this->pLine;
-    }
-
-    public function setDigitalRightType($digitalRightType)
-    {
-        $this->digitalRightType = $digitalRightType;
-    }
-
-    public function getDigitalRightType()
-    {
-        return $this->digitalRightType;
-    }
-
-    public function setArtist($artist)
-    {
-        $this->artist = $artist;
-    }
-
-    public function getArtist()
-    {
-        return $this->artist;
-    }
-
-    public function setPlaytime($playtime)
-    {
-        $this->playtime = $playtime;
-    }
-
-    public function getPlaytime()
-    {
-        return $this->playtime;
-    }
-
     public function setTitle($title)
     {
         $this->title = $title;
@@ -169,6 +181,16 @@ class Track
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function setType($type)
@@ -181,13 +203,13 @@ class Track
         return $this->type;
     }
 
-    public function setExplicitFlag($explicitFlag)
+    public function setVersion($version)
     {
-        $this->explicitFlag = $explicitFlag;
+        $this->version = $version;
     }
 
-    public function getExplicitFlag()
+    public function getVersion()
     {
-        return $this->explicitFlag;
+        return $this->version;
     }
 }

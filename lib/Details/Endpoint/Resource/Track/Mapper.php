@@ -27,21 +27,23 @@ class Mapper implements DataMapperInterface
     public function map(array $data)
     {
         $track = clone $this->trackPrototype;
-        $track->setId(trim($data['track_id']));
-        $track->setTitle(trim($data['title']));
+        $track->setUuid(trim($data['UUID']));
+        $track->setArtist(trim($data['artist']));
+        $track->setArtworkTrack1(trim($data['artwork_track1']));
+        $track->setCountry(trim($data['country']));
+        $track->setDigitalRightType(trim($data['digital_right_type']));
+        $track->setExplicitFlag(trim($data['explicit_flag']));
+        $track->setIsrc(trim($data['isrc']));
+        $track->setLanguage(trim($data['language']));
+        $track->setPLine(trim($data['p_line']));
+        $track->setPYear(trim($data['p_year']));
+        $track->setPlaytime(trim($data['playtime']));
         $track->setProductIdMain(trim($data['product_id_main']));
         $track->setSongId(trim($data['song_id']));
-        $track->setCountry(trim($data['country']));
-        $track->setArtworkTrack1(trim($data['artwork_track1']));
-        $track->setVersion(trim($data['version']));
-        $track->setIsrc(trim($data['isrc']));
-        $track->setPYear(trim($data['p_year']));
-        $track->setPLine(trim($data['p_line']));
-        $track->setDigitalRightType(trim($data['digital_right_type']));
-        $track->setArtist(trim($data['artist']));
-        $track->setPlaytime(trim($data['playtime']));
+        $track->setTitle(trim($data['title']));
+        $track->setId(trim($data['track_id']));
         $track->setType(trim($data['type']));
-        $track->setExplicitFlag(trim($data['explicit_flag']));
+        $track->setVersion(trim($data['version']));
         return $track;
     }
 }

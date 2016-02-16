@@ -147,21 +147,23 @@ class Mapper extends AbstractMapper
             $track->setPlaytime($this->getDomVal($t, 'playtime'));
 
             // track-fields
-            #$track->setId($this->getDomVal($t, 'id'));
-            #$track->setProductIdMain($this->getDomVal($t, 'productIdMain'));
-            #$track->setSongId($this->getDomVal($t, 'songId'));
-            $track->setCountry($this->getDomVal($t, 'country'));
-            $track->setArtworkTrack1($this->getDomVal($t, 'artworkTrack1'));
-            $track->setVersion($this->getDomVal($t, 'version'));
-            $track->setIsrc($this->getDomVal($t, 'isrc'));
-            $track->setPYear($this->getDomVal($t, 'pYear'));
-            $track->setPLine($this->getDomVal($t, 'pLine'));
-            $track->setDigitalRightType($this->getDomVal($t, 'digitalRightType'));
+            $track->setUuid($this->getDomVal($t, 'uuid'));
             $track->setArtist($this->getDomVal($t, 'artist'));
-            $track->setPlaytime($this->getDomVal($t, 'playtime'));
-            $track->setTitle($this->getDomVal($t, 'title'));
-            $track->setType($this->getDomVal($t, 'type'));
+            $track->setArtworkTrack1($this->getDomVal($t, 'artworkTrack1'));
+            $track->setCountry($this->getDomVal($t, 'country'));
+            $track->setDigitalRightType($this->getDomVal($t, 'digitalRightType'));
             $track->setExplicitFlag($this->getDomVal($t, 'explicitFlag'));
+            $track->setIsrc($this->getDomVal($t, 'isrc'));
+            $track->setLanguage($this->getDomVal($t, 'language'));
+            $track->setPLine($this->getDomVal($t, 'pLine'));
+            $track->setPYear($this->getDomVal($t, 'pYear'));
+            $track->setPlaytime($this->getDomVal($t, 'playtime'));
+            $track->setProductIdMain($this->getDomVal($t, 'productIdMain'));
+            $track->setSongId($this->getDomVal($t, 'songId'));
+            $track->setTitle($this->getDomVal($t, 'title'));
+            $track->setId($this->getDomVal($t, 'id'));
+            $track->setType($this->getDomVal($t, 'type'));
+            $track->setVersion($this->getDomVal($t, 'version'));
             $product->addTrack($track);
         }
 

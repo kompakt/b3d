@@ -132,21 +132,23 @@ class Builder
             $track->appendChild($dom->createElement('productIsrc', htmlspecialchars($t->getProductIsrc())));
 
             // track-fields
-            #$track->appendChild($dom->createElement('id', htmlspecialchars($t->getId())));
-            #$track->appendChild($dom->createElement('productIdMain', htmlspecialchars($t->getProductIdMain())));
-            #$track->appendChild($dom->createElement('songId', htmlspecialchars($t->getSongId())));
-            $track->appendChild($dom->createElement('country', htmlspecialchars($t->getCountry())));
-            $track->appendChild($dom->createElement('artworkTrack1', htmlspecialchars($t->getArtworkTrack1())));
-            $track->appendChild($dom->createElement('version', htmlspecialchars($t->getVersion())));
-            $track->appendChild($dom->createElement('isrc', htmlspecialchars($t->getIsrc())));
-            $track->appendChild($dom->createElement('pYear', htmlspecialchars($t->getPYear())));
-            $track->appendChild($dom->createElement('pLine', htmlspecialchars($t->getPLine())));
-            $track->appendChild($dom->createElement('digitalRightType', htmlspecialchars($t->getDigitalRightType())));
+            $track->appendChild($dom->createElement('uuid', htmlspecialchars($t->getUuid())));
             $track->appendChild($dom->createElement('artist', htmlspecialchars($t->getArtist())));
-            $track->appendChild($dom->createElement('playtime', htmlspecialchars($t->getPlaytime())));
-            $track->appendChild($dom->createElement('title', htmlspecialchars($t->getTitle())));
-            $track->appendChild($dom->createElement('type', htmlspecialchars($t->getType())));
+            $track->appendChild($dom->createElement('artworkTrack1', htmlspecialchars($t->getArtworkTrack1())));
+            $track->appendChild($dom->createElement('country', htmlspecialchars($t->getCountry())));
+            $track->appendChild($dom->createElement('digitalRightType', htmlspecialchars($t->getDigitalRightType())));
             $track->appendChild($dom->createElement('explicitFlag', htmlspecialchars($t->getExplicitFlag())));
+            $track->appendChild($dom->createElement('isrc', htmlspecialchars($t->getIsrc())));
+            $track->appendChild($dom->createElement('language', htmlspecialchars($t->getLanguage())));
+            $track->appendChild($dom->createElement('pLine', htmlspecialchars($t->getPLine())));
+            $track->appendChild($dom->createElement('pYear', htmlspecialchars($t->getPYear())));
+            $track->appendChild($dom->createElement('playtime', htmlspecialchars($t->getPlaytime())));
+            $track->appendChild($dom->createElement('productIdMain', htmlspecialchars($t->getProductIdMain())));
+            $track->appendChild($dom->createElement('songId', htmlspecialchars($t->getSongId())));
+            $track->appendChild($dom->createElement('title', htmlspecialchars($t->getTitle())));
+            $track->appendChild($dom->createElement('id', htmlspecialchars($t->getId())));
+            $track->appendChild($dom->createElement('type', htmlspecialchars($t->getType())));
+            $track->appendChild($dom->createElement('version', htmlspecialchars($t->getVersion())));
             $tracks->appendChild($track);
         }
 

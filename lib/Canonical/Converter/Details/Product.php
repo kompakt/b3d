@@ -144,19 +144,23 @@ class Product
             #$track->setPlaytime($this->stripUtf($detailsProductTrack->getPlaytime()));
 
             // track fields
-            $track->setCountry($this->stripUtf($detailsProductTrack->getTrack()->getCountry()));
-            $track->setArtworkTrack1($this->stripUtf($detailsProductTrack->getTrack()->getArtworkTrack1()));
-            $track->setVersion($this->stripUtf($detailsProductTrack->getTrack()->getVersion()));
-            $track->setIsrc($this->stripUtf($detailsProductTrack->getTrack()->getIsrc()));
-            $track->setPYear($this->stripUtf($detailsProductTrack->getTrack()->getPYear()));
-            $track->setPLine($this->stripUtf($detailsProductTrack->getTrack()->getPLine()));
-            $track->setDigitalRightType($this->stripUtf($detailsProductTrack->getTrack()->getDigitalRightType()));
+            $track->setUuid($this->stripUtf($detailsProductTrack->getTrack()->getUuid()));
             $track->setArtist($this->stripUtf($detailsProductTrack->getTrack()->getArtist()));
-            $track->setPlaytime($this->stripUtf($detailsProductTrack->getTrack()->getPlaytime()));
-            $track->setTitle($this->stripUtf($detailsProductTrack->getTrack()->getTitle()));
-            $track->setType($this->stripUtf($detailsProductTrack->getTrack()->getType()));
+            $track->setArtworkTrack1($this->stripUtf($detailsProductTrack->getTrack()->getArtworkTrack1()));
+            $track->setCountry($this->stripUtf($detailsProductTrack->getTrack()->getCountry()));
+            $track->setDigitalRightType($this->stripUtf($detailsProductTrack->getTrack()->getDigitalRightType()));
             $track->setExplicitFlag($this->stripUtf($detailsProductTrack->getTrack()->getExplicitFlag()));
-
+            $track->setIsrc($this->stripUtf($detailsProductTrack->getTrack()->getIsrc()));
+            $track->setLanguage($this->stripUtf($detailsProductTrack->getTrack()->getLanguage()));
+            $track->setPLine($this->stripUtf($detailsProductTrack->getTrack()->getPLine()));
+            $track->setPYear($this->stripUtf($detailsProductTrack->getTrack()->getPYear()));
+            $track->setPlaytime($this->stripUtf($detailsProductTrack->getTrack()->getPlaytime()));
+            $track->setProductIdMain($this->stripUtf($detailsProductTrack->getTrack()->getProductIdMain()));
+            $track->setSongId($this->stripUtf($detailsProductTrack->getTrack()->getSongId()));
+            $track->setTitle($this->stripUtf($detailsProductTrack->getTrack()->getTitle()));
+            $track->setId($this->stripUtf($detailsProductTrack->getTrack()->getId()));
+            $track->setType($this->stripUtf($detailsProductTrack->getTrack()->getType()));
+            $track->setVersion($this->stripUtf($detailsProductTrack->getTrack()->getVersion()));
             $product->addTrack($track);
         }
 
