@@ -9,10 +9,10 @@
 
 namespace Kompakt\B3d\Adapter\Console\Symfony\Output;
 
-use Kompakt\B3d\Generic\Console\Output\ConsoleOutputInterface as MediameisterConsoleOutputInterface;
+use Kompakt\B3d\Generic\Console\Output\ConsoleOutputInterface as KompaktConsoleOutputInterface;
 use Symfony\Component\Console\Output\ConsoleOutputInterface as SymfonyConsoleOutputInterface;
 
-class ConsoleOutput implements MediameisterConsoleOutputInterface
+class ConsoleOutput implements KompaktConsoleOutputInterface
 {
     protected $symfonyConsoleOutput = null;
 
