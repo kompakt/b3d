@@ -66,6 +66,6 @@ class Product implements EventSubscriberInterface
         $fileContents = $this->fileReader->read($pathname);
         $dom = $this->domLoader->load($fileContents);
         $entity = $this->domMapper->map($dom);
-        $this->repository->add($entity);
+        $this->repository->add($entity, $pathname);
     }
 }

@@ -17,10 +17,11 @@ class ProductRepository
     protected $barcodes = array();
     protected $catalogNumbers = array();
     protected $releaseTitles = array();
+    protected $pathnames = array();
 
-    public function add($product)
+    public function add($product, $pathname = null)
     {
-        $this->addProduct($product);
+        $this->addProduct($product, $pathname);
     }
 
     public function getAll()
@@ -72,8 +73,20 @@ class ProductRepository
         ;
     }
 
-    protected function addProduct(Product $product)
+    public function getPathnameByUuid($uuid)
     {
+        $uuid = $this->prepareField($uuid);
+
+        return
+            (array_key_exists($uuid, $this->pathnames))
+            ? $this->pathnames[$uuid]
+            : null
+        ;
+    }
+
+    protected function addProduct(Product $product, $pathname = null)
+    {
+        $this->pathnames[$product->getUuid()] = $pathname;
         $this->products[$product->getUuid()] = $product;
         $this->addByBarcode($product);
         $this->addByCatalogNumber($product);
