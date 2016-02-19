@@ -7,7 +7,6 @@
  *
  */
 
-use Kompakt\B3d\Adapter\EventDispatcher\Symfony\EventDispatcher;
 use Kompakt\B3d\Canonical\Dom\Product\Mapper as DomProductMapper;
 use Kompakt\B3d\Canonical\Entity\Price;
 use Kompakt\B3d\Canonical\Entity\Product;
@@ -20,7 +19,7 @@ use Kompakt\B3d\DropDir\Subscriber\Debugger;
 use Kompakt\B3d\Util\Dom\Loader as DomLoader;
 use Kompakt\B3d\Util\File\Reader;
 use Kompakt\B3d\Util\Timer\Timer;
-use Symfony\Component\EventDispatcher\EventDispatcher as SymfonyEventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
@@ -31,7 +30,7 @@ if (!is_dir($canonicalProductDirPathname))
     die(sprintf("%s\n", 'Please fetch and serialize first'));
 }
 
-$dispatcher = new EventDispatcher(new SymfonyEventDispatcher());
+$dispatcher = new EventDispatcher();
 $eventNames = new EventNames();
 $fileReader = new Reader();
 $domLoader = new DomLoader();
@@ -47,9 +46,14 @@ $product = new Product();
 $track = new Track();
 $domMapper = new DomProductMapper($product, $track, $price);
 $repository = new ProductRepository();
-$debugger = new Debugger($eventNames);
+
+$debugger = new Debugger(
+    $dispatcher,
+    $eventNames
+);
 
 $unserializer = new ProductXmlUnserializer(
+    $dispatcher,
     $eventNames,
     $fileReader,
     $domLoader,
@@ -60,8 +64,8 @@ $unserializer = new ProductXmlUnserializer(
 // run
 $timer = new Timer();
 $timer->start();
-#$dispatcher->addSubscriber($debugger);
-$dispatcher->addSubscriber($unserializer);
+#$debugger->activate();
+$unserializer->activate();
 $runner->run();
 $timer->stop();
 

@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\DropDir\Event;
 
-use Kompakt\B3d\Generic\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\Event;
 
 class EndEvent extends Event
 {

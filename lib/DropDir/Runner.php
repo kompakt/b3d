@@ -17,7 +17,7 @@ use Kompakt\B3d\DropDir\Event\FileEvent;
 use Kompakt\B3d\DropDir\Event\StartErrorEvent;
 use Kompakt\B3d\DropDir\Event\StartEvent;
 use Kompakt\B3d\DropDir\Exception\RuntimeException;
-use Kompakt\B3d\Generic\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class Runner
 {

@@ -15,10 +15,11 @@ use Kompakt\B3d\Util\Dom\Loader as DomLoader;
 use Kompakt\B3d\DropDir\Event\FileEvent;
 use Kompakt\B3d\DropDir\EventNamesInterface;
 use Kompakt\B3d\Util\File\Reader;
-use Kompakt\B3d\Generic\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class Product implements EventSubscriberInterface
+class Product
 {
+    protected $dispatcher = null;
     protected $eventNames = null;
     protected $fileReader = null;
     protected $domLoader = null;
@@ -26,6 +27,7 @@ class Product implements EventSubscriberInterface
     protected $repository = null;
 
     public function __construct(
+        EventDispatcherInterface $dispatcher,
         EventNamesInterface $eventNames,
         Reader $fileReader,
         DomLoader $domLoader,
@@ -33,6 +35,7 @@ class Product implements EventSubscriberInterface
         ProductRepository $repository
     )
     {
+        $this->dispatcher = $dispatcher;
         $this->eventNames = $eventNames;
         $this->fileReader = $fileReader;
         $this->domLoader = $domLoader;
@@ -40,18 +43,19 @@ class Product implements EventSubscriberInterface
         $this->repository = $repository;
     }
 
+    public function activate()
+    {
+        $this->handleListeners(true);
+    }
+
+    public function deactivate()
+    {
+        $this->handleListeners(false);
+    }
+
     public function getRepository()
     {
         return $this->repository;
-    }
-
-    public function getSubscriptions()
-    {
-        return array(
-            $this->eventNames->file() => array(
-                array('onFile', 0)
-            )
-        );
     }
 
     public function onFile(FileEvent $event)
@@ -67,5 +71,15 @@ class Product implements EventSubscriberInterface
         $dom = $this->domLoader->load($fileContents);
         $entity = $this->domMapper->map($dom);
         $this->repository->add($entity, $pathname);
+    }
+
+    protected function handleListeners($add)
+    {
+        $method = ($add) ? 'addListener' : 'removeListener';
+
+        $this->dispatcher->$method(
+            $this->eventNames->file(),
+            [$this, 'onFile']
+        );
     }
 }

@@ -9,56 +9,40 @@
 
 namespace Kompakt\B3d\DropDir\Subscriber;
 
-use Kompakt\B3d\Generic\EventDispatcher\EventSubscriberInterface;
-use Kompakt\B3d\Generic\Logger\Handler\StreamHandlerFactoryInterface;
 use Kompakt\B3d\Generic\Logger\LoggerInterface;
 use Kompakt\B3d\DropDir\EventNamesInterface;
 use Kompakt\B3d\DropDir\Event\EndErrorEvent;
 use Kompakt\B3d\DropDir\Event\FileErrorEvent;
 use Kompakt\B3d\DropDir\Event\StartErrorEvent;
 use Kompakt\B3d\DropDir\Event\StartEvent;
+use Monolog\Logger;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class ErrorLogger implements EventSubscriberInterface
+class ErrorLogger
 {
+    protected $dispatcher = null;
     protected $eventNames = null;
     protected $logger = null;
-    protected $streamHandlerFactory = null;
 
     public function __construct(
+        EventDispatcherInterface $dispatcher,
         EventNamesInterface $eventNames,
-        LoggerInterface $logger,
-        StreamHandlerFactoryInterface $streamHandlerFactory,
-        $filename
+        Logger $logger
     )
     {
+        $this->dispatcher = $dispatcher;
         $this->eventNames = $eventNames;
         $this->logger = $logger;
-        $this->streamHandlerFactory = $streamHandlerFactory;
-        $this->filename = $filename;
     }
 
-    public function getSubscriptions()
+    public function activate()
     {
-        return array(
-            $this->eventNames->start() => array(
-                array('onStart', 0)
-            ),
-            $this->eventNames->startError() => array(
-                array('onStartError', 0)
-            ),
-            $this->eventNames->endError() => array(
-                array('onEndError', 0)
-            ),
-            $this->eventNames->fileError() => array(
-                array('onFileError', 0)
-            )
-        );
+        $this->handleListeners(true);
     }
 
-    public function onStart(StartEvent $event)
+    public function deactivate()
     {
-        $logfile = sprintf('%s/%s', $event->getDir(), $this->filename);
-        $this->logger->pushHandler($this->streamHandlerFactory->getInstance($logfile));
+        $this->handleListeners(false);
     }
 
     public function onStartError(StartErrorEvent $event)
@@ -79,6 +63,26 @@ class ErrorLogger implements EventSubscriberInterface
                 $event->getFile()->getPathname(),
                 $event->getException()->getMessage()
             )
+        );
+    }
+
+    protected function handleListeners($add)
+    {
+        $method = ($add) ? 'addListener' : 'removeListener';
+
+        $this->dispatcher->$method(
+            $this->eventNames->startError(),
+            [$this, 'onStartError']
+        );
+
+        $this->dispatcher->$method(
+            $this->eventNames->endError(),
+            [$this, 'onEndError']
+        );
+
+        $this->dispatcher->$method(
+            $this->eventNames->fileError(),
+            [$this, 'onFileError']
         );
     }
 }

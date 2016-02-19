@@ -19,16 +19,6 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 // some defaults
 date_default_timezone_set('UTC');
 
-/*$client = new Client(
-    array(
-        #'debug' => true,
-        'base_uri' => EXAMPLE_KOMPAKT_B3D_BASE_URL,
-        'query' => array(
-            'api_key' => EXAMPLE_KOMPAKT_B3D_API_KEY
-        )
-    )
-);*/
-
 function getTmpDir()
 {
     return new TmpDir(EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
