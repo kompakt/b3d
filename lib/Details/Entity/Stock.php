@@ -39,4 +39,9 @@ class Stock
             : null
         ;
     }
+
+    public function getAccounts()
+    {
+        return $this->accounts;
+    }
 }

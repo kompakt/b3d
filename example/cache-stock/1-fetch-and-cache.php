@@ -40,7 +40,7 @@ $stockPhpFileSerializer = new PhpFileSerializer(
 // run
 $timer = new Timer();
 $timer->start();
-$stockPhpFileSerializer->serialize($stockEndpoint->fetchAll());
+$stockPhpFileSerializer->serialize($stockEndpoint->fetch());
 $timer->stop();
 
 echo sprintf("Time: %s Sec\n", $timer->getSeconds(0));

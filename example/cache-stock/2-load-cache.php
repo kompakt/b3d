@@ -54,6 +54,7 @@ $timer->stop();
 foreach ($stockRepository->getAll() as $stock)
 {
     echo sprintf("%s\n", $stock->getProductUuid());
+    print_r($stock->getAccounts());
 }
 
 echo sprintf("Stock: %s\n", count($stockRepository->getAll()));

@@ -11,9 +11,8 @@ namespace Kompakt\B3d\Details\Endpoint\Resource\Stock;
 
 use GuzzleHttp\Client;
 use Kompakt\B3d\Details\Endpoint\Resource\Exception\UnexpectedValueException;
-use Kompakt\B3d\Details\Populator\Endpoint\EndpointInterface;
 
-class Endpoint implements EndpointInterface
+class Endpoint
 {
     protected $client = null;
     protected $baseUrl = null;
@@ -26,22 +25,11 @@ class Endpoint implements EndpointInterface
         $this->apiKey = $apiKey;
     }
 
-    /**
-     * @see EndpointInterface::fetchAll()
-     */
-    public function fetchAll()
+    public function fetch(array $uuids = [], array $accountIds = [])
     {
         try {
-            $queryParams = [
-                'api_key' => $this->apiKey,
-                'action' => 'stocks'
-            ];
-
-            $params = [
-                'query' => $queryParams
-            ];
-
-            $response = $this->client->request('GET', $this->baseUrl, $params);
+            $url = $this->makeUrl($uuids, $accountIds);
+            $response = $this->client->request('GET', $url);
             $data = json_decode($response->getBody(), true);
 
             $success
@@ -73,5 +61,26 @@ class Endpoint implements EndpointInterface
                 sprintf('Error fetching stocks: "%s"', $e->getMessage())
             );
         }
+    }
+
+    protected function makeUrl(array $uuids = [], array $accountIds = [])
+    {
+        $params = [
+            'api_key' => $this->apiKey,
+            'action' => 'stocks'
+        ];
+
+        if (count($uuids))
+        {
+            $params['product_uuid'] = implode('|', $uuids);
+        }
+
+        if (count($accountIds))
+        {
+            $params['account_ids'] = implode('|', $accountIds);
+        }
+
+        $qs = http_build_query($params);
+        return sprintf("%s?%s", $this->baseUrl, $qs);
     }
 }
