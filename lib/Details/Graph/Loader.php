@@ -12,7 +12,7 @@ namespace Kompakt\B3d\Details\Graph;
 use Kompakt\B3d\Details\Entity\Product;
 use Kompakt\B3d\Details\Entity\ProductTrack;
 use Kompakt\B3d\Details\Entity\Release;
-use Kompakt\B3d\Details\Graph\PopulatorRunnerInterface;
+use Kompakt\B3d\Details\Graph\PopulatorInterface;
 use Kompakt\B3d\Details\Repository\ArtistRepository;
 use Kompakt\B3d\Details\Repository\LabelRepository;
 use Kompakt\B3d\Details\Repository\PriceRepository;
@@ -24,65 +24,65 @@ use Kompakt\B3d\Details\Repository\TrackRepository;
 class Loader
 {
     protected $artistRepository = null;
-    protected $artistPopulatorRunner = null;
+    protected $artistPopulator = null;
     protected $labelRepository = null;
-    protected $labelPopulatorRunner = null;
+    protected $labelPopulator = null;
     protected $priceRepository = null;
-    protected $pricePopulatorRunner = null;
+    protected $pricePopulator = null;
     protected $productRepository = null;
-    protected $productPopulatorRunner = null;
+    protected $productPopulator = null;
     protected $productTrackRepository = null;
-    protected $productTrackPopulatorRunner = null;
+    protected $productTrackPopulator = null;
     protected $releaseRepository = null;
-    protected $releasePopulatorRunner = null;
+    protected $releasePopulator = null;
     protected $trackRepository = null;
-    protected $trackPopulatorRunner = null;
+    protected $trackPopulator = null;
     protected $missingArtists = 0;
     protected $missingLabels = 0;
     protected $missingTracks = 0;
 
     public function __construct(
         ArtistRepository $artistRepository,
-        PopulatorRunnerInterface $artistPopulatorRunner,
+        PopulatorInterface $artistPopulator,
         LabelRepository $labelRepository,
-        PopulatorRunnerInterface $labelPopulatorRunner,
+        PopulatorInterface $labelPopulator,
         PriceRepository $priceRepository,
-        PopulatorRunnerInterface $pricePopulatorRunner,
+        PopulatorInterface $pricePopulator,
         ProductRepository $productRepository,
-        PopulatorRunnerInterface $productPopulatorRunner,
+        PopulatorInterface $productPopulator,
         ProductTrackRepository $productTrackRepository,
-        PopulatorRunnerInterface $productTrackPopulatorRunner,
+        PopulatorInterface $productTrackPopulator,
         ReleaseRepository $releaseRepository,
-        PopulatorRunnerInterface $releasePopulatorRunner,
+        PopulatorInterface $releasePopulator,
         TrackRepository $trackRepository,
-        PopulatorRunnerInterface $trackPopulatorRunner
+        PopulatorInterface $trackPopulator
     )
     {
         $this->artistRepository = $artistRepository;
-        $this->artistPopulatorRunner = $artistPopulatorRunner;
+        $this->artistPopulator = $artistPopulator;
         $this->labelRepository = $labelRepository;
-        $this->labelPopulatorRunner = $labelPopulatorRunner;
+        $this->labelPopulator = $labelPopulator;
         $this->priceRepository = $priceRepository;
-        $this->pricePopulatorRunner = $pricePopulatorRunner;
+        $this->pricePopulator = $pricePopulator;
         $this->productRepository = $productRepository;
-        $this->productPopulatorRunner = $productPopulatorRunner;
+        $this->productPopulator = $productPopulator;
         $this->productTrackRepository = $productTrackRepository;
-        $this->productTrackPopulatorRunner = $productTrackPopulatorRunner;
+        $this->productTrackPopulator = $productTrackPopulator;
         $this->releaseRepository = $releaseRepository;
-        $this->releasePopulatorRunner = $releasePopulatorRunner;
+        $this->releasePopulator = $releasePopulator;
         $this->trackRepository = $trackRepository;
-        $this->trackPopulatorRunner = $trackPopulatorRunner;
+        $this->trackPopulator = $trackPopulator;
     }
 
     public function load()
     {
-        $this->artistPopulatorRunner->run();
-        $this->labelPopulatorRunner->run();
-        $this->pricePopulatorRunner->run();
-        $this->productPopulatorRunner->run();
-        $this->releasePopulatorRunner->run();
-        $this->productTrackPopulatorRunner->run();
-        $this->trackPopulatorRunner->run();
+        $this->artistPopulator->populate();
+        $this->labelPopulator->populate();
+        $this->pricePopulator->populate();
+        $this->productPopulator->populate();
+        $this->releasePopulator->populate();
+        $this->productTrackPopulator->populate();
+        $this->trackPopulator->populate();
 
         foreach ($this->releaseRepository->getAll() as $release)
         {

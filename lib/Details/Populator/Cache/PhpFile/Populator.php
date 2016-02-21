@@ -10,11 +10,11 @@
 namespace Kompakt\B3d\Details\Populator\Cache\PhpFile;
 
 use Kompakt\B3d\Details\Populator\DataMapperInterface;
-use Kompakt\B3d\Details\Graph\PopulatorRunnerInterface;
+use Kompakt\B3d\Details\Graph\PopulatorInterface;
 use Kompakt\B3d\Details\Populator\RepositoryInterface;
 use Kompakt\B3d\Util\File\Reader;
 
-class PopulatorRunner implements PopulatorRunnerInterface
+class Populator implements PopulatorInterface
 {
     protected $fileReader = null;
     protected $dataMapper = null;
@@ -35,9 +35,9 @@ class PopulatorRunner implements PopulatorRunnerInterface
     }
 
     /**
-     * @see PopulatorRunnerInterface::run()
+     * @see PopulatorInterface::populate()
      */
-    public function run()
+    public function populate()
     {
         $data = $this->fileReader->read($this->filePathname);
         $items = unserialize($data);

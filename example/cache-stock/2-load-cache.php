@@ -13,15 +13,13 @@ use Kompakt\B3d\Details\Entity\Stock;
 use Kompakt\B3d\Details\Entity\StockAccount;
 use Kompakt\B3d\Details\Repository\StockRepository;
 use Kompakt\B3d\Details\Endpoint\Resource\Stock\Mapper as StockMapper;
-use Kompakt\B3d\Details\Populator\Cache\PhpFile\StockPopulatorRunner;
+use Kompakt\B3d\Details\Populator\Cache\PhpFile\StockPopulator as FileStockPopulator;
+use Kompakt\B3d\Details\Populator\Data\StockPopulator as DataStockPopulator;
 use Kompakt\B3d\Util\File\Reader;
 use Kompakt\B3d\Util\File\Writer;
 use Kompakt\B3d\Util\Timer\Timer;
 
 // config
-$tmpDir = getTmpDir();
-$canonicalProductTmpDirPathname = $tmpDir->replaceSubDir('php-cache-stock-xml');
-
 $stockFilePathname = sprintf('%s/php-cache-stock-data/stocks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
 
 // general
@@ -37,18 +35,22 @@ $stockMapper = new StockMapper($stock, $stockAccount);
 // repo
 $stockRepository = new StockRepository();
 
-// populator runner
-$stockPopulatorRunner = new StockPopulatorRunner(
-    $fileReader,
+// populator
+$dataStockPopulator = new DataStockPopulator(
     $stockMapper,
-    $stockRepository,
+    $stockRepository
+);
+
+$fileStockPopulator = new FileStockPopulator(
+    $dataStockPopulator,
+    $fileReader,
     $stockFilePathname
 );
 
 // run
 $timer = new Timer();
 $timer->start();
-$stockPopulatorRunner->run();
+$fileStockPopulator->populate();
 $timer->stop();
 
 foreach ($stockRepository->getAll() as $stock)

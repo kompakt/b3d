@@ -9,7 +9,7 @@
 
 namespace Kompakt\B3d\Details\Graph;
 
-interface PopulatorRunnerInterface
+interface PopulatorInterface
 {
-    public function run();
+    public function populate();
 }

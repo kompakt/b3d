@@ -38,7 +38,7 @@ use Kompakt\B3d\Details\Endpoint\Resource\Product\Mapper as ProductMapper;
 use Kompakt\B3d\Details\Endpoint\Resource\ProductTrack\Mapper as ProductTrackMapper;
 use Kompakt\B3d\Details\Endpoint\Resource\Release\Mapper as ReleaseMapper;
 use Kompakt\B3d\Details\Endpoint\Resource\Track\Mapper as TrackMapper;
-use Kompakt\B3d\Details\Populator\Cache\PhpFile\PopulatorRunner;
+use Kompakt\B3d\Details\Populator\Cache\PhpFile\Populator;
 use Kompakt\B3d\Util\File\Reader;
 use Kompakt\B3d\Util\File\Writer;
 use Kompakt\B3d\Util\Timer\Timer;
@@ -86,49 +86,49 @@ $releaseRepository = new ReleaseRepository();
 $trackRepository = new TrackRepository();
 
 // populator runners
-$artistPopulatorRunner = new PopulatorRunner(
+$artistPopulator = new Populator(
     $fileReader,
     $artistMapper,
     $artistRepository,
     $artistFilePathname
 );
 
-$labelPopulatorRunner = new PopulatorRunner(
+$labelPopulator = new Populator(
     $fileReader,
     $labelMapper,
     $labelRepository,
     $labelFilePathname
 );
 
-$pricePopulatorRunner = new PopulatorRunner(
+$pricePopulator = new Populator(
     $fileReader,
     $priceMapper,
     $priceRepository,
     $priceFilePathname
 );
 
-$productPopulatorRunner = new PopulatorRunner(
+$productPopulator = new Populator(
     $fileReader,
     $productMapper,
     $productRepository,
     $productFilePathname
 );
 
-$productTrackPopulatorRunner = new PopulatorRunner(
+$productTrackPopulator = new Populator(
     $fileReader,
     $productTrackMapper,
     $productTrackRepository,
     $productTrackFilePathname
 );
 
-$releasePopulatorRunner = new PopulatorRunner(
+$releasePopulator = new Populator(
     $fileReader,
     $releaseMapper,
     $releaseRepository,
     $releaseFilePathname
 );
 
-$trackPopulatorRunner = new PopulatorRunner(
+$trackPopulator = new Populator(
     $fileReader,
     $trackMapper,
     $trackRepository,
@@ -138,19 +138,19 @@ $trackPopulatorRunner = new PopulatorRunner(
 // graph loader
 $graphLoader = new GraphLoader(
     $artistRepository,
-    $artistPopulatorRunner,
+    $artistPopulator,
     $labelRepository,
-    $labelPopulatorRunner,
+    $labelPopulator,
     $priceRepository,
-    $pricePopulatorRunner,
+    $pricePopulator,
     $productRepository,
-    $productPopulatorRunner,
+    $productPopulator,
     $productTrackRepository,
-    $productTrackPopulatorRunner,
+    $productTrackPopulator,
     $releaseRepository,
-    $releasePopulatorRunner,
+    $releasePopulator,
     $trackRepository,
-    $trackPopulatorRunner
+    $trackPopulator
 );
 
 // converter stuff

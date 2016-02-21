@@ -9,13 +9,13 @@
 
 namespace Kompakt\B3d\Details\Populator\Endpoint;
 
-use Kompakt\B3d\Details\Graph\PopulatorRunnerInterface;
+use Kompakt\B3d\Details\Graph\PopulatorInterface;
 use Kompakt\B3d\Details\Populator\DataMapperInterface;
 use Kompakt\B3d\Details\Populator\Endpoint\EndpointInterface;
 use Kompakt\B3d\Details\Populator\RepositoryInterface;
 use Kompakt\B3d\Util\File\Reader;
 
-class PopulatorRunner implements PopulatorRunnerInterface
+class Populator implements PopulatorInterface
 {
     protected $endpoint = null;
     protected $dataMapper = null;
@@ -33,14 +33,16 @@ class PopulatorRunner implements PopulatorRunnerInterface
     }
 
     /**
-     * @see PopulatorRunnerInterface::run()
+     * @see PopulatorInterface::populate()
      */
-    public function run()
+    public function populate()
     {
         foreach ($this->endpoint->fetchAll() as $item)
         {
             $entity = $this->dataMapper->map($item);
             $this->repository->add($entity);
         }
+
+        return $this->repository;
     }
 }

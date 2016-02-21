@@ -25,8 +25,23 @@ class Endpoint
         $this->apiKey = $apiKey;
     }
 
-    public function fetch(array $uuids = [], array $accountIds = [])
+    public function fetch(array $uuids, array $accountIds = [])
     {
+        if (!count($uuids))
+        {
+            throw new UnexpectedValueException(sprintf(
+                "Please provide some UUIDs for which stock levels should be fetched"
+            ));
+        }
+
+        if (count($uuids) > 200)
+        {
+            throw new UnexpectedValueException(sprintf(
+                "The API is limited to a maximum of 200 UUIDs per request: actual %s",
+                count($uuids)
+            ));
+        }
+
         try {
             $url = $this->makeUrl($uuids, $accountIds);
             $response = $this->client->request('GET', $url);
@@ -63,7 +78,7 @@ class Endpoint
         }
     }
 
-    protected function makeUrl(array $uuids = [], array $accountIds = [])
+    protected function makeUrl(array $uuids, array $accountIds = [])
     {
         $params = [
             'api_key' => $this->apiKey,
@@ -72,7 +87,7 @@ class Endpoint
 
         if (count($uuids))
         {
-            $params['product_uuid'] = implode('|', $uuids);
+            $params['product_uuids'] = implode('|', $uuids);
         }
 
         if (count($accountIds))
