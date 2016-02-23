@@ -36,14 +36,21 @@ class Runner
         $this->dir = new \DirectoryIterator($dir);
     }
 
-    public function run()
+    public function run($first = 0, $max = 0, $include = '/^[a-z0-9]/i')
     {
+        $first = (int) $first;
+        $first = ($first < 0) ? 0 : $first;
+        $max = (int) $max;
+        $max = ($max < 0) ? 0 : $max;
+
         try {
             if (!$this->start())
             {
                 $this->end();
                 return;
             }
+
+            $i = -1;
 
             foreach ($this->dir as $fileInfo)
             {
@@ -56,6 +63,30 @@ class Runner
                 {
                     continue;
                 }
+
+                if ($include && !preg_match($include, $fileInfo->getFilename()))
+                {
+                    continue;
+                }
+
+                $i++;
+
+                if ($max)
+                {
+                    // activate pagination if max > 0
+
+                    if ($i < $first)
+                    {
+                        continue;
+                    }
+
+                    if ($i > $first + $max - 1)
+                    {
+                        break;
+                    }
+                }
+
+                echo sprintf("%d - %s\n", $i, $fileInfo->getFilename());
 
                 if (!$this->file($fileInfo))
                 {

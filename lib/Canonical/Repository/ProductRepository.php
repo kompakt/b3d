@@ -13,20 +13,56 @@ use Kompakt\B3d\Canonical\Entity\Product;
 
 class ProductRepository
 {
-    protected $products = array();
-    protected $barcodes = array();
-    protected $catalogNumbers = array();
-    protected $releaseTitles = array();
-    protected $pathnames = array();
+    protected $products = [];
+    protected $barcodes = [];
+    protected $catalogNumbers = [];
+    protected $releaseTitles = [];
 
-    public function add($product, $pathname = null)
+    public function clear()
     {
-        $this->addProduct($product, $pathname);
+        $this->products = [];
+        $this->barcodes = [];
+        $this->catalogNumbers = [];
+        $this->releaseTitles = [];
+    }
+
+    public function add($product)
+    {
+        $this->addProduct($product);
     }
 
     public function getAll()
     {
         return $this->products;
+    }
+
+    public function getSlice($first, $max)
+    {
+        $first = (int) $first;
+        $first = ($first < 0) ? 0 : $first;
+        $max = (int) $max;
+        $max = ($max < 0) ? 0 : $max;
+        $products = [];
+        $i = -1;
+
+        foreach ($this->products as $product)
+        {
+            $i++;
+
+            if ($i < $first)
+            {
+                continue;
+            }
+
+            if ($i > $first + $max - 1)
+            {
+                break;
+            }
+
+            $products[] = $product;
+        }
+
+        return $products;
     }
 
     public function getByUuid($uuid)
@@ -47,7 +83,7 @@ class ProductRepository
         return
             (array_key_exists($barcode, $this->barcodes))
             ? $this->barcodes[$barcode]
-            : array()
+            : []
         ;
     }
 
@@ -58,7 +94,7 @@ class ProductRepository
         return
             (array_key_exists($catalogNumber, $this->catalogNumbers))
             ? $this->catalogNumbers[$catalogNumber]
-            : array()
+            : []
         ;
     }
 
@@ -69,24 +105,12 @@ class ProductRepository
         return
             (array_key_exists($releaseTitle, $this->releaseTitles))
             ? $this->releaseTitles[$releaseTitle]
-            : array()
+            : []
         ;
     }
 
-    public function getPathnameByUuid($uuid)
+    protected function addProduct(Product $product)
     {
-        $uuid = $this->prepareField($uuid);
-
-        return
-            (array_key_exists($uuid, $this->pathnames))
-            ? $this->pathnames[$uuid]
-            : null
-        ;
-    }
-
-    protected function addProduct(Product $product, $pathname = null)
-    {
-        $this->pathnames[$product->getUuid()] = $pathname;
         $this->products[$product->getUuid()] = $product;
         $this->addByBarcode($product);
         $this->addByCatalogNumber($product);
@@ -99,7 +123,7 @@ class ProductRepository
 
         if (!array_key_exists($barcode, $this->barcodes))
         {
-            $this->barcodes[$barcode] = array();
+            $this->barcodes[$barcode] = [];
         }
 
         $this->barcodes[$barcode][] = $product;
@@ -111,7 +135,7 @@ class ProductRepository
 
         if (!array_key_exists($catalogNumber, $this->catalogNumbers))
         {
-            $this->catalogNumbers[$catalogNumber] = array();
+            $this->catalogNumbers[$catalogNumber] = [];
         }
 
         $this->catalogNumbers[$catalogNumber][] = $product;
@@ -123,7 +147,7 @@ class ProductRepository
 
         if (!array_key_exists($releaseTitle, $this->releaseTitles))
         {
-            $this->releaseTitles[$releaseTitle] = array();
+            $this->releaseTitles[$releaseTitle] = [];
         }
 
         $this->releaseTitles[$releaseTitle][] = $product;
