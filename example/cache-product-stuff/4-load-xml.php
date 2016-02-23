@@ -11,8 +11,9 @@ use Kompakt\B3d\Canonical\Dom\Product\Mapper as DomProductMapper;
 use Kompakt\B3d\Canonical\Entity\Price;
 use Kompakt\B3d\Canonical\Entity\Product;
 use Kompakt\B3d\Canonical\Entity\Track;
+use Kompakt\B3d\Canonical\Populator\Xml\Subscriber\Product as Populator;
 use Kompakt\B3d\Canonical\Repository\ProductRepository;
-use Kompakt\B3d\Canonical\Unserializer\Xml\Product as ProductXmlUnserializer;
+use Kompakt\B3d\Canonical\Unserializer\Xml\Product as Unserializer;
 use Kompakt\B3d\DropDir\Runner;
 use Kompakt\B3d\DropDir\EventNames;
 use Kompakt\B3d\DropDir\Subscriber\Debugger;
@@ -52,12 +53,16 @@ $debugger = new Debugger(
     $eventNames
 );
 
-$unserializer = new ProductXmlUnserializer(
-    $dispatcher,
-    $eventNames,
+$unserializer = new Unserializer(
     $fileReader,
     $domLoader,
-    $domMapper,
+    $domMapper
+);
+
+$populator = new Populator(
+    $dispatcher,
+    $eventNames,
+    $unserializer,
     $repository
 );
 
@@ -65,7 +70,7 @@ $unserializer = new ProductXmlUnserializer(
 $timer = new Timer();
 $timer->start();
 #$debugger->activate();
-$unserializer->activate();
+$populator->activate();
 $runner->run();
 $timer->stop();
 

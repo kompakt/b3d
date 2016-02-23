@@ -37,7 +37,7 @@ class Product
 
         $this->fileWriter->write(
             $dom->saveXML(),
-            sprintf('%s/%s.xml', $this->dirPathname, uniqid())
+            sprintf('%s/%s.xml', $this->dirPathname, $product->getUuid())
         );
     }
 }
