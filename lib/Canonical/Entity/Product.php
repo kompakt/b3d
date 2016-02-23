@@ -14,6 +14,38 @@ use Kompakt\B3d\Canonical\Entity\Track;
 
 class Product
 {
+    // helpers
+    protected $albumSingleMerchValAlbum = 'album';
+    protected $albumSingleMerchValSingle = 'single';
+    protected $albumSingleMerchValMerch = 'merchandise';
+    protected $channelValPhysical = 'physical';
+    protected $channelValDigital = 'digital';
+
+    public function isAlbum()
+    {
+        return ($this->getAlbumSingleMerch() === $this->albumSingleMerchValAlbum);
+    }
+
+    public function isSingle()
+    {
+        return ($this->getAlbumSingleMerch() === $this->albumSingleMerchValSingle);
+    }
+
+    public function isMerch()
+    {
+        return ($this->getAlbumSingleMerch() === $this->albumSingleMerchValMerch);
+    }
+
+    public function isPhysical()
+    {
+        return ($this->getChannel() === $this->channelValPhysical);
+    }
+
+    public function isDigital()
+    {
+        return ($this->getChannel() === $this->channelValDigital);
+    }
+
     // associations
     protected $tracks = array();
 
