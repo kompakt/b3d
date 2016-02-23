@@ -86,8 +86,6 @@ class Runner
                     }
                 }
 
-                echo sprintf("%d - %s\n", $i, $fileInfo->getFilename());
-
                 if (!$this->file($fileInfo))
                 {
                     continue;
