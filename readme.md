@@ -1,23 +1,14 @@
-# Kompakt B3d
+# Kompakt\B3d
 
-Berlin3 "Details" API Connector, Schema Loader & Canonical Product Builder
+Berlin3 [Details](http://berlin3.com) API Wrapper
 
 ## Description
 
 Get data from "Details" endpoints, optionally cache results, load full graph per "Details" schema, build canonical product representation and serialize result to xml files.
 
-## Install
+Through Composer:
 
-+ `git clone https://github.com/kompakt/b3d.git`
-+ `cd b3d`
-+ `curl -sS https://getcomposer.org/installer | php`
-+ `php composer.phar install`
-
-## Tests
-
-+ `cp tests/config.php.dist config.php`
-+ Adjust `config.php` as needed
-+ `vendor/bin/phpunit`
++ `composer require kompakt/b3d`
 
 ## Examples
 
