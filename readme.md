@@ -6,6 +6,8 @@ Berlin3 [Details](http://berlin3.com) API Wrapper
 
 Get data from "Details" endpoints, optionally cache results, load full graph per "Details" schema, build canonical product representation and serialize result to xml files.
 
+## Installation
+
 Through Composer:
 
 + `composer require kompakt/b3d`
