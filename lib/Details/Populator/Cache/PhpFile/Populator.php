@@ -16,21 +16,21 @@ use Kompakt\B3d\Util\File\Reader;
 
 class Populator implements PopulatorInterface
 {
-    protected $fileReader = null;
     protected $dataMapper = null;
     protected $repository = null;
+    protected $fileReader = null;
     protected $filePathname = null;
 
     public function __construct(
-        Reader $fileReader,
         DataMapperInterface $dataMapper,
         RepositoryInterface $repository,
+        Reader $fileReader,
         $filePathname
     )
     {
-        $this->fileReader = $fileReader;
         $this->dataMapper = $dataMapper;
         $this->repository = $repository;
+        $this->fileReader = $fileReader;
         $this->filePathname = $filePathname;
     }
 

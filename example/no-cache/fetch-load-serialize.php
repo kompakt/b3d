@@ -133,62 +133,55 @@ $trackEndpoint = new TrackEndpoint(
 
 // populator runners
 $artistPopulator = new Populator(
-    $artistEndpoint,
     $artistMapper,
-    $artistRepository
+    $artistRepository,
+    $artistEndpoint
 );
 
 $labelPopulator = new Populator(
-    $labelEndpoint,
     $labelMapper,
-    $labelRepository
+    $labelRepository,
+    $labelEndpoint
 );
 
 $pricePopulator = new Populator(
-    $priceEndpoint,
     $priceMapper,
-    $priceRepository
+    $priceRepository,
+    $priceEndpoint
 );
 
 $productPopulator = new Populator(
-    $productEndpoint,
     $productMapper,
-    $productRepository
+    $productRepository,
+    $productEndpoint
 );
 
 $productTrackPopulator = new Populator(
-    $productTrackEndpoint,
     $productTrackMapper,
-    $productTrackRepository
+    $productTrackRepository,
+    $productTrackEndpoint
 );
 
 $releasePopulator = new Populator(
-    $releaseEndpoint,
     $releaseMapper,
-    $releaseRepository
+    $releaseRepository,
+    $releaseEndpoint
 );
 
 $trackPopulator = new Populator(
-    $trackEndpoint,
     $trackMapper,
-    $trackRepository
+    $trackRepository,
+    $trackEndpoint
 );
 
 // graph loader
 $graphLoader = new GraphLoader(
-    $artistRepository,
     $artistPopulator,
-    $labelRepository,
     $labelPopulator,
-    $priceRepository,
     $pricePopulator,
-    $productRepository,
     $productPopulator,
-    $productTrackRepository,
     $productTrackPopulator,
-    $releaseRepository,
     $releasePopulator,
-    $trackRepository,
     $trackPopulator
 );
 

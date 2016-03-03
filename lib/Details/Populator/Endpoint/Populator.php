@@ -17,19 +17,19 @@ use Kompakt\B3d\Util\File\Reader;
 
 class Populator implements PopulatorInterface
 {
-    protected $endpoint = null;
     protected $dataMapper = null;
     protected $repository = null;
+    protected $endpoint = null;
 
     public function __construct(
-        EndpointInterface $endpoint,
         DataMapperInterface $dataMapper,
-        RepositoryInterface $repository
+        RepositoryInterface $repository,
+        EndpointInterface $endpoint
     )
     {
-        $this->endpoint = $endpoint;
         $this->dataMapper = $dataMapper;
         $this->repository = $repository;
+        $this->endpoint = $endpoint;
     }
 
     /**

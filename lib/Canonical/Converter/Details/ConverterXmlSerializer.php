@@ -32,9 +32,9 @@ class ConverterXmlSerializer
 
     public function run()
     {
-        $releaseRepository = $this->graphLoader->load();
+        $detailsReleaseRepository = $this->graphLoader->load();
 
-        foreach ($releaseRepository->getAll() as $release)
+        foreach ($detailsReleaseRepository->getAll() as $release)
         {
             foreach ($release->getProducts() as $product)
             {

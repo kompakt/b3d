@@ -87,69 +87,62 @@ $trackRepository = new TrackRepository();
 
 // populator runners
 $artistPopulator = new Populator(
-    $fileReader,
     $artistMapper,
     $artistRepository,
+    $fileReader,
     $artistFilePathname
 );
 
 $labelPopulator = new Populator(
-    $fileReader,
     $labelMapper,
     $labelRepository,
+    $fileReader,
     $labelFilePathname
 );
 
 $pricePopulator = new Populator(
-    $fileReader,
     $priceMapper,
     $priceRepository,
+    $fileReader,
     $priceFilePathname
 );
 
 $productPopulator = new Populator(
-    $fileReader,
     $productMapper,
     $productRepository,
+    $fileReader,
     $productFilePathname
 );
 
 $productTrackPopulator = new Populator(
-    $fileReader,
     $productTrackMapper,
     $productTrackRepository,
+    $fileReader,
     $productTrackFilePathname
 );
 
 $releasePopulator = new Populator(
-    $fileReader,
     $releaseMapper,
     $releaseRepository,
+    $fileReader,
     $releaseFilePathname
 );
 
 $trackPopulator = new Populator(
-    $fileReader,
     $trackMapper,
     $trackRepository,
+    $fileReader,
     $trackFilePathname
 );
 
 // graph loader
 $graphLoader = new GraphLoader(
-    $artistRepository,
     $artistPopulator,
-    $labelRepository,
     $labelPopulator,
-    $priceRepository,
     $pricePopulator,
-    $productRepository,
     $productPopulator,
-    $productTrackRepository,
     $productTrackPopulator,
-    $releaseRepository,
     $releasePopulator,
-    $trackRepository,
     $trackPopulator
 );
 

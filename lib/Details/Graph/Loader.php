@@ -42,47 +42,33 @@ class Loader
     protected $missingTracks = 0;
 
     public function __construct(
-        ArtistRepository $artistRepository,
         PopulatorInterface $artistPopulator,
-        LabelRepository $labelRepository,
         PopulatorInterface $labelPopulator,
-        PriceRepository $priceRepository,
         PopulatorInterface $pricePopulator,
-        ProductRepository $productRepository,
         PopulatorInterface $productPopulator,
-        ProductTrackRepository $productTrackRepository,
         PopulatorInterface $productTrackPopulator,
-        ReleaseRepository $releaseRepository,
         PopulatorInterface $releasePopulator,
-        TrackRepository $trackRepository,
         PopulatorInterface $trackPopulator
     )
     {
-        $this->artistRepository = $artistRepository;
         $this->artistPopulator = $artistPopulator;
-        $this->labelRepository = $labelRepository;
         $this->labelPopulator = $labelPopulator;
-        $this->priceRepository = $priceRepository;
         $this->pricePopulator = $pricePopulator;
-        $this->productRepository = $productRepository;
         $this->productPopulator = $productPopulator;
-        $this->productTrackRepository = $productTrackRepository;
         $this->productTrackPopulator = $productTrackPopulator;
-        $this->releaseRepository = $releaseRepository;
         $this->releasePopulator = $releasePopulator;
-        $this->trackRepository = $trackRepository;
         $this->trackPopulator = $trackPopulator;
     }
 
     public function load()
     {
-        $this->artistPopulator->populate();
-        $this->labelPopulator->populate();
-        $this->pricePopulator->populate();
-        $this->productPopulator->populate();
-        $this->releasePopulator->populate();
-        $this->productTrackPopulator->populate();
-        $this->trackPopulator->populate();
+        $this->artistRepository = $this->artistPopulator->populate();
+        $this->labelRepository = $this->labelPopulator->populate();
+        $this->priceRepository = $this->pricePopulator->populate();
+        $this->productRepository = $this->productPopulator->populate();
+        $this->releaseRepository = $this->releasePopulator->populate();
+        $this->productTrackRepository = $this->productTrackPopulator->populate();
+        $this->trackRepository = $this->trackPopulator->populate();
 
         foreach ($this->releaseRepository->getAll() as $release)
         {
@@ -90,6 +76,41 @@ class Loader
         }
 
         return $this->releaseRepository;
+    }
+
+    public function getArtistRepository()
+    {
+        return $this->artistRepository;
+    }
+
+    public function getLabelRepository()
+    {
+        return $this->labelRepository;
+    }
+
+    public function getPriceRepository()
+    {
+        return $this->priceRepository;
+    }
+
+    public function getProductRepository()
+    {
+        return $this->productRepository;
+    }
+
+    public function getReleaseRepository()
+    {
+        return $this->releaseRepository;
+    }
+
+    public function getProductTrackRepository()
+    {
+        return $this->productTrackRepository;
+    }
+
+    public function getTrackRepository()
+    {
+        return $this->trackRepository;
     }
 
     public function getMissingArtists()
@@ -117,11 +138,8 @@ class Loader
 
             $artist = $this->artistRepository->getByLabelArtistId($label->getId());
 
-            if ($artist)
+            if (!$artist)
             {
-                #echo sprintf("%s\n", $artist->getName());
-            }
-            else {
                 $this->missingArtists++;
             }
         }

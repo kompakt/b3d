@@ -33,6 +33,35 @@ class ReleaseRepository implements RepositoryInterface
         ;
     }
 
+    public function getSlice($first, $max)
+    {
+        $first = (int) $first;
+        $first = ($first < 0) ? 0 : $first;
+        $max = (int) $max;
+        $max = ($max < 0) ? 0 : $max;
+        $releases = [];
+        $i = -1;
+
+        foreach ($this->releaseIds as $release)
+        {
+            $i++;
+
+            if ($i < $first)
+            {
+                continue;
+            }
+
+            if ($i > $first + $max - 1)
+            {
+                break;
+            }
+
+            $releases[] = $release;
+        }
+
+        return $releases;
+    }
+
     public function getAll()
     {
         return $this->releaseIds;
