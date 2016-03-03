@@ -13,8 +13,9 @@ use Kompakt\B3d\Canonical\Dom\Product\Builder as CanonicalProductDomBuilder;
 use Kompakt\B3d\Canonical\Entity\Price as CanonicalPrice;
 use Kompakt\B3d\Canonical\Entity\Product as CanonicalProduct;
 use Kompakt\B3d\Canonical\Entity\Track as CanonicalTrack;
+use Kompakt\B3d\Canonical\Converter\Details\ConverterRunner;
 use Kompakt\B3d\Canonical\Converter\Details\Product as CanonicalProductConverter;
-use Kompakt\B3d\Canonical\Converter\Details\ConverterXmlSerializer as CanonicalProductConverterXmlSerializer;
+use Kompakt\B3d\Canonical\Converter\Details\Subscriber\XmlSerializer as XmlSerializerSubscriber;
 use Kompakt\B3d\Canonical\Serializer\Xml\Product as CanonicalProductXmlSerializer;
 use Kompakt\B3d\Details\Entity\Artist;
 use Kompakt\B3d\Details\Entity\Label;
@@ -42,6 +43,9 @@ use Kompakt\B3d\Details\Populator\Cache\PhpFile\Populator;
 use Kompakt\B3d\Util\File\Reader;
 use Kompakt\B3d\Util\File\Writer;
 use Kompakt\B3d\Util\Timer\Timer;
+use Kompakt\CollectionRunner\EventNames;
+use Kompakt\CollectionRunner\Runner as CollectionRunner;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 // config
 $tmpDir = getTmpDir();
@@ -57,6 +61,9 @@ $trackFilePathname = sprintf('%s/php-cache-product-data/tracks.data', EXAMPLE_KO
 
 // general
 $fileReader = new Reader();
+$dispatcher = new EventDispatcher();
+$eventNames = new EventNames();
+$collectionRunner = new CollectionRunner($dispatcher, $eventNames);
 
 // entities
 $artist = new Artist();
@@ -135,7 +142,7 @@ $trackPopulator = new Populator(
     $trackFilePathname
 );
 
-// graph loader
+// graphloader
 $graphLoader = new GraphLoader(
     $artistPopulator,
     $labelPopulator,
@@ -146,29 +153,39 @@ $graphLoader = new GraphLoader(
     $trackPopulator
 );
 
-// converter stuff
+// converter
 $canonicalProductConverter = new CanonicalProductConverter(
     new CanonicalProduct(),
     new CanonicalTrack(),
     new CanonicalPrice()
 );
 
+// serializer
 $canonicalProductXmlSerializer = new CanonicalProductXmlSerializer(
     new CanonicalProductDomBuilder(),
     new Writer(),
     $canonicalProductTmpDirPathname
 );
 
-$canonicalProductConverterXmlSerializer = new CanonicalProductConverterXmlSerializer(
-    $graphLoader,
-    $canonicalProductConverter,
+$serializerSubscriber = new XmlSerializerSubscriber(
+    $dispatcher,
+    $eventNames,
     $canonicalProductXmlSerializer
+);
+
+// runner
+$converterRunner = new ConverterRunner(
+    $collectionRunner,
+    $graphLoader,
+    $canonicalProductConverter
 );
 
 // run
 $timer = new Timer();
 $timer->start();
-$canonicalProductConverterXmlSerializer->run();
+$serializerSubscriber->activate();
+$converterRunner->load();
+$converterRunner->run();
 $timer->stop();
 
 echo sprintf("Products: %s\n", count($productRepository->getAll()));
