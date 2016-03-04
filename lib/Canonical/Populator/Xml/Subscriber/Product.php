@@ -11,8 +11,8 @@ namespace Kompakt\B3d\Canonical\Populator\Xml\Subscriber;
 
 use Kompakt\B3d\Canonical\Repository\ProductRepository;
 use Kompakt\B3d\Canonical\Unserializer\Xml\Product as Unserializer;
-use Kompakt\B3d\DropDir\Event\FileEvent;
-use Kompakt\B3d\DropDir\EventNamesInterface;
+use Kompakt\DirectoryRunner\Event\FileEvent;
+use Kompakt\DirectoryRunner\EventNamesInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class Product

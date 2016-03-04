@@ -14,12 +14,12 @@ use Kompakt\B3d\Canonical\Entity\Track;
 use Kompakt\B3d\Canonical\Populator\Xml\Subscriber\Product as Populator;
 use Kompakt\B3d\Canonical\Repository\ProductRepository;
 use Kompakt\B3d\Canonical\Unserializer\Xml\Product as Unserializer;
-use Kompakt\B3d\DropDir\Runner;
-use Kompakt\B3d\DropDir\EventNames;
-use Kompakt\B3d\DropDir\Subscriber\Debugger;
 use Kompakt\B3d\Util\Dom\Loader as DomLoader;
 use Kompakt\B3d\Util\File\Reader;
 use Kompakt\B3d\Util\Timer\Timer;
+use Kompakt\DirectoryRunner\Runner;
+use Kompakt\DirectoryRunner\EventNames;
+use Kompakt\DirectoryRunner\Subscriber\Debugger;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 require sprintf('%s/bootstrap.php', dirname(__DIR__));

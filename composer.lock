@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a8efdf6d679da81d60d928c12248974f",
-    "content-hash": "a11ae59f033d6512a8b19306f936e46c",
+    "hash": "da426be0d0420b2006ca6b19c50c7b15",
+    "content-hash": "f4ff858176115cfe12ef17b5a2126140",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -223,6 +223,52 @@
             ],
             "description": "Little helper to run through a collection of things with event-emitting along the way",
             "time": "2016-03-02 16:42:53"
+        },
+        {
+            "name": "kompakt/directory-runner",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kompakt/directory-runner.git",
+                "reference": "2f9dc9a7e796fa5fda42ba6fc1c8605d499faa21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kompakt/directory-runner/zipball/2f9dc9a7e796fa5fda42ba6fc1c8605d499faa21",
+                "reference": "2f9dc9a7e796fa5fda42ba6fc1c8605d499faa21",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "symfony/event-dispatcher": "~2.8|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.1.*"
+            },
+            "suggest": {
+                "monolog/monolog": "~1.12",
+                "symfony/console": "~2.8|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kompakt\\DirectoryRunner\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Christian Hoegl",
+                    "email": "chrigu@sirprize.me"
+                }
+            ],
+            "description": "Little helper to run through a directory with event-emitting along the way",
+            "time": "2016-03-04 09:02:28"
         },
         {
             "name": "monolog/monolog",
@@ -1588,6 +1634,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kompakt/collection-runner": 20,
+        "kompakt/directory-runner": 20,
         "kompakt/test-helper": 20
     },
     "prefer-stable": false,
