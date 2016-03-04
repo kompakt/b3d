@@ -1,7 +1,7 @@
 {
     "name": "kompakt/b3d",
     "type": "library",
-    "description": "Berlin3 Details API Connector",
+    "description": "Berlin3 'Details' API Wrapper",
     "keywords": ["music", "erp"],
     "license": "MIT",
     "authors": [
@@ -12,12 +12,12 @@
         "guzzlehttp/guzzle": "~6.0",
         "kompakt/collection-runner": "~0.1@dev",
         "kompakt/directory-runner": "~0.1@dev",
-        "monolog/monolog": "~1.8",
         "symfony/event-dispatcher": "~2.8|~3.0"
     },
     "require-dev": {
+        "kompakt/test-helper": "~0.1@dev",
         "phpunit/phpunit": "5.1.*",
-        "kompakt/test-helper": "~0.1@dev"
+        "symfony/stopwatch": "~2.8|~3.0"
     },
     "autoload": {
         "psr-4": { "Kompakt\\B3d\\": "lib/" }

@@ -13,7 +13,7 @@ use GuzzleHttp\Client;
 use Kompakt\B3d\Details\Endpoint\Resource\Stock\Endpoint as StockEndpoint;
 use Kompakt\B3d\Details\Endpoint\Cache\PhpFile\Serializer as PhpFileSerializer;
 use Kompakt\B3d\Util\File\Writer;
-use Kompakt\B3d\Util\Timer\Timer;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 $tmpDir = getTmpDir();
 $phpSerializerTmpDirPathname = $tmpDir->replaceSubDir('php-cache-stock-data');
@@ -38,10 +38,9 @@ $stockPhpFileSerializer = new PhpFileSerializer(
 );
 
 // run
-$timer = new Timer();
-$timer->start();
-$stockPhpFileSerializer->serialize($stockEndpoint->fetch());
-$timer->stop();
+$stopwatch = new Stopwatch();
+$stopwatch->start('b3d', 'b3d');
+$stockPhpFileSerializer->serialize($stockEndpoint->fetch(['uuid-1', 'uuid-2']));
+$event = $stopwatch->stop('b3d');
 
-echo sprintf("Time: %s Sec\n", $timer->getSeconds(0));
-echo sprintf("Memory: %s Mb\n", round(memory_get_usage() / 1024 / 1024, 0));
+echo sprintf("%s\n", $event);

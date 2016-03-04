@@ -17,7 +17,7 @@ use Kompakt\B3d\Details\Populator\Cache\PhpFile\StockPopulator as FileStockPopul
 use Kompakt\B3d\Details\Populator\Data\StockPopulator as DataStockPopulator;
 use Kompakt\B3d\Util\File\Reader;
 use Kompakt\B3d\Util\File\Writer;
-use Kompakt\B3d\Util\Timer\Timer;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 // config
 $stockFilePathname = sprintf('%s/php-cache-stock-data/stocks.data', EXAMPLE_KOMPAKT_B3D_TEMP_DIR);
@@ -48,10 +48,10 @@ $fileStockPopulator = new FileStockPopulator(
 );
 
 // run
-$timer = new Timer();
-$timer->start();
+$stopwatch = new Stopwatch();
+$stopwatch->start('b3d', 'b3d');
 $fileStockPopulator->populate();
-$timer->stop();
+$event = $stopwatch->stop('b3d');
 
 foreach ($stockRepository->getAll() as $stock)
 {
@@ -59,6 +59,5 @@ foreach ($stockRepository->getAll() as $stock)
     print_r($stock->getAccounts());
 }
 
+echo sprintf("%s\n", $event);
 echo sprintf("Stock: %s\n", count($stockRepository->getAll()));
-echo sprintf("Memory: %s Mb\n", round(memory_get_usage() / 1024 / 1024, 0));
-echo sprintf("Time: %s Sec\n", $timer->getSeconds(0));

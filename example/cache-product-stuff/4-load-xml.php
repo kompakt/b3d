@@ -16,11 +16,11 @@ use Kompakt\B3d\Canonical\Repository\ProductRepository;
 use Kompakt\B3d\Canonical\Unserializer\Xml\Product as Unserializer;
 use Kompakt\B3d\Util\Dom\Loader as DomLoader;
 use Kompakt\B3d\Util\File\Reader;
-use Kompakt\B3d\Util\Timer\Timer;
 use Kompakt\DirectoryRunner\Runner;
 use Kompakt\DirectoryRunner\EventNames;
 use Kompakt\DirectoryRunner\Subscriber\Debugger;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
@@ -67,12 +67,12 @@ $populator = new Populator(
 );
 
 // run
-$timer = new Timer();
-$timer->start();
+$stopwatch = new Stopwatch();
+$stopwatch->start('b3d', 'b3d');
 #$debugger->activate();
 $populator->activate();
 $runner->run();
-$timer->stop();
+$event = $stopwatch->stop('b3d');
 
 foreach ($repository->getAll() as $product)
 {
@@ -84,6 +84,5 @@ foreach ($repository->getAll() as $product)
     }
 }
 
+echo sprintf("%s\n", $event);
 echo sprintf("Products: %s\n", count($repository->getAll()));
-echo sprintf("Memory: %s Mb\n", round(memory_get_usage() / 1024 / 1024, 0));
-echo sprintf("Time: %s Sec\n", $timer->getSeconds(0));

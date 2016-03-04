@@ -42,10 +42,10 @@ use Kompakt\B3d\Details\Endpoint\Resource\Track\Mapper as TrackMapper;
 use Kompakt\B3d\Details\Populator\Cache\PhpFile\Populator;
 use Kompakt\B3d\Util\File\Reader;
 use Kompakt\B3d\Util\File\Writer;
-use Kompakt\B3d\Util\Timer\Timer;
 use Kompakt\CollectionRunner\EventNames;
 use Kompakt\CollectionRunner\Runner as CollectionRunner;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 // config
 $tmpDir = getTmpDir();
@@ -181,13 +181,14 @@ $converterRunner = new ConverterRunner(
 );
 
 // run
-$timer = new Timer();
-$timer->start();
+$stopwatch = new Stopwatch();
+$stopwatch->start('b3d', 'b3d');
 $serializerSubscriber->activate();
 $converterRunner->load();
 $converterRunner->run();
-$timer->stop();
+$event = $stopwatch->stop('b3d');
 
+echo sprintf("%s\n", $event);
 echo sprintf("Products: %s\n", count($productRepository->getAll()));
 echo sprintf("Prices: %s\n", count($priceRepository->getAll()));
 echo sprintf("ProductTracks: %s\n", count($productTrackRepository->getAll()));
@@ -196,5 +197,3 @@ echo sprintf("Tracks: %s\n", count($trackRepository->getAll()));
 echo sprintf("Missing artists: %s\n", $graphLoader->getMissingArtists());
 echo sprintf("Missing labels: %s\n", $graphLoader->getMissingLabels());
 echo sprintf("Missing tracks: %s\n", $graphLoader->getMissingTracks());
-echo sprintf("Memory: %s Mb\n", round(memory_get_usage() / 1024 / 1024, 0));
-echo sprintf("Time: %s Sec\n", $timer->getSeconds(0));

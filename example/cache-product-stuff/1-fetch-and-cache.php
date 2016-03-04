@@ -19,7 +19,7 @@ use Kompakt\B3d\Details\Endpoint\Resource\Release\Endpoint as ReleaseEndpoint;
 use Kompakt\B3d\Details\Endpoint\Resource\Track\Endpoint as TrackEndpoint;
 use Kompakt\B3d\Details\Endpoint\Cache\PhpFile\Serializer as PhpFileSerializer;
 use Kompakt\B3d\Util\File\Writer;
-use Kompakt\B3d\Util\Timer\Timer;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 $tmpDir = getTmpDir();
 $phpSerializerTmpDirPathname = $tmpDir->replaceSubDir('php-cache-product-data');
@@ -116,8 +116,8 @@ $trackPhpFileSerializer = new PhpFileSerializer(
 );
 
 // run
-$timer = new Timer();
-$timer->start();
+$stopwatch = new Stopwatch();
+$stopwatch->start('b3d', 'b3d');
 $artistPhpFileSerializer->serialize($artistEndpoint->fetchAll());
 $labelPhpFileSerializer->serialize($labelEndpoint->fetchAll());
 $pricePhpFileSerializer->serialize($priceEndpoint->fetchAll());
@@ -125,7 +125,6 @@ $productPhpFileSerializer->serialize($productEndpoint->fetchAll());
 $productTrackPhpFileSerializer->serialize($productTrackEndpoint->fetchAll());
 $releasePhpFileSerializer->serialize($releaseEndpoint->fetchAll());
 $trackPhpFileSerializer->serialize($trackEndpoint->fetchAll());
-$timer->stop();
+$event = $stopwatch->stop('b3d');
 
-echo sprintf("Time: %s Sec\n", $timer->getSeconds(0));
-echo sprintf("Memory: %s Mb\n", round(memory_get_usage() / 1024 / 1024, 0));
+echo sprintf("%s\n", $event);
