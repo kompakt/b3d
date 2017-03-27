@@ -300,10 +300,8 @@ class Product
     protected $productInfoSecond = null;
     protected $productTypeId = null;
     protected $productTypeName = null;
+    protected $productTypeId2 = null;
     protected $productTypeName2 = null;
-    protected $productType2Id = null;
-    protected $productType2Name = null;
-    protected $productType2Name2 = null;
     protected $proformaPrice = null;
     #protected $releaseId = null;
     protected $releaseShift = null;
@@ -684,6 +682,16 @@ class Product
         return $this->productTypeName;
     }
 
+    public function setProductTypeId2($productTypeId2)
+    {
+        $this->productTypeId2 = $productTypeId2;
+    }
+
+    public function getProductTypeId2()
+    {
+        return $this->productTypeId2;
+    }
+
     public function setProductTypeName2($productTypeName2)
     {
         $this->productTypeName2 = $productTypeName2;
@@ -692,36 +700,6 @@ class Product
     public function getProductTypeName2()
     {
         return $this->productTypeName2;
-    }
-
-    public function setProductType2Id($productType2Id)
-    {
-        $this->productType2Id = $productType2Id;
-    }
-
-    public function getProductType2Id()
-    {
-        return $this->productType2Id;
-    }
-
-    public function setProductType2Name($productType2Name)
-    {
-        $this->productType2Name = $productType2Name;
-    }
-
-    public function getProductType2Name()
-    {
-        return $this->productType2Name;
-    }
-
-    public function setProductType2Name2($productType2Name2)
-    {
-        $this->productType2Name2 = $productType2Name2;
-    }
-
-    public function getProductType2Name2()
-    {
-        return $this->productType2Name2;
     }
 
     public function setProformaPrice($proformaPrice)

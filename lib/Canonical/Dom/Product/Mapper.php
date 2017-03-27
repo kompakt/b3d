@@ -115,10 +115,8 @@ class Mapper extends AbstractMapper
         $product->setProductInfoSecond($this->getDomVal($dom, 'productInfoSecond'));
         $product->setProductTypeId($this->getDomVal($dom, 'productTypeId'));
         $product->setProductTypeName($this->getDomVal($dom, 'productTypeName'));
+        $product->setProductTypeId2($this->getDomVal($dom, 'productTypeId2'));
         $product->setProductTypeName2($this->getDomVal($dom, 'productTypeName2'));
-        $product->setProductType2Id($this->getDomVal($dom, 'productType2Id'));
-        $product->setProductType2Name($this->getDomVal($dom, 'productType2Name'));
-        $product->setProductType2Name2($this->getDomVal($dom, 'productType2Name2'));
         $product->setProformaPrice($this->getDomVal($dom, 'proformaPrice'));
         $product->setReleaseId($this->getDomVal($dom, 'releaseId'));
         $product->setReleaseShift($this->getDomVal($dom, 'releaseShift'));

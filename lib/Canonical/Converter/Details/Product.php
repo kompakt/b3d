@@ -102,10 +102,8 @@ class Product
         $product->setProductInfoSecond($this->stripUtf($detailsProduct->getProductInfoSecond()));
         $product->setProductTypeId($this->stripUtf($detailsProduct->getProductTypeId()));
         $product->setProductTypeName($this->stripUtf($detailsProduct->getProductTypeName()));
+        $product->setProductTypeId2($this->stripUtf($detailsProduct->getProductTypeId2()));
         $product->setProductTypeName2($this->stripUtf($detailsProduct->getProductTypeName2()));
-        $product->setProductType2Id($this->stripUtf($detailsProduct->getProductType2Id()));
-        $product->setProductType2Name($this->stripUtf($detailsProduct->getProductType2Name()));
-        $product->setProductType2Name2($this->stripUtf($detailsProduct->getProductType2Name2()));
         $product->setProformaPrice($this->stripUtf($detailsProduct->getProformaPrice()));
         $product->setReleaseId($this->stripUtf($detailsProduct->getReleaseId()));
         $product->setReleaseShift($this->stripUtf($detailsProduct->getReleaseShift()));

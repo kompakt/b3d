@@ -64,10 +64,8 @@ class Mapper implements DataMapperInterface
         $product->setProductInfoSecond(trim($data['product_info_second']));
         $product->setProductTypeId(trim($data['product_type_id']));
         $product->setProductTypeName(trim($data['product_type_name']));
+        $product->setProductTypeId2(trim($data['product_type_id2']));
         $product->setProductTypeName2(trim($data['product_type_name2']));
-        $product->setProductType2Id(trim($data['product_type2_id']));
-        $product->setProductType2Name(trim($data['product_type2_name']));
-        $product->setProductType2Name2(trim($data['product_type_id2']));  # product_type_id2 >> product_type2_name2
         $product->setProformaPrice(trim($data['proforma_price']));
         $product->setReleaseId(trim($data['release_id']));
         $product->setReleaseShift(trim($data['release_shift']));

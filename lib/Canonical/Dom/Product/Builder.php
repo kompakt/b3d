@@ -103,10 +103,8 @@ class Builder
         $root->appendChild($dom->createElement('productInfoSecond', htmlspecialchars($product->getProductInfoSecond())));
         $root->appendChild($dom->createElement('productTypeId', htmlspecialchars($product->getProductTypeId())));
         $root->appendChild($dom->createElement('productTypeName', htmlspecialchars($product->getProductTypeName())));
+        $root->appendChild($dom->createElement('productTypeId2', htmlspecialchars($product->getProductTypeId2())));
         $root->appendChild($dom->createElement('productTypeName2', htmlspecialchars($product->getProductTypeName2())));
-        $root->appendChild($dom->createElement('productType2Id', htmlspecialchars($product->getProductType2Id())));
-        $root->appendChild($dom->createElement('productType2Name', htmlspecialchars($product->getProductType2Name())));
-        $root->appendChild($dom->createElement('productType2Name2', htmlspecialchars($product->getProductType2Name2())));
         $root->appendChild($dom->createElement('proformaPrice', htmlspecialchars($product->getProformaPrice())));
         $root->appendChild($dom->createElement('releaseId', htmlspecialchars($product->getReleaseId())));
         $root->appendChild($dom->createElement('releaseShift', htmlspecialchars($product->getReleaseShift())));
