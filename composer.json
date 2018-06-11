@@ -5,26 +5,26 @@
     "keywords": ["music", "erp"],
     "license": "MIT",
     "authors": [
-        { "name": "Christian Hoegl", "email": "chrigu@sirprize.me" }
+        { "name": "Christian Högl", "email": "chrigu@sirprize.me" }
     ],
     "require": {
         "php": ">=5.4.0",
         "guzzlehttp/guzzle": "~6.0",
-        "kompakt/collection-runner": "~0.1@dev",
-        "kompakt/directory-runner": "~0.1@dev",
-        "symfony/event-dispatcher": "~2.8|~3.0"
+        "kompakt/collection-runner": "^1.0.0",
+        "kompakt/directory-runner": "^1.1.1",
+        "symfony/event-dispatcher": "~2.8|~3.0|~4.0"
     },
     "require-dev": {
-        "kompakt/test-helper": "~0.1@dev",
-        "phpunit/phpunit": "5.1.*",
-        "symfony/stopwatch": "~2.8|~3.0"
+        "kompakt/test-helper": "^1.0.0",
+        "phpunit/phpunit": "^5.0",
+        "symfony/stopwatch": "~2.8|~3.0|~4.0"
     },
     "autoload": {
         "psr-4": { "Kompakt\\B3d\\": "lib/" }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1-dev"
+            "dev-master": "1.1-dev"
         }
     }
 }
