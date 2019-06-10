@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ad2e2025f9d4e5e54faa94ef80d4a69",
+    "content-hash": "9fe2b1de035f98f395b941c81772de55",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -195,12 +195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kompakt/collection-runner.git",
-                "reference": "c6276307295fc2a333cc28ec8423d8fefc9d50cf"
+                "reference": "38a801a3f3122c27235fd24627960b7585517981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kompakt/collection-runner/zipball/c6276307295fc2a333cc28ec8423d8fefc9d50cf",
-                "reference": "c6276307295fc2a333cc28ec8423d8fefc9d50cf",
+                "url": "https://api.github.com/repos/kompakt/collection-runner/zipball/38a801a3f3122c27235fd24627960b7585517981",
+                "reference": "38a801a3f3122c27235fd24627960b7585517981",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
                 }
             ],
             "description": "Little helper to run through a collection of things with event-emitting along the way",
-            "time": "2019-06-10T17:54:42+00:00"
+            "time": "2019-06-10T18:19:02+00:00"
         },
         {
             "name": "kompakt/directory-runner",
