@@ -11,8 +11,8 @@
         "php": ">=5.4.0",
         "guzzlehttp/guzzle": "~6.0",
         "kompakt/collection-runner": "~2.0@dev",
-        "kompakt/directory-runner": "^1.1.1",
-        "symfony/event-dispatcher": "~2.8|~3.0|~4.0"
+        "kompakt/directory-runner": "~2.0@dev",
+        "symfony/event-dispatcher": "~2.8|~3.0|~4.2.0"
     },
     "require-dev": {
         "kompakt/test-helper": "^1.0.0",
