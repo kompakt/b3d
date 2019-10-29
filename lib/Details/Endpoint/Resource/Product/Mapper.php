@@ -48,7 +48,7 @@ class Mapper implements DataMapperInterface
         $product->setDownloadYesNo(trim($data['download_yes_no']));
         $product->setFormatId(trim($data['format_id']));
         $product->setFormatName(trim($data['format_name']));
-        $product->setGroups(trim($data['groups']));
+        $product->setGroups(trim($data['price_code_groups']));
         $product->setHeadline(trim($data['headline']));
         $product->setIdentifier(trim($data['identifier']));
         $product->setInternalFlag(trim($data['internal_flag']));
