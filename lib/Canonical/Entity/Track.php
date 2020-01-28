@@ -20,7 +20,7 @@ class Track
     #protected $productId = null;
     protected $side = null;
     protected $productIsrc = null;
-    #protected $playtime = null;
+    protected $playtime = null;
 
     public function setSeqNo($seqNo)
     {
@@ -102,7 +102,7 @@ class Track
         return $this->productIsrc;
     }
 
-    /*public function setPlaytime($playtime)
+    public function setPlaytime($playtime)
     {
         $this->playtime = $playtime;
     }
@@ -110,7 +110,7 @@ class Track
     public function getPlaytime()
     {
         return $this->playtime;
-    }*/
+    }
 
     // track fields
     protected $uuid = null;
@@ -123,7 +123,7 @@ class Track
     protected $language = null;
     protected $pLine = null;
     protected $pYear = null;
-    protected $playtime = null;
+    #protected $playtime = null;
     protected $productIdMain = null;
     protected $songId = null;
     protected $title = null;
@@ -231,7 +231,7 @@ class Track
         return $this->pYear;
     }
 
-    public function setPlaytime($playtime)
+    /*public function setPlaytime($playtime)
     {
         $this->playtime = $playtime;
     }
@@ -239,7 +239,7 @@ class Track
     public function getPlaytime()
     {
         return $this->playtime;
-    }
+    }*/
 
     public function setProductIdMain($productIdMain)
     {

@@ -139,7 +139,7 @@ class Product
             $track->setBonusTrackFlag($this->stripUtf($detailsProductTrack->getBonusTrackFlag()));
             $track->setSide($this->stripUtf($detailsProductTrack->getSide()));
             $track->setProductIsrc($this->stripUtf($detailsProductTrack->getProductIsrc()));
-            #$track->setPlaytime($this->stripUtf($detailsProductTrack->getPlaytime()));
+            $track->setPlaytime($this->stripUtf($detailsProductTrack->getPlaytime()));
 
             // track fields
             $track->setUuid($this->stripUtf($detailsProductTrack->getTrack()->getUuid()));
@@ -152,7 +152,7 @@ class Product
             $track->setLanguage($this->stripUtf($detailsProductTrack->getTrack()->getLanguage()));
             $track->setPLine($this->stripUtf($detailsProductTrack->getTrack()->getPLine()));
             $track->setPYear($this->stripUtf($detailsProductTrack->getTrack()->getPYear()));
-            $track->setPlaytime($this->stripUtf($detailsProductTrack->getTrack()->getPlaytime()));
+            #$track->setPlaytime($this->stripUtf($detailsProductTrack->getTrack()->getPlaytime()));
             $track->setProductIdMain($this->stripUtf($detailsProductTrack->getTrack()->getProductIdMain()));
             $track->setSongId($this->stripUtf($detailsProductTrack->getTrack()->getSongId()));
             $track->setTitle($this->stripUtf($detailsProductTrack->getTrack()->getTitle()));
