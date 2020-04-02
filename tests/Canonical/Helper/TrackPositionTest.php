@@ -5,8 +5,9 @@ namespace Kompakt\B3d\Tests\Canonical\Helper;
 use Kompakt\B3d\Canonical\Entity\Product;
 use Kompakt\B3d\Canonical\Entity\Track;
 use Kompakt\B3d\Canonical\Helper\TrackPosition;
+use PHPUnit\Framework\TestCase;
 
-class TrackPositionTest extends \PHPUnit_Framework_TestCase
+class TrackPositionTest extends TestCase
 {
     public function testGetPosition()
     {

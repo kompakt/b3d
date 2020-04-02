@@ -8,15 +8,15 @@
         { "name": "Christian Högl", "email": "chrigu@sirprize.me" }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": "^7.3",
         "guzzlehttp/guzzle": "~6.0",
         "kompakt/collection-runner": "~2.0@dev",
         "kompakt/directory-runner": "~2.0@dev",
         "symfony/event-dispatcher": "~2.8|~3.0|~4.0"
     },
     "require-dev": {
-        "kompakt/test-helper": "^1.0.0",
-        "phpunit/phpunit": "^5.0",
+        "kompakt/test-helper": "~1.1@dev",
+        "phpunit/phpunit": "^9.0",
         "symfony/stopwatch": "~2.8|~3.0|~4.0"
     },
     "autoload": {
