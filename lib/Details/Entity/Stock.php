@@ -16,14 +16,14 @@ class Stock
     protected $productUuid = null;
     protected $accounts = [];
 
-    public function setProductUuid($productId)
+    public function setProductUuid($productUuid)
     {
-        $this->productId = $productId;
+        $this->productUuid = $productUuid;
     }
 
     public function getProductUuid()
     {
-        return $this->productId;
+        return $this->productUuid;
     }
 
     public function addAccount(StockAccount $account)
