@@ -11,10 +11,9 @@ require sprintf('%s/bootstrap.php', dirname(__DIR__));
 
 use Kompakt\B3d\Details\Entity\VatRate;
 use Kompakt\B3d\Details\Repository\VatRateRepository;
-use Kompakt\B3d\Details\Endpoint\Resource\VatRate\Mapper as VatRateMapper;
+use Kompakt\B3d\Details\Endpoint\Resource\VatRate\Mapper;
 use Kompakt\B3d\Details\Populator\Cache\PhpFile\Populator;
 use Kompakt\B3d\Util\File\Reader;
-use Kompakt\B3d\Util\File\Writer;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 // config
@@ -27,7 +26,7 @@ $fileReader = new Reader();
 $vatrate = new VatRate();
 
 // data-mapper
-$vatrateMapper = new VatRateMapper($vatrate);
+$vatrateMapper = new Mapper($vatrate);
 
 // repo
 $vatrateRepository = new VatRateRepository();
