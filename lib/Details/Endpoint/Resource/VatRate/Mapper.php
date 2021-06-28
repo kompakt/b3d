@@ -21,9 +21,6 @@ class Mapper implements DataMapperInterface
         $this->vatRatePrototype = $vatRatePrototype;
     }
 
-    /**
-     * @see DataMapperInterface::map()
-     */
     public function map(array $data)
     {
         $vatRate = clone $this->vatRatePrototype;

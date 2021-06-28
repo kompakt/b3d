@@ -11,9 +11,8 @@ namespace Kompakt\B3d\Details\Endpoint\Resource\VatRate;
 
 use GuzzleHttp\Client;
 use Kompakt\B3d\Details\Endpoint\Resource\Exception\UnexpectedValueException;
-use Kompakt\B3d\Details\Populator\Endpoint\EndpointInterface;
 
-class Endpoint implements EndpointInterface
+class Endpoint
 {
     protected $client = null;
     protected $baseUrl = null;
@@ -26,17 +25,15 @@ class Endpoint implements EndpointInterface
         $this->apiKey = $apiKey;
     }
 
-    /**
-     * @see EndpointInterface::fetchAll()
-     */
-    public function fetchAll()
+    public function fetchAll(\DateTime $startingDate)
     {
         try {
             $queryParams = [
                 'api_key' => $this->apiKey,
                 'output_format' => 'json',
                 'action' => 'custom_sql',
-                'custom_sql_id' => 405
+                'custom_sql_id' => 405,
+                '1' => $startingDate->format('Y-m-d')
             ];
 
             $params = [

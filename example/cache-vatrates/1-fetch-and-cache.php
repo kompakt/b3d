@@ -40,7 +40,11 @@ $vatratePhpFileSerializer = new PhpFileSerializer(
 // run
 $stopwatch = new Stopwatch();
 $stopwatch->start('b3d', 'b3d');
-$vatratePhpFileSerializer->serialize($vatrateEndpoint->fetchAll());
-$event = $stopwatch->stop('b3d');
 
+$tz = new \DateTimeZone('Europe/Berlin');
+$now = new \DateTime('20210701', $tz);
+
+$vatratePhpFileSerializer->serialize($vatrateEndpoint->fetchAll($now));
+
+$event = $stopwatch->stop('b3d');
 echo sprintf("%s\n", $event);

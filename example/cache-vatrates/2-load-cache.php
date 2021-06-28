@@ -45,11 +45,30 @@ $stopwatch->start('b3d', 'b3d');
 $fileVatRatePopulator->populate();
 $event = $stopwatch->stop('b3d');
 
+$uuids = [];
+$territories = [];
+
 foreach ($vatrateRepository->getAll() as $vatrate)
 {
-    echo sprintf("%s\n", $vatrate->getUuid());
-    print_r($vatrate);
+    if (!array_key_exists($vatrate->getUuid(), $uuids))
+    {
+        $uuids[$vatrate->getUuid()] = 0;
+    }
+    else {
+        $uuids[$vatrate->getUuid()]++;
+    }
+
+    if (!array_key_exists($vatrate->getVatTerritory(), $territories))
+    {
+        $territories[$vatrate->getVatTerritory()] = 0;
+    }
+    else {
+        $territories[$vatrate->getVatTerritory()]++;
+    }
 }
+
+print_r($uuids);
+print_r($territories);
 
 echo sprintf("%s\n", $event);
 echo sprintf("VatRate: %s\n", count($vatrateRepository->getAll()));

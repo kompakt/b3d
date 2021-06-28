@@ -14,7 +14,8 @@ use Kompakt\B3d\Details\Populator\RepositoryInterface;
 
 class VatRateRepository implements RepositoryInterface
 {
-    protected $uuids = array();
+    protected $vatRates = [];
+    protected $territories = [];
 
     /**
      * @see RepositoryInterface::add()
@@ -24,22 +25,36 @@ class VatRateRepository implements RepositoryInterface
         $this->addVatRate($vatRate);
     }
 
-    public function getByUuid($uuid)
+    public function getByTerritoryAndFormatId($territory, $formatId)
     {
-        return
-            (array_key_exists($uuid, $this->uuids))
-            ? $this->uuids[$uuid]
-            : null
-        ;
+        if (array_key_exists($territory, $this->territories))
+        {
+            if (array_key_exists($formatId, $this->territories[$territory]))
+            {
+                return $this->territories[$territory][$formatId];
+            }
+        }
+
+        return null;
     }
 
     public function getAll()
     {
-        return $this->uuids;
+        return $this->vatRates;
     }
 
     protected function addVatRate(VatRate $vatRate)
     {
-        $this->uuids[$vatRate->getUuid()] = $vatRate;
+        $this->vatRates[] = $vatRate;
+
+        $territory = $vatRate->getVatTerritory();
+        $formatId = $vatRate->getFormatId();
+
+        if (!array_key_exists($territory, $this->territories))
+        {
+            $this->territories[$territory] = [];
+        }
+
+        $this->territories[$territory][$formatId] = $vatRate;
     }
 }
