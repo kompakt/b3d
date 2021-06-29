@@ -52,23 +52,23 @@ foreach ($vatrateRepository->getAll() as $vatrate)
 {
     if (!array_key_exists($vatrate->getUuid(), $uuids))
     {
-        $uuids[$vatrate->getUuid()] = 0;
+        $uuids[$vatrate->getUuid()] = [];
     }
     else {
-        $uuids[$vatrate->getUuid()]++;
+        $uuids[$vatrate->getUuid()][] = $vatrate;
     }
 
     if (!array_key_exists($vatrate->getVatTerritory(), $territories))
     {
-        $territories[$vatrate->getVatTerritory()] = 0;
+        $territories[$vatrate->getVatTerritory()] = [];
     }
     else {
-        $territories[$vatrate->getVatTerritory()]++;
+        $territories[$vatrate->getVatTerritory()][] = $vatrate;
     }
 }
 
-print_r($uuids);
-print_r($territories);
+#print_r($uuids);
+print_r($territories['SI']);
 
 echo sprintf("%s\n", $event);
 echo sprintf("VatRate: %s\n", count($vatrateRepository->getAll()));
