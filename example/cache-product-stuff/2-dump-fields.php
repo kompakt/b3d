@@ -34,6 +34,15 @@ foreach ($files as $file)
 
     foreach ($items as $item)
     {
+        #print_r($item);die;
+
+        /*if (array_key_exists('barcode', $item) && $item['barcode'] == '4250101429729')
+        {
+            print_r($item);
+        }
+
+        continue;*/
+
         $fields = [];
 
         foreach ($item as $k => $v)
