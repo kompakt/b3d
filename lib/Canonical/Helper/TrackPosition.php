@@ -25,7 +25,7 @@ class TrackPosition
             $set = (int) $track->getSetNo();
             $sequence = (int) $track->getSeqNo();
 
-            if (!$set || !$sequence)
+            if (!is_int($set) || !is_int($sequence))
             {
                 $hasError = true;
                 continue;
