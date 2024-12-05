@@ -66,6 +66,14 @@ class Product
 
         // product fields
         $product->setUuid($this->stripUtf($detailsProduct->getUuid()));
+        $product->setAltArtist($this->stripUtf($detailsProduct->getAltArtist()));
+        $product->setAltTitle($this->stripUtf($detailsProduct->getAltTitle()));
+
+        if ($detailsProduct->getProductDate())
+        {
+            $product->setProductDate($detailsProduct->getProductDate());
+        }
+
         $product->setAlbumSingleMerch($this->stripUtf($detailsProduct->getAlbumSingleMerch()));
         $product->setArtworkProduct1($this->stripUtf($detailsProduct->getArtworkProduct1()));
         $product->setArtworkProduct2($this->stripUtf($detailsProduct->getArtworkProduct2()));

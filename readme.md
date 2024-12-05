@@ -14,7 +14,7 @@ Through Composer:
 
 ## Introduction
 
-The Berlin3 [Details](http://berlin3.com) software for music businesses provides rudimentary data access in the form of full table dumps. It's up to the user to construct the graph and assemble a data model for further usage. The following entities are available: releases, products, artists, labels, prices, product-tracks, tracks and stock. These entities build up the following structure:
+The Berlin3 [Details](http://berlin3.com) software for music businesses provides data access in the form of full table dumps. It's up to the user to construct the graph and assemble a data model for further usage. The following entities are available: releases, products, artists, labels, prices, product-tracks, tracks and stock. These entities build up the following structure:
 
 ```
 + release (1)
@@ -60,7 +60,7 @@ $artistEndpoint = new Endpoint(
 
 $rawArtistData = $artistEndpoint->fetchAll();
 ```
-
+    
 ### Caching
 
 ```php

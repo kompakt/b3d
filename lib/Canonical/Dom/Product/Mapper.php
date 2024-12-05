@@ -65,6 +65,16 @@ class Mapper extends AbstractMapper
 
         // product-fields
         $product->setUuid($this->getDomVal($dom, 'uuid'));
+        $product->setAltArtist($this->getDomVal($dom, 'altArtist'));
+        $product->setAltTitle($this->getDomVal($dom, 'altTitle'));
+
+        $productDate = $this->toDate($this->getDomVal($dom, 'productDate'));
+
+        if ($productDate)
+        {
+            $product->setProductDate($productDate);
+        }
+
         $product->setAlbumSingleMerch($this->getDomVal($dom, 'albumSingleMerch'));
         $product->setArtworkProduct1($this->getDomVal($dom, 'artworkProduct1'));
         $product->setArtworkProduct2($this->getDomVal($dom, 'artworkProduct2'));

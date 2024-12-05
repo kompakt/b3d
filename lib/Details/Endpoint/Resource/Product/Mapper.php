@@ -29,6 +29,14 @@ class Mapper implements DataMapperInterface
         $product = clone $this->productPrototype;
         $product->setUuid(trim($data['UUID']));
         $product->setAlbumSingleMerch(trim($data['album_single_merch']));
+        $product->setAltArtist(trim($data['alt_artist']));
+        $product->setAltTitle(trim($data['alt_title']));
+
+        if ($data['product_date'])
+        {
+            $product->setProductDate(new \DateTime(trim($data['product_date'])));
+        }
+
         $product->setArtworkProduct1(trim($data['artwork_product1']));
         $product->setArtworkProduct2(trim($data['artwork_product2']));
         $product->setAttribute1(trim($data['attribute1']));

@@ -23,6 +23,9 @@ class Product
     // properties
     protected $uuid = null;
     protected $albumSingleMerch = null;
+    protected $altArtist = null;
+    protected $altTitle = null;
+    protected $productDate = null;
     protected $artworkProduct1 = null;
     protected $artworkProduct2 = null;
     protected $attribute1 = null;
@@ -118,6 +121,36 @@ class Product
     public function getAlbumSingleMerch()
     {
         return $this->albumSingleMerch;
+    }
+
+    public function setAltArtist($altArtist)
+    {
+        $this->altArtist = $altArtist;
+    }
+
+    public function getAltArtist()
+    {
+        return $this->altArtist;
+    }
+
+    public function setAltTitle($altTitle)
+    {
+        $this->altTitle = $altTitle;
+    }
+
+    public function getAltTitle()
+    {
+        return $this->altTitle;
+    }
+
+    public function setProductDate(\DateTime $productDate)
+    {
+        $this->productDate = $productDate;
+    }
+
+    public function getProductDate()
+    {
+        return $this->productDate;
     }
 
     public function setArtworkProduct1($artworkProduct1)

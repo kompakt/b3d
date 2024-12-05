@@ -53,6 +53,16 @@ class Builder
 
         // product-fields
         $root->appendChild($dom->createElement('uuid', htmlspecialchars($product->getUuid())));
+        $root->appendChild($dom->createElement('altArtist', htmlspecialchars($product->getAltArtist())));
+        $root->appendChild($dom->createElement('altTitle', htmlspecialchars($product->getAltTitle())));
+
+        $productDate
+            = ($product->getProductDate())
+            ? htmlspecialchars($product->getProductDate()->format('Y-m-d'))
+            : null
+        ;
+
+        $root->appendChild($dom->createElement('productDate', $productDate));
         $root->appendChild($dom->createElement('albumSingleMerch', htmlspecialchars($product->getAlbumSingleMerch())));
         $root->appendChild($dom->createElement('artworkProduct1', htmlspecialchars($product->getArtworkProduct1())));
         $root->appendChild($dom->createElement('artworkProduct2', htmlspecialchars($product->getArtworkProduct2())));
