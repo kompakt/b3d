@@ -86,6 +86,6 @@ class TrackPositionTest extends TestCase
 
         $position = new TrackPosition($product);
         $this->assertEquals(1, $position->getPosition($track11));
-        $this->assertEquals(1, $position->getPosition($track12));
+        $this->assertEquals(2, $position->getPosition($track12));
     }
 }
