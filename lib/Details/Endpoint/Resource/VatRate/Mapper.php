@@ -9,10 +9,11 @@
 
 namespace Kompakt\B3d\Details\Endpoint\Resource\VatRate;
 
+use Kompakt\B3d\Details\Endpoint\Resource\BaseMapper;
 use Kompakt\B3d\Details\Entity\VatRate;
 use Kompakt\B3d\Details\Populator\DataMapperInterface;
 
-class Mapper implements DataMapperInterface
+class Mapper extends BaseMapper implements DataMapperInterface
 {
     protected $vatRatePrototype = null;
 
@@ -24,13 +25,13 @@ class Mapper implements DataMapperInterface
     public function map(array $data)
     {
         $vatRate = clone $this->vatRatePrototype;
-        $vatRate->setUuid(trim($data['uuid']));
-        $vatRate->setFormatName(trim($data['format_name']));
-        $vatRate->setFormatId(trim($data['format_id']));
-        $vatRate->setVatClass(trim($data['vat_class']));
-        $vatRate->setVatClassName(trim($data['vat_class_name']));
-        $vatRate->setVatTerritory(trim($data['vat_territory']));
-        $vatRate->setVatRate(trim($data['vat_rate']));
+        $vatRate->setUuid($this->trim($data['uuid']));
+        $vatRate->setFormatName($this->trim($data['format_name']));
+        $vatRate->setFormatId($this->trim($data['format_id']));
+        $vatRate->setVatClass($this->trim($data['vat_class']));
+        $vatRate->setVatClassName($this->trim($data['vat_class_name']));
+        $vatRate->setVatTerritory($this->trim($data['vat_territory']));
+        $vatRate->setVatRate($this->trim($data['vat_rate']));
         return $vatRate;
     }
 }

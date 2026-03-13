@@ -9,10 +9,11 @@
 
 namespace Kompakt\B3d\Details\Endpoint\Resource\Label;
 
+use Kompakt\B3d\Details\Endpoint\Resource\BaseMapper;
 use Kompakt\B3d\Details\Entity\Label;
 use Kompakt\B3d\Details\Populator\DataMapperInterface;
 
-class Mapper implements DataMapperInterface
+class Mapper extends BaseMapper implements DataMapperInterface
 {
     protected $labelPrototype = null;
 
@@ -27,20 +28,20 @@ class Mapper implements DataMapperInterface
     public function map(array $data)
     {
         $label = clone $this->labelPrototype;
-        $label->setId(trim($data['label_id']));
-        $label->setName(trim($data['label_name']));
-        $label->setCode(trim($data['label_code']));
-        $label->setInfoEnglish(trim($data['label_info_english']));
-        $label->setInfoSecond(trim($data['label_info_second']));
-        $label->setUrl1(trim($data['url1']));
-        $label->setUrl2(trim($data['url2']));
-        $label->setArtwork1(trim($data['artwork1']));
-        $label->setArtwork2(trim($data['artwork2']));
-        $label->setDefaultCLine(trim($data['default_c_line']));
-        $label->setDefaultPLine(trim($data['default_p_line']));
-        $label->setIsrcBase(trim($data['isrc_base']));
-        $label->setTerritoryId(trim($data['territory_id']));
-        $label->setNotes(trim($data['notes']));
+        $label->setId($this->trim($data['label_id']));
+        $label->setName($this->trim($data['label_name']));
+        $label->setCode($this->trim($data['label_code']));
+        $label->setInfoEnglish($this->trim($data['label_info_english']));
+        $label->setInfoSecond($this->trim($data['label_info_second']));
+        $label->setUrl1($this->trim($data['url1']));
+        $label->setUrl2($this->trim($data['url2']));
+        $label->setArtwork1($this->trim($data['artwork1']));
+        $label->setArtwork2($this->trim($data['artwork2']));
+        $label->setDefaultCLine($this->trim($data['default_c_line']));
+        $label->setDefaultPLine($this->trim($data['default_p_line']));
+        $label->setIsrcBase($this->trim($data['isrc_base']));
+        $label->setTerritoryId($this->trim($data['territory_id']));
+        $label->setNotes($this->trim($data['notes']));
         return $label;
     }
 }
