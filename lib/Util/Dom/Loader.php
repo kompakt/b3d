@@ -15,7 +15,7 @@ class Loader
 {
     public function load($xml)
     {
-        set_error_handler(function($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)
+        set_error_handler(function($errno, $errstr, $errfile = null, $errline = null, ?array $errcontext = null)
         {
             throw new InvalidArgumentException($errstr);
         });
